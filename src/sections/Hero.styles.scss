@@ -1,0 +1,25 @@
+#hero {
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  &__text-container {
+    transform: translateY(-25%);
+    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__heading {
+    & span {
+      color: var(--blue-primary);
+    }
+  }
+
+  &__subheading {
+    max-width: 100ch;
+  }
+}

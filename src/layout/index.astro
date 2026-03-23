@@ -1,0 +1,71 @@
+---
+import Navigation from "../components/Navigation/Navigation.astro";
+---
+
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>System Druk</title>
+  </head>
+  <body>
+    <Navigation />
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --black-primary: #1b1b1b;
+    --grey-primary: #6f6f6e;
+    --blue-primary: #009ee2;
+    --max-width: 1340px;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    font-family: "Source Sans Pro", sans-serif;
+    color: var(--black-primary);
+  }
+
+  main,
+  section {
+    max-width: var(--max-width);
+    margin-inline: auto;
+  }
+
+  h1 {
+    font-size: 3.813rem;
+    font-weight: 700;
+  }
+  h2 {
+    font-size: 3.063rem;
+    font-weight: 700;
+  }
+  h3 {
+    font-size: 2.438rem;
+    font-weight: 700;
+  }
+  h4 {
+    font-size: 1.938rem;
+    font-weight: 400;
+  }
+  p {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 175%;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  li {
+    list-style: none;
+  }
+</style>
