@@ -6,7 +6,7 @@
   align-items: flex-start;
 
   &__text-container {
-    transform: translateY(-25%);
+    transform: translateY(-35%);
     gap: 2rem;
     display: flex;
     flex-direction: column;
@@ -16,10 +16,89 @@
   &__heading {
     & span {
       color: var(--blue-primary);
+      width: 10ch;
+      display: inline-block;
+
+      &.animate-out {
+        animation: slide-out-to-top 0.3s ease-in;
+        animation-fill-mode: forwards;
+      }
+
+      &.animate-in {
+        animation: slide-in-from-bottom 0.3s ease-out;
+        animation-fill-mode: forwards;
+      }
+    }
+
+    & > div:nth-of-type(1) {
+      animation: slide-in-from-bottom 0.5s ease-out;
+    }
+
+    & > div:nth-of-type(2) {
+      animation: slide-in-from-bottom 0.5s ease-out 0.3s;
+      opacity: 0;
+      animation-fill-mode: forwards;
     }
   }
 
   &__subheading {
     max-width: 100ch;
+
+    & span {
+      text-decoration: underline;
+      text-decoration-color: var(--blue-primary);
+    }
+  }
+
+  &__cta-button {
+    background-color: var(--black-primary);
+    color: var(--white-primary);
+    padding: 12px;
+    border: none;
+  }
+
+  &__slider {
+    position: absolute;
+    left: 0;
+    width: 100vw;
+    margin-block: 3rem;
+  }
+}
+
+.splide {
+  &__track {
+    padding-block: 1rem;
+  }
+
+  &__slide {
+    padding-inline: 5rem;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      cursor: pointer;
+    }
+  }
+}
+
+@keyframes slide-in-from-bottom {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-out-to-top {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
   }
 }
