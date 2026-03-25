@@ -15,8 +15,9 @@ import { Image } from "astro:assets";
 <section id="hero">
   <div id="hero__text-container">
     <h1 id="hero__heading">
-      <div>Ponad 10 lat doświadczenia w druku <span>wizytówek</span></div>
-      <div>które wspierają Twój biznes.</div>
+      <div>Ponad 10 lat doświadczenia</div>
+      <div>w tworzeniu <span>wizytówek</span></div>
+      <div>które wspierają Twój biznes</div>
     </h1>
     <p id="hero__subheading">
       Doradztwo, projekt i druk — <span
@@ -78,7 +79,7 @@ import { Image } from "astro:assets";
       arrows: false,
       pagination: false,
       autoScroll: {
-        speed: 3,
+        speed: 1,
       },
     });
     splide.mount({ AutoScroll });
@@ -89,11 +90,12 @@ import { Image } from "astro:assets";
   ) as HTMLSpanElement;
 
   let textsToShowcase = [
-    "ulotek",
-    "plakatów",
-    "katalogów",
-    "naklejek",
-    "teczek",
+    "ulotek,",
+    "plakatów,",
+    "katalogów,",
+    "naklejek,",
+    "teczek,",
+    "materiałów reklamowych,"
   ];
 
   const ANIMATE_OUT_DURATION = 300;
