@@ -1,0 +1,96 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import "./ProjectsSlider.styles.scss";
+import Image1 from "../../assets/images/hero-slider/1.jpg";
+import Image2 from "../../assets/images/hero-slider/2.jpg";
+---
+
+<section id="projects-slider">
+  <div class="project-container project-container--active">
+    <figure class="project-container__image-container">
+      <Image
+        class="project-container__image"
+        src={Image1}
+        alt="Project Image"
+      />
+    </figure>
+    <div class="project-container__text-container">
+      <h4 class="project-container__heading">Black House</h4>
+      <p class="project-container__description">
+        projekt techniczny / druk / produkcja / montaż / projektowanie /
+        wizualizacje / konsultacje / nadzór autorski
+      </p>
+    </div>
+  </div>
+  <div class="project-container">
+    <figure class="project-container__image-container">
+      <Image
+        class="project-container__image"
+        src={Image2}
+        alt="Project Image"
+      />
+    </figure>
+    <div class="project-container__text-container">
+      <h4 class="project-container__heading">White House</h4>
+      <p class="project-container__description">
+        Description of the White House project.
+      </p>
+    </div>
+  </div>
+  <div id="projects-slider__controls-container">
+    <span></span>
+    <div>
+      <button
+        id="projects-slider__prev-button"
+        class="projects-slider__control-button"
+      >
+        <Icon
+          size="20"
+          name="mdi:less-than"
+          style={{ color: "var(--blue-primary)" }}
+        />
+      </button>
+      <p class="projects-slider__counter">
+        <span class="projects-slider__counter-current">1</span> /
+        <span class="projects-slider__counter-total">2</span>
+      </p>
+      <button
+        id="projects-slider__next-button"
+        class="projects-slider__control-button"
+      >
+        <Icon
+          name="mdi:greater-than"
+          size="20"
+          style={{
+            color: "var(--blue-primary)",
+          }}
+        />
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  const prevButton = document.getElementById("projects-slider__prev-button");
+  const nextButton = document.getElementById("projects-slider__next-button");
+  const projectContainers = document.querySelectorAll(".project-container");
+  let currentIndex = 0;
+
+  function showProject(index: number) {
+    projectContainers.forEach((container, i) => {
+      container.classList.toggle("project-container--active", i === index);
+    });
+  }
+
+  prevButton?.addEventListener("click", () => {
+    currentIndex =
+      (currentIndex - 1 + projectContainers.length) % projectContainers.length;
+    showProject(currentIndex);
+  });
+
+  nextButton?.addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % projectContainers.length;
+    showProject(currentIndex);
+  });
+</script>

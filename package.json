@@ -12,9 +12,11 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@iconify-json/mdi": "^1.2.3",
     "@splidejs/splide": "^4.1.4",
     "@splidejs/splide-extension-auto-scroll": "^0.5.3",
-    "astro": "^6.0.8"
+    "astro": "^6.0.8",
+    "astro-icon": "^1.1.5"
   },
   "devDependencies": {
     "sass-embedded": "^1.98.0"

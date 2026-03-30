@@ -1,0 +1,17 @@
+#process {
+  &__title {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.process-container {
+    border-bottom: 1px solid var(--blue-primary);  
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding-block: 3rem;
+
+    &__title {
+        font-weight: 400;
+    }
+}

@@ -38,23 +38,34 @@ import Navigation from "../components/Navigation/Navigation.astro";
   section {
     max-width: var(--max-width);
     margin-inline: auto;
+
   }
 
   h1 {
     font-size: 3.813rem;
     font-weight: 700;
+    line-height: 1.2em;
   }
   h2 {
     font-size: 3.063rem;
     font-weight: 700;
+    line-height: 1.5em;
   }
   h3 {
     font-size: 2.438rem;
     font-weight: 700;
+      line-height: 1.5em;
   }
   h4 {
     font-size: 1.938rem;
     font-weight: 400;
+    line-height: 1.5em;
+  }
+
+  h5 {
+    font-size: 1.250rem;
+    font-weight: 400;
+    line-height: 1.5em;
   }
   p {
     font-size: 1rem;
@@ -68,5 +79,33 @@ import Navigation from "../components/Navigation/Navigation.astro";
   }
   li {
     list-style: none;
+  }
+
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  @keyframes slide-in-from-bottom {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slide-out-to-top {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
   }
 </style>

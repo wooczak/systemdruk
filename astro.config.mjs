@@ -1,6 +1,8 @@
 // @ts-check
 import { defineConfig, fontProviders } from "astro/config";
 
+import icon from "astro-icon";
+
 export default defineConfig({
   fonts: [
     {
@@ -9,6 +11,8 @@ export default defineConfig({
       cssVariable: "--font-source-sans-pro",
     },
   ],
+
   site: "https://wooczak.github.io",
   base: "/systemdruk",
+  integrations: [icon()],
 });
