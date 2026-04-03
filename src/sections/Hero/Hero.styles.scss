@@ -67,27 +67,47 @@
     animation: slide-in-from-bottom 0.5s ease-out 0.8s;
     animation-fill-mode: forwards;
   }
+}
 
-  &__slider {
-    position: absolute;
-    left: 0;
-    width: 100vw;
-    margin-block: 3rem;
+.hero-slider {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  margin-block: 3rem;
+  display: flex;
+
+  &:hover .hero-slider__track {
+    animation-play-state: paused;
+    cursor: pointer;
   }
 
-  .splide {
-    &__track {
-      padding-block: 1rem;
-    }
+  &__track {
+    display: flex;
+    width: max-content;
+    animation: scrolling 18s linear infinite;
+  }
 
-    &__slide {
-      padding-inline: 5rem;
-      transition: all 0.3s ease;
+  &__list {
+    display: flex;
+    gap: 8rem;
+    padding: 0 2rem;
+  }
 
-      &:hover {
-        transform: translateY(-5px);
-        cursor: pointer;
-      }
-    }
+  &:hover .hero-slider__list {
+    animation-play-state: paused;
+    cursor: pointer;
+  }
+
+  &__slide {
+    flex: 0 0 auto;
+  }
+}
+
+@keyframes scrolling {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
   }
 }

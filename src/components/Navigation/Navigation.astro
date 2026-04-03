@@ -1,17 +1,15 @@
 ---
-import { Image } from "astro:assets";
-import Logo from "../../assets/images/systemdruk-logo.webp";
 import "./Navigation.styles.scss";
+import { Icon } from "astro-icon/components";
 ---
 
 <nav id="navigation">
   <div id="navigation__container">
-    <Image
-      id="navigation__img"
-      src={Logo}
-      alt="Systemdruk Logo"
+    <Icon
+      name="systemdruk_logo"
       width={100}
       height={50}
+      id="navigation__img"
     />
     <ul id="navigation__list">
       <li class="navigation__item"><a href="/">blog</a></li>

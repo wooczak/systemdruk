@@ -1,6 +1,5 @@
 ---
 import "./Hero.styles.scss";
-import "@splidejs/splide/css";
 
 import Company1Logo from "../../assets/images/slider/cae-company-logo-systemdruk-client.svg";
 import Company2Logo from "../../assets/images/slider/comarch-company-logo-systemdruk-client.png";
@@ -20,67 +19,72 @@ import { Image } from "astro:assets";
       <div>które wspierają Twój biznes</div>
     </h1>
     <h5 id="hero__subheading">
-      Doradztwo, projekt, druk i dystrybucja — wszystko, czego potrzebujesz w zakresie poligrafii, w jednym miejscu.
+      Doradztwo, projekt, druk i dystrybucja — wszystko, czego potrzebujesz w
+      zakresie poligrafii, w jednym miejscu.
     </h5>
     <button id="hero__cta-button"> Skontaktuj się z nami </button>
   </div>
 
-  <article id="hero__slider-container" aria-labelledby="carousel-heading">
+  <section id="hero__slider-container" aria-labelledby="carousel-heading">
     <h3 id="carousel-heading">Dołącz do firm, które nam zaufały</h3>
     <div
-      class="hero__splide"
-      id="hero__slider"
+      class="hero-slider"
       role="group"
       aria-label="Splide Basic HTML Example"
     >
-      <div class="splide__track">
-        <ul class="splide__list">
-          <li class="splide__slide">
+      <div class="hero-slider__track">
+        <ul class="hero-slider__list">
+          <li class="hero-slider__slide">
             <Image src={Company1Logo} alt="Company 1 Logo" height="35" />
           </li>
-          <li class="splide__slide">
+          <li class="hero-slider__slide">
             <Image src={Company2Logo} alt="Company 2 Logo" height="35" />
           </li>
-          <li class="splide__slide">
+          <li class="hero-slider__slide">
             <Image src={Company3Logo} alt="Company 3 Logo" height="35" />
           </li>
-          <li class="splide__slide">
+          <li class="hero-slider__slide">
             <Image src={Company4Logo} alt="Company 4 Logo" height="35" />
           </li>
-          <li class="splide__slide">
+          <li class="hero-slider__slide">
             <Image src={Company5Logo} alt="Company 5 Logo" height="35" />
           </li>
-          <li class="splide__slide">
+          <li class="hero-slider__slide">
             <Image src={Company6Logo} alt="Company 6 Logo" height="35" />
           </li>
-          <li class="splide__slide">
+          <li class="hero-slider__slide">
+            <Image src={Company7Logo} alt="Company 7 Logo" height="35" />
+          </li>
+        </ul>
+        <ul class="hero-slider__list" aria-hidden>
+          <li class="hero-slider__slide">
+            <Image src={Company1Logo} alt="Company 1 Logo" height="35" />
+          </li>
+          <li class="hero-slider__slide">
+            <Image src={Company2Logo} alt="Company 2 Logo" height="35" />
+          </li>
+          <li class="hero-slider__slide">
+            <Image src={Company3Logo} alt="Company 3 Logo" height="35" />
+          </li>
+          <li class="hero-slider__slide">
+            <Image src={Company4Logo} alt="Company 4 Logo" height="35" />
+          </li>
+          <li class="hero-slider__slide">
+            <Image src={Company5Logo} alt="Company 5 Logo" height="35" />
+          </li>
+          <li class="hero-slider__slide">
+            <Image src={Company6Logo} alt="Company 6 Logo" height="35" />
+          </li>
+          <li class="hero-slider__slide">
             <Image src={Company7Logo} alt="Company 7 Logo" height="35" />
           </li>
         </ul>
       </div>
     </div>
-  </article>
+  </section>
 </section>
 
 <script>
-  import Splide from "@splidejs/splide";
-  import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
-
-  document.addEventListener("DOMContentLoaded", function () {
-    var splide = new Splide(".hero__splide", {
-      type: "loop",
-      pauseOnHover: false,
-      pauseOnFocus: false,
-      autoWidth: true,
-      arrows: false,
-      pagination: false,
-      autoScroll: {
-        speed: 1,
-      },
-    });
-    splide.mount({ AutoScroll });
-  });
-
   const spanText = document.querySelector(
     "#hero__heading span",
   ) as HTMLSpanElement;
