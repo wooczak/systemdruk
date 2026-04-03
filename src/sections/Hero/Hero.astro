@@ -9,6 +9,7 @@ import Company5Logo from "../../assets/images/slider/obsessive-logo-systemdruk-c
 import Company6Logo from "../../assets/images/slider/oknoplus-company-logo-systemdruk-client.svg";
 import Company7Logo from "../../assets/images/slider/traficar-company-logo-systemdruk-client.png";
 import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 ---
 
 <section id="hero">
@@ -19,14 +20,24 @@ import { Image } from "astro:assets";
       <div>które wspierają Twój biznes</div>
     </h1>
     <h5 id="hero__subheading">
-      Doradztwo, projekt, druk i dystrybucja — wszystko, czego potrzebujesz w
-      zakresie poligrafii, w jednym miejscu.
+      <div>
+        <Icon name="fistaszek" size="30" />
+        Poligrafia od A do Z
+      </div>
+      <div>
+        <Icon name="fistaszek" size="30" />
+        Fachowe doradztwo
+      </div>
+      <div>
+        <Icon name="fistaszek" size="30" />
+        Oszczędność czasu
+      </div>
     </h5>
     <button id="hero__cta-button"> Skontaktuj się z nami </button>
   </div>
 
   <section id="hero__slider-container" aria-labelledby="carousel-heading">
-    <h3 id="carousel-heading">Dołącz do firm, które nam zaufały</h3>
+    <h4 id="carousel-heading">Dołącz do firm, które nam zaufały</h4>
     <div
       class="hero-slider"
       role="group"
