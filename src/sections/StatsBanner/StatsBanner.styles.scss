@@ -1,0 +1,24 @@
+.stats-banner {
+  background-color: var(--blue-primary);
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-block: 2rem;
+  margin-block: 2rem;
+
+  &__container {
+    width: var(--max-width);
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  &__content {
+    text-align: center;
+  }
+
+  &__number {
+    font-size: 6rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+}

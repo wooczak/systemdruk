@@ -7,8 +7,8 @@ export default defineConfig({
   fonts: [
     {
       provider: fontProviders.fontsource(),
-      name: "Source Sans Pro",
-      cssVariable: "--font-source-sans-pro",
+      name: "Source Sans 3",
+      cssVariable: "--font-source-sans-3",
     },
   ],
 

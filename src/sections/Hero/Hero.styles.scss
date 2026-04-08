@@ -67,6 +67,10 @@
     }
   }
 
+  &__slider-container {
+    margin-inline: 0;
+  }
+
   &__cta-button {
     background-color: var(--white-primary);
     color: var(--black-primary);
