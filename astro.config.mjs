@@ -6,9 +6,10 @@ import icon from "astro-icon";
 export default defineConfig({
   fonts: [
     {
-      provider: fontProviders.fontsource(),
+      provider: fontProviders.google(),
       name: "Source Sans 3",
       cssVariable: "--font-source-sans-3",
+      weights: ["200", "300", "400", "500", "600", "700"],
     },
   ],
 

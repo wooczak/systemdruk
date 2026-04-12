@@ -1,0 +1,61 @@
+---
+import "./BlogOverview.styles.scss";
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+
+const allPosts = await getCollection("blog");
+
+const allPostsLength = allPosts.length;
+
+const allPostsDetails = allPosts
+  .sort(({ data: dataA }, { data: dataB }) => {
+    const dateA = new Date(dataA.post_date);
+    const dateB = new Date(dataB.post_date);
+
+    return dateB.getTime() - dateA.getTime();
+  })
+  .map(({ data }, index) => {
+    if (index >= 3) return null;
+
+    return {
+      title: data.title,
+      author: data.author,
+      date: data.post_date,
+      categories: data.categories,
+      img_url: data.img_url,
+      slug: data.slug,
+    };
+  });
+---
+
+<section id="blog-overview" class="blog-overview">
+  <h3>W świecie druku</h3>
+  <div class="blog-overview__container">
+    {
+      allPostsDetails.map((post, index) => {
+        if (!post) return null;
+
+        const isMain = index === 0;
+        const isSidebarFirst = index === 1;
+
+        return (
+          <article
+            class={`blog-overview__${isMain ? "main-post" : isSidebarFirst ? "sidebar-post-1" : "sidebar-post-2"}`}
+          >
+            <Image
+              src={post.img_url}
+              class="blog-overview__container__image"
+              alt={post.title}
+              width={isMain ? 600 : 300}
+              height={isMain ? 400 : 200}
+            />
+            <div class="blog-overview__container__content">
+              <h4>{post.title}</h4>
+              <p>Categories: {post.categories.join(", ")}</p>
+            </div>
+          </article>
+        );
+      })
+    }
+  </div>
+</section>

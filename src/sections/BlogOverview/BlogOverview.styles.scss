@@ -1,0 +1,49 @@
+.blog-overview {
+  &__container {
+    display: grid;
+    grid-template-columns: 60% 1fr;
+    grid-template-rows: repeat(2, auto);
+    gap: 2rem;
+    grid-template-areas:
+      "main-post sidebar-post-1"
+      "main-post sidebar-post-2";
+
+    &__image {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__main-post {
+    grid-area: main-post;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 1rem;
+
+    img {
+      flex-grow: 1;
+    }
+  }
+
+  &__sidebar-post-1 {
+    grid-area: sidebar-post-1;
+  }
+
+  &__sidebar-post-2 {
+    grid-area: sidebar-post-2;
+  }
+
+  &__sidebar-post-1,
+  &__sidebar-post-2 {
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+
+    img {
+      width: 40%;
+      height: 100%;
+    }
+  }
+}
