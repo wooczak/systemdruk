@@ -48,7 +48,7 @@ const allPostsDetails = allPosts
         return (
           <article class={cl}>
             <Image
-              src={`${import.meta.env.BASE_URL}${post.img_url}`}
+              src={post.img_url}
               class="blog-overview__container__image"
               alt={post.title}
               width={isMain ? 600 : 300}
