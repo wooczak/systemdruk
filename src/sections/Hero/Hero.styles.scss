@@ -50,44 +50,8 @@
     }
   }
 
-  &__subheading {
-    color: var(--grey-primary);
-    opacity: 0;
-    animation: slide-in-from-bottom 0.5s ease-out 0.6s;
-    animation-fill-mode: forwards;
-
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-
-    & > div {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-  }
-
   &__slider-container {
     margin-inline: 0;
-  }
-
-  &__cta-button {
-    background-color: var(--white-primary);
-    color: var(--black-primary);
-    padding: 12px;
-    border: 1px solid var(--blue-primary);
-    opacity: 0;
-    animation: slide-in-from-bottom 0.5s ease-out 0.8s;
-    animation-fill-mode: forwards;
-    font-size: 1.25rem;
-    margin-top: 1.25rem;
-    transition: all 0.2s ease-in-out;
-
-    &:hover {
-      transform: translateY(-10px);
-      background-color: var(--blue-primary);
-      color: var(--white-primary);
-    }
   }
 }
 

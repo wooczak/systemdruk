@@ -2,6 +2,7 @@
 import "./BlogOverview.styles.scss";
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
+import SecondaryButton from "../../components/Buttons/SecondaryButton.astro";
 
 const allPosts = await getCollection("blog");
 
@@ -29,7 +30,7 @@ const allPostsDetails = allPosts
 ---
 
 <section id="blog-overview" class="blog-overview">
-  <h3>W świecie druku</h3>
+  <h3 class="blog-overview__title">W świecie druku</h3>
   <div class="blog-overview__container">
     {
       allPostsDetails.map((post, index) => {
@@ -38,10 +39,14 @@ const allPostsDetails = allPosts
         const isMain = index === 0;
         const isSidebarFirst = index === 1;
 
+        const cl = isMain
+          ? "blog-overview__main-post"
+          : isSidebarFirst
+            ? "blog-overview__sidebar-post-1"
+            : "blog-overview__sidebar-post-2";
+
         return (
-          <article
-            class={`blog-overview__${isMain ? "main-post" : isSidebarFirst ? "sidebar-post-1" : "sidebar-post-2"}`}
-          >
+          <article class={cl}>
             <Image
               src={post.img_url}
               class="blog-overview__container__image"
@@ -49,13 +54,19 @@ const allPostsDetails = allPosts
               width={isMain ? 600 : 300}
               height={isMain ? 400 : 200}
             />
-            <div class="blog-overview__container__content">
+            <div class={`${cl}__content`}>
+              <p class="blog-overview__container__categories">
+                [{post.categories.join(", ")}]
+              </p>
               <h4>{post.title}</h4>
-              <p>Categories: {post.categories.join(", ")}</p>
             </div>
           </article>
         );
       })
     }
   </div>
+  <SecondaryButton
+    class="blog-overview__button"
+    title={`Jeszcze więcej wiedzy (${allPostsLength})`}
+  />
 </section>

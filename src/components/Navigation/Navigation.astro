@@ -5,12 +5,7 @@ import { Icon } from "astro-icon/components";
 
 <nav id="navigation">
   <div id="navigation__container">
-    <Icon
-      name="systemdruk_logo"
-      width={100}
-      height={50}
-      id="navigation__img"
-    />
+    <Icon name="systemdruk_logo" width={100} height={50} id="navigation__img" />
     <ul id="navigation__list">
       <li class="navigation__item"><a href="/">blog</a></li>
       <li class="navigation__item"><a href="/about">oferta</a></li>
@@ -18,3 +13,17 @@ import { Icon } from "astro-icon/components";
     </ul>
   </div>
 </nav>
+
+<script>
+  const navigation = document.getElementById("navigation") as HTMLElement;
+  const navHeight = navigation.offsetHeight;
+  const currentScroll = window.scrollY;
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > currentScroll + navHeight) {
+      navigation.classList.add("sticky");
+    } else {
+      navigation.classList.remove("sticky");
+    }
+  });
+</script>

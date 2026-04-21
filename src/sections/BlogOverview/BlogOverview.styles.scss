@@ -1,38 +1,55 @@
+$height: 500px;
+
 .blog-overview {
+  padding-block: 4rem;
+  position: relative;
+
+  &__title {
+    margin-bottom: 2rem;
+  }
   &__container {
     display: grid;
     grid-template-columns: 60% 1fr;
     grid-template-rows: repeat(2, auto);
-    gap: 2rem;
+    column-gap: 2rem;
     grid-template-areas:
       "main-post sidebar-post-1"
       "main-post sidebar-post-2";
+    position: relative;
 
     &__image {
       width: 100%;
       object-fit: cover;
     }
+
+    &__categories {
+      color: var(--grey-primary);
+    }
   }
 
   &__main-post {
     grid-area: main-post;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    gap: 1rem;
+    height: $height;
 
     img {
       flex-grow: 1;
+      height: 100%;
+    }
+
+    &__content {
+      position: absolute;
+      padding-top: 1rem;
     }
   }
 
   &__sidebar-post-1 {
     grid-area: sidebar-post-1;
+    padding-bottom: 1rem;
   }
 
   &__sidebar-post-2 {
     grid-area: sidebar-post-2;
+    padding-top: 1rem;
   }
 
   &__sidebar-post-1,
@@ -40,10 +57,17 @@
     display: flex;
     align-items: flex-end;
     gap: 1rem;
+    height: calc(#{$height} / 2);
 
     img {
       width: 40%;
       height: 100%;
     }
+  }
+
+  &__button {
+    position: absolute;
+    bottom: -8rem;
+    right: 10rem;
   }
 }

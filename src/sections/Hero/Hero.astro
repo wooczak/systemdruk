@@ -10,6 +10,8 @@ import Company6Logo from "../../assets/images/slider/oknoplus-company-logo-syste
 import Company7Logo from "../../assets/images/slider/traficar-company-logo-systemdruk-client.png";
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
+import SecondaryButton from "../../components/Buttons/SecondaryButton.astro";
+import Subheading from "../../components/Subheading/Subheading.astro";
 ---
 
 <section id="hero">
@@ -19,21 +21,10 @@ import { Icon } from "astro-icon/components";
       <div>w tworzeniu <span>wizytówek</span></div>
       <div>które wspierają Twój biznes</div>
     </h1>
-    <h5 id="hero__subheading">
-      <div>
-        <Icon name="fistaszek" size="30" />
-        Poligrafia od A do Z
-      </div>
-      <div>
-        <Icon name="fistaszek" size="30" />
-        Fachowe doradztwo
-      </div>
-      <div>
-        <Icon name="fistaszek" size="30" />
-        Oszczędność czasu
-      </div>
-    </h5>
-    <button id="hero__cta-button"> Skontaktuj się z nami </button>
+    <Subheading
+      labels={["Poligrafia od A do Z", "Fachowe doradztwo", "Oszczędność czasu"]}
+    />
+    <SecondaryButton title="Skontaktuj się z nami" />
   </div>
 
   <section id="hero__slider-container" aria-labelledby="carousel-heading">

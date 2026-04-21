@@ -1,153 +1,136 @@
 ---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 import "./Offer.styles.scss";
 ---
 
 <section class="offer">
   <h3>Oferta</h3>
 
-  <!-- DRUK -->
-  <section class="offer-container">
-    <div class="offer-container__main-text">
-      <h4>Druk offsetowy i cyfrowy</h4>
-      <p>
-        Specjalizujemy się w produkcji zleceń średnio- i niskonakładowych (druk
-        cyfrowy) oraz wysokonakładowych (druk offsetowy). Zaprojektujemy,
-        doradzimy i dobierzemy odpowiednie podłoże oraz uszlachetnienia
-        dopasowane do Twojej branży. Wolisz szybki czas realizacji czy niższą
-        cenę przy dużych nakładach? Skontaktuj się z nami — doradzimy najlepsze
-        rozwiązanie.
-      </p>
+  <Image
+    src="/src/assets/images/offer-banner.jpg"
+    alt="Oferta"
+    class="offer__image"
+    width={400}
+    height={400}
+  />
+
+  <section class="offer__content-grid">
+    <div class="offer__content-grid-left">
+      <h2 class="offer__content-heading active">Druk offsetowy i cyfrowy</h2>
+      <h2 class="offer__content-heading">Gadżety reklamowe z nadrukiem</h2>
+      <h2 class="offer__content-heading">Reklama zewnętrzna</h2>
+      <h2 class="offer__content-heading">Pudełka i torby z logo</h2>
     </div>
 
-    <ul class="offer__links-container">
-      <li><a href="#">Wizytówki</a></li>
-      <li><a href="#">Notesy</a></li>
-      <li><a href="#">Katalogi szyte</a></li>
-      <li><a href="#">Katalogi klejone</a></li>
-      <li><a href="#">Katalogi z registrami</a></li>
-      <li><a href="#">Segregatory</a></li>
-      <li><a href="#">Pudełka kartonowe</a></li>
-      <li><a href="#">Plakaty</a></li>
-      <li><a href="#">Ulotki</a></li>
-      <li><a href="#">Teczki firmowe</a></li>
-      <li><a href="#">Kalendarze</a></li>
-      <li><a href="#">Biuwary</a></li>
-      <li><a href="#">Karty plastikowe</a></li>
-    </ul>
-  </section>
+    <div class="offer__content-grid-right">
+      <!-- 1 -->
+      <div class="offer__content__text-container active">
+        <p class="offer__content-subheading">
+          Specjalizujemy się w produkcji zleceń średnio- i niskonakładowych
+          (druk cyfrowy) oraz wysokonakładowych (druk offsetowy).
+          Zaprojektujemy, doradzimy i dobierzemy odpowiednie podłoże oraz
+          uszlachetnienia dopasowane do Twojej branży. Wolisz szybki czas
+          realizacji czy niższą cenę przy dużych nakładach? Skontaktuj się z
+          nami — doradzimy najlepsze rozwiązanie.
+        </p>
+        <ul class="offer__content-text">
+          <li><a href="#"><Icon name="mdi:arrow-right" /> Wizytówki</a></li>
+          <li><a href="#"><Icon name="mdi:arrow-right" /> Ulotki</a></li>
+          <li><a href="#"><Icon name="mdi:arrow-right" /> Plakaty</a></li>
+          <li><a href="#"><Icon name="mdi:arrow-right" /> Katalogi</a></li>
+          <li><a href="#"><Icon name="mdi:arrow-right" /> Foldery</a></li>
+          <li><a href="#"><Icon name="mdi:arrow-right" /> Broszury</a></li>
+        </ul>
+      </div>
 
-  <!-- GADŻETY -->
-  <section class="offer-container">
-    <div class="offer-container__main-text">
-      <h4>Gadżety reklamowe z nadrukiem</h4>
-      <p>
-        Doskonałe uzupełnienie firmowej poligrafii — od smyczy i breloków po
-        eleganckie upominki z grawerem. Personalizowane gadżety to świetny
-        sposób na budowanie relacji z klientami. Wspólnie wybieramy spośród
-        setek produktów, które zapewniają profesjonalną prezentację Twojego
-        logo.
-      </p>
+      <!-- 2 -->
+      <div class="offer__content__text-container">
+        <p class="offer__content-subheading">
+          Doskonałe uzupełnienie firmowej poligrafii — od smyczy i breloków po
+          eleganckie upominki z grawerem. Personalizowane gadżety to świetny
+          sposób na budowanie relacji z klientami. Wspólnie wybieramy spośród
+          setek produktów, które zapewniają profesjonalną prezentację Twojego
+          logo.
+        </p>
+        <ul class="offer__content-text">
+          <li>
+            <a href="#"><Icon name="mdi:arrow-right" /> Długopisy reklamowe</a>
+          </li>
+          <li>
+            <a href="#"><Icon name="mdi:arrow-right" /> Kubki z nadrukiem</a>
+          </li>
+          <li><a href="#"><Icon name="mdi:arrow-right" /> Koszulki</a></li>
+          <li>
+            <a href="#"><Icon name="mdi:arrow-right" /> Torby bawełniane</a>
+          </li>
+          <li><a href="#"><Icon name="mdi:arrow-right" /> Notesy</a></li>
+        </ul>
+      </div>
+
+      <!-- 3 -->
+      <div class="offer__content__text-container">
+        <p class="offer__content-subheading">
+          Wspieramy klientów od projektu aż po realizację i logistykę materiałów
+          na targi, konferencje i wydarzenia plenerowe. Doradzamy w zakresie
+          grupy docelowej i budżetu — wierzymy, że skuteczny outdoor to klucz do
+          rozpoznawalności marki.
+        </p>
+        <ul class="offer__content-text">
+          <li><a href="#"><Icon name="mdi:arrow-right" /> Banery</a></li>
+          <li><a href="#"><Icon name="mdi:arrow-right" /> Siatki mesh</a></li>
+          <li>
+            <a href="#"><Icon name="mdi:arrow-right" /> Tablice reklamowe</a>
+          </li>
+          <li><a href="#"><Icon name="mdi:arrow-right" /> Kasetony</a></li>
+          <li>
+            <a href="#"><Icon name="mdi:arrow-right" /> Oklejanie witryn</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 4 -->
+      <div class="offer__content__text-container">
+        <p class="offer__content-subheading">
+          Łączymy nowoczesny design z wytrzymałością, oferując kompleksowe
+          rozwiązania dla e-commerce, gastronomii i firm usługowych. Oferujemy
+          szeroki wybór wykrojników i uszlachetnień — od folii po lakier 3D i
+          dodatki premium. Nawet przy niskich nakładach zadbamy o profesjonalny
+          efekt.
+        </p>
+        <ul class="offer__content-text">
+          <li>
+            <a href="#"><Icon name="mdi:arrow-right" /> Pudełka kartonowe</a>
+          </li>
+          <li>
+            <a href="#"><Icon name="mdi:arrow-right" /> Torby papierowe</a>
+          </li>
+          <li>
+            <a href="#"><Icon name="mdi:arrow-right" /> Opakowania produktowe</a
+            >
+          </li>
+          <li>
+            <a href="#"
+              ><Icon name="mdi:arrow-right" /> Personalizowane opakowania</a
+            >
+          </li>
+        </ul>
+      </div>
     </div>
-
-    <ul class="offer__links-container">
-      <li><a href="#">Gadżety biurowe</a></li>
-      <li><a href="#">Kubki i filiżanki</a></li>
-      <li><a href="#">Smycze reklamowe</a></li>
-      <li><a href="#">Parasole z logo</a></li>
-      <li><a href="#">Torby bawełniane</a></li>
-      <li><a href="#">Koszulki z logo</a></li>
-      <li><a href="#">Breloki</a></li>
-      <li><a href="#">Pendrive</a></li>
-      <li><a href="#">Kalendarze ścienne</a></li>
-      <li><a href="#">Notesy biurkowe</a></li>
-      <li><a href="#">Torby i plecaki</a></li>
-      <li><a href="#">Elektronika z logo</a></li>
-    </ul>
   </section>
-
-  <!-- REKLAMA ZEWNĘTRZNA -->
-  <section class="offer-container">
-    <div class="offer-container__main-text">
-      <h4>Reklama zewnętrzna</h4>
-      <p>
-        Wspieramy klientów od projektu aż po realizację i logistykę materiałów
-        na targi, konferencje i wydarzenia plenerowe. Doradzamy w zakresie grupy
-        docelowej i budżetu — wierzymy, że skuteczny outdoor to klucz do
-        rozpoznawalności marki.
-      </p>
-    </div>
-
-    <ul class="offer__links-container">
-      <li><a href="#">Rollupy</a></li>
-      <li><a href="#">Ścianki reklamowe</a></li>
-      <li><a href="#">Ścianki LED</a></li>
-      <li><a href="#">Standy</a></li>
-      <li><a href="#">Flagi reklamowe</a></li>
-      <li><a href="#">Trybunki i lady</a></li>
-      <li><a href="#">Obrusy firmowe</a></li>
-      <li><a href="#">Namioty reklamowe</a></li>
-      <li><a href="#">Kasetony i pylony</a></li>
-      <li><a href="#">Reklama świetlna</a></li>
-      <li><a href="#">Reklama 3D</a></li>
-    </ul>
-  </section>
-
-  <!-- OPAKOWANIA -->
-  <section class="offer-container">
-    <div class="offer-container__main-text">
-      <h4>Pudełka i torby z logo</h4>
-      <p>
-        Łączymy nowoczesny design z wytrzymałością, oferując kompleksowe
-        rozwiązania dla e-commerce, gastronomii i firm usługowych. Oferujemy
-        szeroki wybór wykrojników i uszlachetnień — od folii po lakier 3D i
-        dodatki premium. Nawet przy niskich nakładach zadbamy o profesjonalny
-        efekt.
-      </p>
-    </div>
-
-    <ul class="offer__links-container">
-      <li><a href="#">Torby bawełniane</a></li>
-      <li><a href="#">Torby papierowe (sznurek)</a></li>
-      <li><a href="#">Torby ze wstążką</a></li>
-      <li><a href="#">Torby firmowe pionowe</a></li>
-      <li><a href="#">Torby firmowe poziome</a></li>
-      <li><a href="#">Torby na wino</a></li>
-      <li><a href="#">Pudełka z magnesem</a></li>
-      <li><a href="#">Pudełka fasonowe</a></li>
-      <li><a href="#">Pudełka z nadrukiem</a></li>
-      <li><a href="#">Nadruk na pudełkach</a></li>
-      <li><a href="#">Pudełka na zamówienie</a></li>
-      <li><a href="#">Projekty firmowe</a></li>
-    </ul>
-  </section>
-
-  <span class="offer-mouseenter-span"></span>
 </section>
 
 <script>
-  let isLinkHovered = false;
-  const allLinks = document.querySelectorAll(".offer__links-container a");
-  const offerMouseEnterSpan = document.querySelector(
-    ".offer-mouseenter-span",
-  ) as HTMLSpanElement;
+  const headings = document.querySelectorAll(".offer__content-heading");
+  const contents = document.querySelectorAll(".offer__content__text-container");
 
-  document.addEventListener("mousemove", (e: MouseEvent) => {
-    if (isLinkHovered) {
-      offerMouseEnterSpan.style.left = `${e.clientX + 10}px`;
-      offerMouseEnterSpan.style.top = `${e.clientY + 10}px`;
-    }
-  });
+  headings.forEach((heading, index) => {
+    heading.addEventListener("click", () => {
+      headings.forEach((h) => h.classList.remove("active"));
+      contents.forEach((c) => c.classList.remove("active"));
 
-  allLinks.forEach((link) => {
-    link.addEventListener("mouseenter", () => {
-      isLinkHovered = true;
-
-      offerMouseEnterSpan.style.display = "block";
-    });
-
-    link.addEventListener("mouseleave", () => {
-      isLinkHovered = false;
-      offerMouseEnterSpan.style.display = "none";
+      heading.classList.add("active");
+      contents[index].classList.add("active");
     });
   });
 </script>

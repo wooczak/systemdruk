@@ -6,9 +6,8 @@
   }
 
   &__header-container {
-    display: grid;
-    grid-template-columns: 55% 1fr;
-    gap: 5rem;
+    display: flex;
+    flex-direction: column;
     margin-bottom: 4rem;
 
     &__text-container {
