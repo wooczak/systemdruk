@@ -11,7 +11,7 @@
   &__content {
     &-grid {
       display: grid;
-      grid-template-columns: 60% 1fr;
+      grid-template-columns: 50% 1fr;
       gap: 2rem;
       padding-block: 1rem;
 
@@ -29,8 +29,8 @@
     &-text {
       margin-block: 1rem;
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1em;
 
       a {
         display: flex;
