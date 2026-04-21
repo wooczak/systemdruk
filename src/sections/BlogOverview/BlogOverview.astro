@@ -1,6 +1,5 @@
 ---
 import "./BlogOverview.styles.scss";
-import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import SecondaryButton from "../../components/Buttons/SecondaryButton.astro";
 
@@ -47,7 +46,7 @@ const allPostsDetails = allPosts
 
         return (
           <article class={cl}>
-            <Image
+            <img
               src={post.img_url}
               class="blog-overview__container__image"
               alt={post.title}
