@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
+import ImageOffer from "../../assets/images/offer-banner.jpg";
 import "./Offer.styles.scss";
 ---
 
@@ -8,7 +9,7 @@ import "./Offer.styles.scss";
   <h3>Oferta</h3>
 
   <Image
-    src="/src/assets/images/offer-banner.jpg"
+    src={ImageOffer}
     alt="Oferta"
     class="offer__image"
     width={400}
