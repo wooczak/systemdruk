@@ -4,7 +4,7 @@ categories: ["druk", "copywriting", "typografia"]
 slug: "teksty-jak-sie-wyroznic-blog"
 author: "Ziemowit Kościelny"
 post_date: "2019-10-15"
-img_url: "/src/assets/images/blog/teksty-jak-sie-wyrozniac-2019-10-15-blog-zdjecie-baner.webp"
+img_url: "/images/blog/teksty-jak-sie-wyrozniac-2019-10-15-blog-zdjecie-baner.webp"
 ---
 
 # Teksty – jak się wyróżniać?

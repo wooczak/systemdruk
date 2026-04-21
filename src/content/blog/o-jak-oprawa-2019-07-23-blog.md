@@ -4,7 +4,7 @@ slug: "o-jak-oprawa"
 categories: ["druk", "poligrafia", "introligatornia"]
 author: "Ziemowit Kościelny"
 post_date: "2019-07-23"
-img_url: "/src/assets/images/blog/o-jak-oprawa-2019-07-23-blog-zdjecie-baner.webp"
+img_url: "/images/blog/o-jak-oprawa-2019-07-23-blog-zdjecie-baner.webp"
 ---
 
 # O jak oprawa

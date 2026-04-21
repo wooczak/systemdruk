@@ -4,7 +4,7 @@ slug: "c-jak-czern"
 categories: ["druk", "poligrafia", "kolor"]
 author: "Ziemowit Kościelny"
 post_date: "2019-06-11"
-img_url: "/src/assets/images/blog/c-jak-czern-2019-06-11-blog-zdjecie-baner.webp"
+img_url: "/images/blog/c-jak-czern-2019-06-11-blog-zdjecie-baner.webp"
 ---
 
 # C jak czerń
