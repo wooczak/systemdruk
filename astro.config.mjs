@@ -3,6 +3,8 @@ import { defineConfig, fontProviders } from "astro/config";
 
 import icon from "astro-icon";
 
+import solidJs from "@astrojs/solid-js";
+
 export default defineConfig({
   fonts: [
     {
@@ -15,5 +17,5 @@ export default defineConfig({
 
   site: "https://wooczak.github.io",
   base: "/systemdruk",
-  integrations: [icon()],
+  integrations: [icon(), solidJs({ devtools: true}), ],
 });

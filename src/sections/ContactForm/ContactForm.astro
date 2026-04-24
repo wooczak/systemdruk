@@ -1,5 +1,6 @@
 ---
 import Subheading from "../../components/Subheading/Subheading.astro";
+import { ContactFormClientComponent as Form } from "./ContactForm.client";
 import "./ContactForm.styles.scss";
 ---
 
@@ -8,4 +9,7 @@ import "./ContactForm.styles.scss";
   <Subheading
     labels={["Bez zobowiązań", "Szybka odpowiedź", "Profesjonalne doradztwo"]}
   />
+  <div class="contact-form__client-container">
+    <Form client:load />
+  </div>
 </section>

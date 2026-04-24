@@ -1,3 +1,37 @@
 .contact-form {
-    margin-top: 8rem;
+  margin-top: 8rem;
+
+  &__client-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  &__input {
+    &--error {
+        border-color: red !important;
+    }
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-block: 2rem;
+
+    input,
+    textarea {
+      padding: 0.75rem;
+      border: 1px solid var(--blue-primary);
+      font-size: 1rem;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    &-asterisk {
+        color: var(--blue-primary);
+    }
+  }
 }
