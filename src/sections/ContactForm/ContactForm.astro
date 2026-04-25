@@ -1,4 +1,6 @@
 ---
+import { Icon } from "astro-icon/components";
+import SecondaryButton from "../../components/Buttons/SecondaryButton.astro";
 import Subheading from "../../components/Subheading/Subheading.astro";
 import { ContactFormClientComponent as Form } from "./ContactForm.client";
 import "./ContactForm.styles.scss";
@@ -10,6 +12,24 @@ import "./ContactForm.styles.scss";
     labels={["Bez zobowiązań", "Szybka odpowiedź", "Profesjonalne doradztwo"]}
   />
   <div class="contact-form__client-container">
-    <Form client:load />
-  </div>
+    <div>
+      <Form client:load />
+      <SecondaryButton title="Wyslij wiadomosc" icon="mdi:arrow-right-thin" />
+    </div>
+    <div class="contact-form__contact-details-container">
+      <div class="contact-form__contact-details-wrapper">
+        <h5>Skontaktuj sie bezposrednio</h5>
+        <ul>
+          <li>
+            <Icon name="mdi:email" />
+            <a href="mailto:kl@systemdruk.pl">kl@systemdruk.pl</a>
+          </li>
+          <li>
+            <Icon name="mdi:phone" />
+            <a href="tel:+4796070776">+47 960 70 776</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div> 
 </section>

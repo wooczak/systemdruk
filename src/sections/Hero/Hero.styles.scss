@@ -1,12 +1,11 @@
 #hero {
-  height: 95vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
 
   &__text-container {
-    transform: translateY(-25%);
+    padding-block: 7.5vh;
     gap: 2rem;
     display: flex;
     flex-direction: column;

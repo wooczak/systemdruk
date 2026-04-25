@@ -93,7 +93,6 @@ export function ContactFormClientComponent() {
           <span class="contact-form__error">{errors()?.message}</span>
         )}
       </div>
-      <button type="submit">Submit</button>
     </form>
   );
 }

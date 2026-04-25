@@ -1,14 +1,22 @@
 ---
+import { Icon } from "astro-icon/components";
+
 interface Props {
   title: string;
+  icon?: string;
   class?: string;
 }
 
-const { title, class: className } = Astro.props as Props;
+const { title, class: className, icon } = Astro.props as Props;
 ---
 
-<button class={`secondary-button ${className ?? ""}`}>
+<button
+  class={["secondary-button", icon && "secondary-button--with-icon", className]
+    .filter(Boolean)
+    .join(" ")}
+>
   {title}
+  {icon ? <Icon name={icon} /> : null}
 </button>
 
 <style>
@@ -23,11 +31,16 @@ const { title, class: className } = Astro.props as Props;
     font-size: 1.25rem;
     margin-top: 1.25rem;
     transition: all 0.2s ease-in-out;
+  }
 
-    &:hover {
-      transform: translateY(-10px);
-      background-color: var(--blue-primary);
-      color: var(--white-primary);
-    }
+  .secondary-button--with-icon {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .secondary-button:hover {
+    transform: translateY(-10px);
+    background-color: var(--blue-primary);
+    color: var(--white-primary);
   }
 </style>
