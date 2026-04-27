@@ -12,14 +12,15 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/solid-js": "^4.1.0",
     "@iconify-json/mdi": "^1.2.3",
     "astro": "^6.0.8",
     "astro-icon": "^1.1.5",
-    "solid-devtools": "^0.34.5",
+    "motion": "^12.38.0",
     "solid-js": "^1.9.12"
   },
   "devDependencies": {
-    "sass-embedded": "^1.98.0"
+    "sass-embedded": "^1.98.0",
+    "solid-devtools": "^0.34.5",
+    "@astrojs/solid-js": "^4.1.0"
   }
 }

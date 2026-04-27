@@ -8,7 +8,7 @@
   &__header-container {
     display: flex;
     flex-direction: column;
-    margin-bottom: 4rem;
+    margin-bottom: 1rem;
 
     &__text-container {
       display: flex;
@@ -28,10 +28,14 @@
   width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  padding-block: 3rem;
+  padding-block: 2rem;
   opacity: 0;
   transform: translateY(-50px);
   transition: opacity 0.5s ease, transform 0.5s ease;
+
+  &:last-of-type {
+    border-bottom: none;
+  }
 
   &__title {
     font-weight: 400;

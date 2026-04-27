@@ -1,9 +1,11 @@
 ---
+import { Font } from "astro:assets";
 import Navigation from "../components/Navigation/Navigation.astro";
 ---
 
 <html lang="pl">
   <head>
+    <Font cssVariable="--font-source-sans-pro" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>System Druk</title>
@@ -19,6 +21,7 @@ import Navigation from "../components/Navigation/Navigation.astro";
     --black-primary: #1b1b1b;
     --grey-primary: #6f6f6e;
     --blue-primary: #009ee2;
+    --bg-color: #FCFCFC;
     --off-white-primary: #EFEFEF;
     --white-primary: #fff;
     --max-width: 1240px;
@@ -36,8 +39,9 @@ import Navigation from "../components/Navigation/Navigation.astro";
   }
 
   html {
-    font-family: "Source Sans 3", sans-serif;
+    font-family: var(--font-source-sans-pro), sans-serif;
     color: var(--black-primary);
+    background-color: var(--bg-color);
   }
 
   main,
