@@ -29,7 +29,7 @@ export default defineConfig({
             style: "normal",
           },
           {
-            src: ["./src/assets/fonts/SourceSansPro-SemiBold.ttf.woff2"],
+            src: ["./src/assets/fonts/SourceSansPro-Semibold.ttf.woff2"],
             weight: "600",
             style: "normal",
           },
