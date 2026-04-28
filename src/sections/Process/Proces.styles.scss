@@ -3,6 +3,10 @@
 
   &__title {
     margin-bottom: 1.5rem;
+
+    & span {
+      color: var(--blue-primary);
+    }
   }
 
   &__header-container {

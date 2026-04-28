@@ -1,123 +1,176 @@
 ---
-import { Font } from "astro:assets";
+import {Font} from "astro:assets";
 import Navigation from "../components/Navigation/Navigation.astro";
 ---
 
 <html lang="pl">
-  <head>
-    <Font cssVariable="--font-source-sans-pro" />
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+          rel="stylesheet">
+    ž
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
     <title>System Druk</title>
-  </head>
-  <body>
-    <Navigation />
-    <slot />
-  </body>
+</head>
+<body>
+<Navigation/>
+<slot/>
+</body>
 </html>
 
 <style is:global>
-  :root {
-    --black-primary: #1b1b1b;
-    --grey-primary: #6f6f6e;
-    --blue-primary: #009ee2;
-    --bg-color: #FCFCFC;
-    --off-white-primary: #EFEFEF;
-    --white-primary: #fff;
-    --max-width: 1240px;
-    --h1-size: 3.813rem;
-    --h2-size: 3.063rem;
-    --h3-size: 2.438rem;
-    --h4-size: 1.938rem;
-    --h5-size: 1.25rem;
-  }
-
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  html {
-    font-family: var(--font-source-sans-pro), sans-serif;
-    color: var(--black-primary);
-    background-color: var(--bg-color);
-  }
-
-  main,
-  section {
-    max-width: var(--max-width);
-    margin-inline: auto;
-  }
-
-  h1 {
-    font-size: 3.813rem;
-    font-weight: 700;
-    line-height: 1.2em;
-  }
-  h2 {
-    font-size: 3.063rem;
-    font-weight: 700;
-    line-height: 1.5em;
-  }
-  h3 {
-    font-size: 2.438rem;
-    font-weight: 600;
-    line-height: 1.5em;
-  }
-  h4 {
-    font-size: 1.938rem;
-    font-weight: 400;
-    line-height: 1.5em;
-  }
-
-  h5 {
-    font-size: 1.25rem;
-    font-weight: 400;
-    line-height: 1.5em;
-  }
-  p {
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 175%;
-  }
-
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-  li {
-    list-style: none;
-  }
-
-  section {
-    padding-block: 2.5rem;
-  }
-  button {
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-
-  @keyframes slide-in-from-bottom {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
+    :root {
+        --black-primary: #1b1b1b;
+        --grey-primary: #6f6f6e;
+        --blue-primary: #009ee2;
+        --bg-color: #FCFCFC;
+        --off-white-primary: #EFEFEF;
+        --white-primary: #fff;
+        --max-width: 1240px;
+        --h1-size: 3.813rem;
+        --h2-size: 3.063rem;
+        --h3-size: 2.438rem;
+        --h4-size: 1.938rem;
+        --h5-size: 1.25rem;
+        --black-weight: 900;
+        --bold-weight: 700;
+        --semibold-weight: 600;
+        --medium-weight: 500;
+        --regular-weight: 400;
+        --light-weight: 200;
     }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
 
-  @keyframes slide-out-to-top {
-    from {
-      opacity: 1;
-      transform: translateY(0);
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
     }
-    to {
-      opacity: 0;
-      transform: translateY(-20px);
+
+    .source-sans-3-light {
+        font-family: "Source Sans 3", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 200;
+        font-style: normal;
     }
-  }
+
+    .source-sans-3-regular {
+        font-family: "Source Sans 3", sans-serif;
+        font-style: normal;
+        font-weight: 400;
+    }
+
+    .source-sans-3-medium {
+        font-family: "Source Sans 3", sans-serif;
+        font-style: normal;
+        font-weight: 500;
+    }
+
+    .source-sans-3-semibold {
+        font-family: "Source Sans 3", sans-serif;
+        font-style: normal;
+        font-weight: 600;
+    }
+
+    .source-sans-3-bold {
+        font-family: "Source Sans 3", sans-serif;
+        font-style: normal;
+        font-weight: 700;
+    }
+
+    .source-sans-3-black {
+        font-family: "Source Sans 3", sans-serif;
+        font-style: normal;
+        font-weight: 900;
+    }
+
+    html {
+        font-family: "Source Sans 3", sans-serif;
+        color: var(--black-primary);
+        background-color: var(--bg-color);
+    }
+
+    main,
+    section {
+        max-width: var(--max-width);
+        margin-inline: auto;
+    }
+
+    h1 {
+        font-size: 3.813rem;
+        font-weight: 600;
+        line-height: 1.2em;
+    }
+
+    h2 {
+        font-size: 3.063rem;
+        font-weight: 600;
+        line-height: 1.5em;
+    }
+
+    h3 {
+        font-size: 2.438rem;
+        font-weight: 600;
+        line-height: 1.5em;
+    }
+
+    h4 {
+        font-size: 1.938rem;
+        font-weight: 400;
+        line-height: 1.5em;
+    }
+
+    h5 {
+        font-size: 1.25rem;
+        font-weight: 400;
+        line-height: 1.5em;
+    }
+
+    p {
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 175%;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    section {
+        padding-block: 2.5rem;
+    }
+
+    button {
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    @keyframes slide-in-from-bottom {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes slide-out-to-top {
+        from {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        to {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+    }
 </style>

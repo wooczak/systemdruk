@@ -1,8 +1,14 @@
+@use '../../styles/mixins' as *;
+
 #hero {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+
+  @include desktop {
+    padding-inline: 2rem;
+  }
 
   &__text-container {
     padding-block: 7.5vh;
@@ -17,6 +23,11 @@
   }
 
   &__heading {
+
+    @include desktop {
+      font-size: 3.25rem;
+    }
+
     & span {
       color: var(--blue-primary);
       display: inline-block;

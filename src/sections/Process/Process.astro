@@ -3,69 +3,59 @@ import "./Proces.styles.scss";
 ---
 
 <section id="process">
-  <div id="process__header-container">
-    <h3 id="process__title">Jedno miejsce, wiele możliwości</h3>
-    <p>
-      Print Management to usługa, która służy skumulowaniu całości procesu
-      produkcji – od projektu po transport i logistykę – w jednym miejscu. To
-      zdecydowana oszczędność Twojego czasu i pieniędzy. Jedna firma bierze na
-      swoje barki odpowiedzialność za wszystkich podwykonawców oraz kontroluje
-      realizację zlecenia od początku do końca zapewniając przy tym wsparcie ze
-      strony wykwalifikowanych specjalistów, którzy są w stanie odpowiedzieć na
-      wszystkie Twoje pytania, rozwiać wszelkie wątpliwości, a także wskazać
-      najbardziej optymalne rozwiązania w zakresie doboru surowca, techniki
-      druku i uszlachetnień – rozwiązania perfekcyjnie dostosowane do danego
-      zlecenia, Twoich potrzeb i Twoich możliwości.
-    </p>
-  </div>
-  <section class="process-container">
-    <h3 class="process-container__title"><span>1.</span>Koncepcja</h3>
-    <p>
-      Print Management to usługa, która służy skumulowaniu całości procesu
-      produkcji – od projektu po transport i logistykę – w jednym miejscu.
-    </p>
-  </section>
-  <section class="process-container">
-    <h3 class="process-container__title"><span>2.</span>Projekt</h3>
-    <p>
-      Print Management to usługa, która służy skumulowaniu całości procesu
-      produkcji – od projektu po transport i logistykę – w jednym miejscu.
-    </p>
-  </section>
-  <section class="process-container">
-    <h3 class="process-container__title"><span>3.</span>Druk</h3>
-    <p>
-      Print Management to usługa, która służy skumulowaniu całości procesu
-      produkcji – od projektu po transport i logistykę – w jednym miejscu.
-    </p>
-  </section>
-  <section class="process-container">
-    <h3 class="process-container__title"><span>4.</span>Dystrybucja</h3>
-    <p>
-      Print Management to usługa, która służy skumulowaniu całości procesu
-      produkcji – od projektu po transport i logistykę – w jednym miejscu.
-    </p>
-  </section>
+    <div id="process__header-container">
+        <h1 id="process__title">Jedno miejsce<span>,</span> wiele możliwości</h1>
+        <h4>Od ponad 10 lat specjalizujemy się w usłudze Print Management’u, która skupia cały proces produkcji – od
+            projektu po transport – w jednym miejscu. To zdecydowana oszczędność Twojego czasu i pieniędzy.</h4>
+    </div>
+    <section class="process-container">
+        <h3 class="process-container__title"><span>1.</span>Koncepcja</h3>
+        <p>
+            Print Management to usługa, która służy skumulowaniu całości procesu
+            produkcji – od projektu po transport i logistykę – w jednym miejscu.
+        </p>
+    </section>
+    <section class="process-container">
+        <h3 class="process-container__title"><span>2.</span>Projekt</h3>
+        <p>
+            Print Management to usługa, która służy skumulowaniu całości procesu
+            produkcji – od projektu po transport i logistykę – w jednym miejscu.
+        </p>
+    </section>
+    <section class="process-container">
+        <h3 class="process-container__title"><span>3.</span>Druk</h3>
+        <p>
+            Print Management to usługa, która służy skumulowaniu całości procesu
+            produkcji – od projektu po transport i logistykę – w jednym miejscu.
+        </p>
+    </section>
+    <section class="process-container">
+        <h3 class="process-container__title"><span>4.</span>Dystrybucja</h3>
+        <p>
+            Print Management to usługa, która służy skumulowaniu całości procesu
+            produkcji – od projektu po transport i logistykę – w jednym miejscu.
+        </p>
+    </section>
 </section>
 
 <script>
-  const intersectionObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        } else {
-          entry.target.classList.remove("visible");
-        }
-      });
-    },
-    {
-      threshold: 0.1,
-      rootMargin: "0px 0px -200px 0px",
-    },
-  );
+    const intersectionObserver = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                } else {
+                    entry.target.classList.remove("visible");
+                }
+            });
+        },
+        {
+            threshold: 0.1,
+            rootMargin: "0px 0px -200px 0px",
+        },
+    );
 
-  document.querySelectorAll(".process-container").forEach((section) => {
-    intersectionObserver.observe(section);
-  });
+    document.querySelectorAll(".process-container").forEach((section) => {
+        intersectionObserver.observe(section);
+    });
 </script>

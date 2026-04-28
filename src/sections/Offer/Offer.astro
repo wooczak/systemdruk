@@ -6,7 +6,7 @@ import "./Offer.styles.scss";
 ---
 
 <section class="offer">
-  <h3>Oferta</h3>
+  <h1>Oferta</h1>
 
   <Image
     src={ImageOffer}
@@ -27,6 +27,7 @@ import "./Offer.styles.scss";
     <div class="offer__content-grid-right">
       <!-- 1 -->
       <div class="offer__content__text-container active">
+        <div class="offer__content__slide-overlay"></div>
         <p class="offer__content-subheading">
           Specjalizujemy się w produkcji zleceń średnio- i niskonakładowych
           (druk cyfrowy) oraz wysokonakładowych (druk offsetowy). 
@@ -55,6 +56,7 @@ import "./Offer.styles.scss";
 
       <!-- 2 -->
       <div class="offer__content__text-container">
+        <div class="offer__content__slide-overlay"></div>
         <p class="offer__content-subheading">
           Oferujemy szeroki wybór gadżetów reklamowych — od prostych produktów 
           biurowych po personalizowane upominki premium. To doskonały sposób 
@@ -79,6 +81,7 @@ import "./Offer.styles.scss";
 
       <!-- 3 -->
       <div class="offer__content__text-container">
+        <div class="offer__content__slide-overlay"></div>
         <p class="offer__content-subheading">
           Wspieramy klientów w działaniach outdoorowych, targach i konferencjach 
           — od projektu po realizację i logistykę. Doradzamy w zakresie grupy 
@@ -103,6 +106,7 @@ import "./Offer.styles.scss";
 
       <!-- 4 -->
       <div class="offer__content__text-container">
+        <div class="offer__content__slide-overlay"></div>
         <p class="offer__content-subheading">
           Projektujemy i produkujemy opakowania oraz torby firmowe, które są 
           nie tylko estetyczne, ale i funkcjonalne. Wspieramy e-commerce, 
@@ -130,14 +134,40 @@ import "./Offer.styles.scss";
 <script>
   const headings = document.querySelectorAll(".offer__content-heading");
   const contents = document.querySelectorAll(".offer__content__text-container");
+  let isAnimating = false;
 
   headings.forEach((heading, index) => {
     heading.addEventListener("click", () => {
-      headings.forEach((h) => h.classList.remove("active"));
-      contents.forEach((c) => c.classList.remove("active"));
+      if (isAnimating) return;
 
-      heading.classList.add("active");
-      contents[index].classList.add("active");
+      const currentActive = document.querySelector(".offer__content__text-container.active");
+      if (currentActive === contents[index]) return;
+
+      isAnimating = true;
+
+      // Hide current content by sliding overlay in
+      if (currentActive) {
+        currentActive.classList.add("hiding");
+
+        setTimeout(() => {
+          // Remove active from all
+          headings.forEach((h) => h.classList.remove("active"));
+          contents.forEach((c) => {
+            c.classList.remove("active");
+            c.classList.remove("hiding");
+          });
+
+          // Activate new content
+          heading.classList.add("active");
+          contents[index].classList.add("active");
+
+          isAnimating = false;
+        }, 600); // Match transition duration
+      } else {
+        heading.classList.add("active");
+        contents[index].classList.add("active");
+        isAnimating = false;
+      }
     });
   });
 </script>
