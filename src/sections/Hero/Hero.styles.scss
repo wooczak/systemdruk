@@ -16,6 +16,11 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+
+    @include desktop {
+      padding-block: 3.25vh;
+      gap: 1rem;
+    }
   }
 
   #carousel-heading {
@@ -25,7 +30,7 @@
   &__heading {
 
     @include desktop {
-      font-size: 3.25rem;
+      font-size: 2.47rem;
     }
 
     & span {
@@ -61,14 +66,19 @@
   }
 
   &__slider-container {
-    margin-inline: 0;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    width: 100vw;
+    overflow-x: hidden;
   }
 }
 
 .hero-slider {
-  position: absolute;
-  left: 0;
-  width: 100vw;
+  position: relative;
+  width: 100%;
   margin-block: 3rem;
   display: flex;
   overflow-x: hidden;

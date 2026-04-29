@@ -1,3 +1,5 @@
+@use '../../styles/mixins' as *;
+
 @mixin flex($direction: row, $align: center, $justify: center) {
   display: flex;
   flex-direction: $direction;
@@ -6,6 +8,11 @@
 }
 
 #navigation {
+
+  @include desktop {
+    padding-inline: 1rem;
+  }
+
   &__list {
     @include flex(row, center, center);
     gap: 24px;
