@@ -1,0 +1,83 @@
+---
+import "./ClientsSlider.styles.scss";
+
+import Company1Logo from "../../assets/images/slider/cae-company-logo-systemdruk-client.svg";
+import Company2Logo from "../../assets/images/slider/comarch-company-logo-systemdruk-client.png";
+import Company3Logo from "../../assets/images/slider/hm-company-logo-systemdruk-client.png";
+import Company4Logo from "../../assets/images/slider/maxfliz-company-logo-systemdruk-client.png";
+import Company5Logo from "../../assets/images/slider/obsessive-logo-systemdruk-client.png";
+import Company6Logo from "../../assets/images/slider/oknoplus-company-logo-systemdruk-client.svg";
+import Company7Logo from "../../assets/images/slider/traficar-company-logo-systemdruk-client.png";
+import { Image } from "astro:assets";
+---
+
+<section id="clients-slider-container" aria-labelledby="carousel-heading">
+  <h3 id="carousel-heading">Dołącz do firm, które nam zaufały</h3>
+  <div class="clients-slider-wrapper">
+    <div
+      class="clients-slider clients-slider--row-1"
+      role="group"
+      aria-label="Splide Basic HTML Example"
+    >
+      <div class="clients-slider__track">
+        <ul class="clients-slider__list">
+          <li class="clients-slider__slide">
+            <Image src={Company1Logo} alt="Company 1 Logo" height="35" />
+          </li>
+          <li class="clients-slider__slide">
+            <Image src={Company2Logo} alt="Company 2 Logo" height="35" />
+          </li>
+          <li class="clients-slider__slide">
+            <Image src={Company3Logo} alt="Company 3 Logo" height="35" />
+          </li>
+          <li class="clients-slider__slide">
+            <Image src={Company4Logo} alt="Company 4 Logo" height="35" />
+          </li>
+        </ul>
+        <ul class="clients-slider__list" aria-hidden="true">
+          <li class="clients-slider__slide">
+            <Image src={Company1Logo} alt="Company 1 Logo" height="35" />
+          </li>
+          <li class="clients-slider__slide">
+            <Image src={Company2Logo} alt="Company 2 Logo" height="35" />
+          </li>
+          <li class="clients-slider__slide">
+            <Image src={Company3Logo} alt="Company 3 Logo" height="35" />
+          </li>
+          <li class="clients-slider__slide">
+            <Image src={Company4Logo} alt="Company 4 Logo" height="35" />
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div
+      class="clients-slider clients-slider--row-2"
+      role="group"
+    >
+      <div class="clients-slider__track">
+        <ul class="clients-slider__list">
+          <li class="clients-slider__slide">
+            <Image src={Company5Logo} alt="Company 5 Logo" height="35" />
+          </li>
+          <li class="clients-slider__slide">
+            <Image src={Company6Logo} alt="Company 6 Logo" height="35" />
+          </li>
+          <li class="clients-slider__slide">
+            <Image src={Company7Logo} alt="Company 7 Logo" height="35" />
+          </li>
+        </ul>
+        <ul class="clients-slider__list" aria-hidden="true">
+          <li class="clients-slider__slide">
+            <Image src={Company5Logo} alt="Company 5 Logo" height="35" />
+          </li>
+          <li class="clients-slider__slide">
+            <Image src={Company6Logo} alt="Company 6 Logo" height="35" />
+          </li>
+          <li class="clients-slider__slide">
+            <Image src={Company7Logo} alt="Company 7 Logo" height="35" />
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
