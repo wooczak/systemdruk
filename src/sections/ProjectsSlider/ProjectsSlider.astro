@@ -16,7 +16,7 @@ import Image2 from "../../assets/images/hero-slider/2.webp";
       />
     </figure>
     <div class="project-container__text-container">
-      <h4 class="project-container__heading">Black House</h4>
+      <h2 class="project-container__heading">Black House</h2>
       <p class="project-container__description">
         projekt techniczny / druk / produkcja / montaż / projektowanie /
         wizualizacje / konsultacje / nadzór autorski
@@ -32,14 +32,16 @@ import Image2 from "../../assets/images/hero-slider/2.webp";
       />
     </figure>
     <div class="project-container__text-container">
-      <h4 class="project-container__heading">White House</h4>
+      <h2 class="project-container__heading">White House</h2>
       <p class="project-container__description">
         Description of the White House project.
       </p>
     </div>
   </div>
   <div id="projects-slider__controls-container">
-    <span></span>
+    <span class="projects-slider__base-bar">
+      <span class="projects-slider__progress-bar"></span>
+    </span>
     <div>
       <button
         id="projects-slider__prev-button"
@@ -75,12 +77,25 @@ import Image2 from "../../assets/images/hero-slider/2.webp";
   const prevButton = document.getElementById("projects-slider__prev-button");
   const nextButton = document.getElementById("projects-slider__next-button");
   const projectContainers = document.querySelectorAll(".project-container");
+  const counterCurrent = document.querySelector(".projects-slider__counter-current");
+  const progressBar = document.querySelector(".projects-slider__progress-bar") as HTMLElement;
   let currentIndex = 0;
 
   function showProject(index: number) {
     projectContainers.forEach((container, i) => {
       container.classList.toggle("project-container--active", i === index);
     });
+
+    if (counterCurrent) {
+      counterCurrent.textContent = (index + 1).toString();
+    }
+
+    // Update progress bar position
+    if (progressBar) {
+      const maxPosition = 88;
+      const percentage = (index / (projectContainers.length - 1)) * maxPosition;
+      progressBar.style.left = `${percentage}%`;
+    }
   }
 
   prevButton?.addEventListener("click", () => {

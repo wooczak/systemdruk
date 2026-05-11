@@ -1,9 +1,14 @@
+@use '../../styles/mixins' as *;
+
 #projects-slider {
   height: 80vh;
   max-width: 100%;
   position: relative;
   margin-bottom: 6rem;
-  margin-top: 4rem;
+
+  @include desktop {
+    height: 50vh;
+  }
 
   &__controls-container {
     bottom: -7rem;
@@ -14,6 +19,13 @@
     gap: 2rem;
     grid-template-columns: calc(88% - 2rem) 1fr;
 
+    @include desktop {
+      width: 100%;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      bottom: -17rem;
+    }
+
     & > span {
       display: block;
       grid-column: 1 / 2;
@@ -21,6 +33,12 @@
       background-color: var(--blue-primary);
       content: "";
       width: 100%;
+
+      @include desktop {
+        width: 90%;
+        grid-column: 1 / 3;
+        margin-inline: auto;
+      }
     }
 
     & > div {
@@ -29,9 +47,29 @@
       align-items: center;
       gap: 1rem;
       grid-column: 2 / 3;
-      
+      padding-right: 1rem;
+      z-index: 99;
     }
   }
+
+}
+
+.projects-slider__base-bar {
+  position: relative;
+}
+
+.projects-slider__progress-bar {
+  position: absolute;
+  left: 0;
+  top: -1px;
+  width: 12%;
+  height: 3px;
+  background-color: var(--blue-primary);
+  transition: left 0.3s ease;
+}
+
+.projects-slider__counter {
+  color: var(--blue-primary);
 }
 
 .project-container {
@@ -41,21 +79,38 @@
   grid-template-columns: 65% 35%;
   gap: 2rem;
 
+  @include desktop {
+    gap: 0;
+  }
+
   &__image-container {
     height: 80vh;
     grid-column: 1 / 2;
     opacity: 0;
+
+    @include desktop {
+      height: 50vh;
+      grid-column: 1 / 3;
+    }
   }
 
   &__image {
     height: 80vh;
     width: 100%;
     object-fit: cover;
+
+    @include desktop {
+      height: 50vh;
+    }
   }
 
   &__description {
     color: var(--blue-primary);
     max-width: 70%;
+
+    @include desktop {
+      max-width: 100%;
+    }
   }
 
   &__text-container {
@@ -64,6 +119,12 @@
     justify-content: flex-end;
     grid-column: 2 / 3;
     opacity: 0;
+
+    @include desktop {
+      grid-column: 1 / 3;
+      padding-inline: 1rem;
+      padding-block: 1rem;
+    }
   }
 
   &--active {
@@ -75,8 +136,4 @@
       opacity: 1;
     }
   }
-}
-
-.projects-slider__counter {
-  color: var(--blue-primary);
 }

@@ -1,3 +1,5 @@
+@use '../../styles/mixins' as *;
+
 $height: 500px;
 
 .blog-overview {
@@ -15,6 +17,12 @@ $height: 500px;
       "main-post sidebar-post-1"
       "main-post sidebar-post-2";
     position: relative;
+
+    @include desktop {
+      grid-template-areas:
+        "main-post main-post"
+        "sidebar-post-1 sidebar-post-2"
+    }
 
     &__image {
       width: 100%;

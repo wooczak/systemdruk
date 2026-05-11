@@ -23,14 +23,10 @@
     }
   }
 
-  #carousel-heading {
-    text-align: left;
-  }
-
   &__heading {
 
     @include desktop {
-      font-size: 2.47rem;
+      font-size: var(--h1-size-mobile)
     }
 
     & span {
@@ -63,59 +59,5 @@
       opacity: 0;
       animation-fill-mode: forwards;
     }
-  }
-
-  &__slider-container {
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    width: 100vw;
-    overflow-x: hidden;
-  }
-}
-
-.hero-slider {
-  position: relative;
-  width: 100%;
-  margin-block: 3rem;
-  display: flex;
-  overflow-x: hidden;
-
-  &__track {
-    display: flex;
-    width: max-content;
-    animation: scrolling 28s linear infinite;
-  }
-
-  &__list {
-    display: flex;
-  }
-
-  &:hover .hero-slider__track {
-    animation-play-state: paused;
-    cursor: pointer;
-  }
-
-  &__slide {
-    flex: 0 0 auto;
-    padding-inline: 3rem;
-    filter: grayscale(100%);
-    transition: all 0.3s ease-in-out;
-
-    &:hover {
-      filter: grayscale(0%);
-      transform: translateY(-5px)
-    }
-  }
-}
-
-@keyframes scrolling {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
   }
 }

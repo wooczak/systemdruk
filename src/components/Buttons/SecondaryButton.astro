@@ -19,7 +19,9 @@ const { title, class: className, icon } = Astro.props as Props;
   {icon ? <Icon name={icon} /> : null}
 </button>
 
-<style>
+<style lang="scss">
+  @use '../../styles/mixins' as *;
+
   .secondary-button {
     background-color: var(--white-primary);
     color: var(--black-primary);
@@ -31,6 +33,10 @@ const { title, class: className, icon } = Astro.props as Props;
     font-size: 1.25rem;
     margin-top: 1.25rem;
     transition: all 0.2s ease-in-out;
+
+    @include desktop() {
+      font-size: 1rem;
+    }
   }
 
   .secondary-button--with-icon {

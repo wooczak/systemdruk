@@ -1,3 +1,5 @@
+@use '../../styles/mixins' as *;
+
 .stats-banner {
   background-color: var(--black-primary);
   color: var(--blue-primary);
@@ -6,19 +8,46 @@
   justify-content: center;
   padding-block: 5rem;
 
+  @include desktop {
+    padding-block: 2rem;
+    padding-inline: 1rem;
+  }
+
   &__container {
-    width: var(--max-width);
+    width: calc(var(--max-width) + 4rem);
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+
+    @include desktop {
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   &__content {
     text-align: center;
+
+    @include desktop {
+      text-align: left;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      justify-content: flex-start;
+      gap: 1rem;
+    }
   }
 
   &__number {
-    font-size: 6rem;
-    font-weight: 500;
+    font-size: 7rem;
+    font-weight: 600;
     margin-bottom: 0.5rem;
+
+    @include desktop {
+      font-size: 4rem;
+    }
+  }
+
+  &__text {
+    font-size: 1.5rem;
   }
 }

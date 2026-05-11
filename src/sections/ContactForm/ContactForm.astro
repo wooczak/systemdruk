@@ -4,10 +4,12 @@ import SecondaryButton from "../../components/Buttons/SecondaryButton.astro";
 import Subheading from "../../components/Subheading/Subheading.astro";
 import { ContactFormClientComponent as Form } from "./ContactForm.client";
 import "./ContactForm.styles.scss";
+import Image from "astro/components/Image.astro";
+import ImageSrc from "../../assets/images/contact-form-photo.jpg";
 ---
 
 <section class="contact-form">
-  <h1>Porozmawiajmy o Twoim projekcie</h1>
+  <h1 class="contact-form__title">Porozmawiajmy o Twoim projekcie</h1>
   <Subheading
     labels={["Bez zobowiązań", "Szybka odpowiedź", "Profesjonalne doradztwo"]}
   />
@@ -19,6 +21,13 @@ import "./ContactForm.styles.scss";
     <div class="contact-form__contact-details-container">
       <div class="contact-form__contact-details-wrapper">
         <h5>Skontaktuj sie bezposrednio</h5>
+        <figure>
+          <Image src={ImageSrc} alt="Contact form photo" />
+          <figcaption>
+            <h5>Katarzyna Łuczak</h5>
+            <p>Założycielka System Druk</p>
+          </figcaption>
+        </figure>
         <ul>
           <li>
             <Icon name="mdi:email" />

@@ -19,162 +19,193 @@ import Navigation from "../components/Navigation/Navigation.astro";
 </body>
 </html>
 
-<style is:global>
-    :root {
-        --black-primary: #1b1b1b;
-        --grey-primary: #6f6f6e;
-        --blue-primary: #009ee2;
-        --bg-color: #FCFCFC;
-        --off-white-primary: #EFEFEF;
-        --white-primary: #fff;
-        --max-width: 1240px;
-        --h1-size: 3.813rem;
-        --h2-size: 3.063rem;
-        --h3-size: 2.438rem;
-        --h4-size: 1.938rem;
-        --h5-size: 1.25rem;
-        --black-weight: 900;
-        --bold-weight: 700;
-        --semibold-weight: 600;
-        --medium-weight: 500;
-        --regular-weight: 400;
-        --light-weight: 200;
-    }
+<style is:global lang="scss">
+  @use '../styles/mixins' as *;
 
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
+  :root {
+    --black-primary: #1b1b1b;
+    --grey-primary: #6f6f6e;
+    --blue-primary: #009ee2;
+    --bg-color: #FCFCFC;
+    --off-white-primary: #EFEFEF;
+    --white-primary: #fff;
+    --max-width: 1240px;
+    --h1-size: 3.813rem;
+    --h1-size-mobile: 3rem;
+    --h2-size: 3.063rem;
+    --h2-size-mobile: 2.5rem;
+    --h3-size: 2.438rem;
+    --h3-size-mobile: 2.1rem;
+    --h4-size: 1.938rem;
+    --h4-size-mobile: 1.5rem;
+    --h5-size: 1.25rem;
+    --h5-size-mobile: 1.1rem;
+    --black-weight: 900;
+    --bold-weight: 700;
+    --semibold-weight: 600;
+    --medium-weight: 500;
+    --regular-weight: 400;
+    --light-weight: 200;
+  }
 
-    .source-sans-3-light {
-        font-family: "Source Sans 3", sans-serif;
-        font-optical-sizing: auto;
-        font-weight: 200;
-        font-style: normal;
-    }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
-    .source-sans-3-regular {
-        font-family: "Source Sans 3", sans-serif;
-        font-style: normal;
-        font-weight: 400;
-    }
+  .source-sans-3-light {
+    font-family: "Source Sans 3", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+  }
 
-    .source-sans-3-medium {
-        font-family: "Source Sans 3", sans-serif;
-        font-style: normal;
-        font-weight: 500;
-    }
+  .source-sans-3-regular {
+    font-family: "Source Sans 3", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+  }
 
-    .source-sans-3-semibold {
-        font-family: "Source Sans 3", sans-serif;
-        font-style: normal;
-        font-weight: 600;
-    }
+  .source-sans-3-medium {
+    font-family: "Source Sans 3", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+  }
 
-    .source-sans-3-bold {
-        font-family: "Source Sans 3", sans-serif;
-        font-style: normal;
-        font-weight: 700;
-    }
+  .source-sans-3-semibold {
+    font-family: "Source Sans 3", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+  }
 
-    .source-sans-3-black {
-        font-family: "Source Sans 3", sans-serif;
-        font-style: normal;
-        font-weight: 900;
-    }
+  .source-sans-3-bold {
+    font-family: "Source Sans 3", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+  }
 
-    html {
-        font-family: "Source Sans 3", sans-serif;
-        color: var(--black-primary);
-        background-color: var(--bg-color);
-        overflow-x: hidden;
-    }
+  .source-sans-3-black {
+    font-family: "Source Sans 3", sans-serif;
+    font-style: normal;
+    font-weight: 900;
+  }
 
-    body {
-        overflow-x: hidden;
-    }
+  html {
+    font-family: "Source Sans 3", sans-serif;
+    color: var(--black-primary);
+    background-color: var(--bg-color);
+    overflow-x: hidden;
+  }
 
-    main,
-    section {
-        max-width: var(--max-width);
-        margin-inline: auto;
-    }
+  body {
+    overflow-x: hidden;
+  }
 
-    h1 {
-        font-size: 3.813rem;
-        font-weight: 600;
-        line-height: 1.2em;
-    }
+  main,
+  section {
+    max-width: var(--max-width);
+    margin-inline: auto;
+  }
 
-    h2 {
-        font-size: 3.063rem;
-        font-weight: 600;
-        line-height: 1.5em;
-    }
+  h1 {
+    font-size: 3.813rem;
+    font-weight: 600;
+    line-height: 1.2em;
 
-    h3 {
-        font-size: 2.438rem;
-        font-weight: 600;
-        line-height: 1.5em;
+    @include desktop() {
+      font-size: var(--h1-size-mobile);
     }
+  }
 
-    h4 {
-        font-size: 1.938rem;
-        font-weight: 400;
-        line-height: 1.5em;
-    }
+  h2 {
+    font-size: 3.063rem;
+    font-weight: 600;
+    line-height: 1.5em;
 
-    h5 {
-        font-size: 1.25rem;
-        font-weight: 400;
-        line-height: 1.5em;
+    @include desktop() {
+      font-size: var(--h2-size-mobile);
     }
+  }
 
-    p {
-        font-size: 1rem;
-        font-weight: 400;
-        line-height: 175%;
-    }
+  h3 {
+    font-size: 2.438rem;
+    font-weight: 600;
+    line-height: 1.5em;
 
-    a {
-        text-decoration: none;
-        color: inherit;
+    @include desktop() {
+      font-size: var(--h3-size-mobile);
     }
+  }
 
-    li {
-        list-style: none;
-    }
+  h4 {
+    font-size: 1.938rem;
+    font-weight: 400;
+    line-height: 1.5em;
 
-    section {
-        padding-block: 2.5rem;
+    @include desktop() {
+      font-size: var(--h4-size-mobile);
     }
+  }
 
-    button {
-        background: none;
-        border: none;
-        cursor: pointer;
-    }
+  h5 {
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.5em;
 
-    @keyframes slide-in-from-bottom {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    @include desktop() {
+      font-size: var(--h5-size-mobile);
     }
+  }
 
-    @keyframes slide-out-to-top {
-        from {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        to {
-            opacity: 0;
-            transform: translateY(-20px);
-        }
+  p {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 175%;
+
+    @include desktop() {
+      font-size: 1.1rem;
     }
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  section {
+    padding-block: 2.5rem;
+  }
+
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  @keyframes slide-in-from-bottom {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slide-out-to-top {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+  }
 </style>

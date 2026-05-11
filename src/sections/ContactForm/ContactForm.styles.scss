@@ -1,10 +1,25 @@
+@use '../../styles/mixins' as *;
+
 .contact-form {
   margin-top: 8rem;
+
+  @include desktop {
+    padding-inline: 1rem;
+    margin-top: 10rem;
+  }
+
+  &__title {
+    margin-bottom: 1rem;
+  }
 
   &__client-container {
     display: grid;
     grid-template-columns: 55% 1fr;
     gap: 2rem;
+
+    @include desktop {
+      grid-template-columns: 1fr;
+    }
   }
 
   &__input {
