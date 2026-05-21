@@ -39,9 +39,22 @@ import Subheading from "../../components/Subheading/Subheading.astro";
   const CYCLE_DURATION =
     DISPLAY_DURATION + ANIMATE_OUT_DURATION + ANIMATE_IN_DURATION;
 
-  let currentIndex = 0;
+  const FAST_ANIMATE_DURATION = 100; // Faster animations during fast cycling
+  const FAST_CYCLE_DURATION = 150; // Fast cycle during initial 2 seconds
+  const FAST_DURATION = 1000; // 2 seconds of fast cycling
 
-  setInterval(() => {
+  let currentIndex = 0;
+  let startTime = Date.now();
+  let intervalId: number;
+  let isFastMode = true;
+
+  const cycle = () => {
+    const animateOutDuration = isFastMode ? FAST_ANIMATE_DURATION : ANIMATE_OUT_DURATION;
+    const animateInDuration = isFastMode ? FAST_ANIMATE_DURATION : ANIMATE_IN_DURATION;
+
+    // Set animation duration via CSS custom property
+    spanText.style.setProperty('--animate-duration', `${animateOutDuration}ms`);
+
     spanText.classList.add("animate-out");
 
     setTimeout(() => {
@@ -52,7 +65,17 @@ import Subheading from "../../components/Subheading/Subheading.astro";
 
       setTimeout(() => {
         spanText.classList.remove("animate-in");
-      }, ANIMATE_IN_DURATION);
-    }, ANIMATE_OUT_DURATION);
-  }, CYCLE_DURATION);
+      }, animateInDuration);
+    }, animateOutDuration);
+  };
+
+  // Start with fast cycling
+  intervalId = setInterval(cycle, FAST_CYCLE_DURATION);
+
+  // After 2 seconds, transition to normal speed
+  setTimeout(() => {
+    clearInterval(intervalId);
+    isFastMode = false;
+    intervalId = setInterval(cycle, CYCLE_DURATION);
+  }, FAST_DURATION);
 </script>

@@ -3,17 +3,27 @@ import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import ImageOffer from "../../assets/images/offer-banner.jpg";
 import "./Offer.styles.scss";
+import FirstCategorySrc from "../../assets/images/offer/druk-cyfrowy.webp";
+import SecondCategorySrc from "../../assets/images/offer/gadzety.webp";
+import ThirdCategorySrc from "../../assets/images/offer/reklama-zewnetrzna.webp";
+import FourthCategorySrc from "../../assets/images/offer/pudelka-i-torby.webp";
 ---
 
 <section class="offer">
-  <h1>Oferta</h1>
+  <h1>Poznaj naszą ofertę</h1>
 
   <Image
-    src={ImageOffer}
+    src={FirstCategorySrc}
     alt="Oferta"
     class="offer__image"
     width={400}
     height={400}
+    data-images={JSON.stringify([
+      FirstCategorySrc.src,
+      SecondCategorySrc.src,
+      ThirdCategorySrc.src,
+      FourthCategorySrc.src
+    ])}
   />
 
   <section class="offer__content-grid">
@@ -134,7 +144,10 @@ import "./Offer.styles.scss";
 <script>
   const headings = document.querySelectorAll(".offer__content-heading");
   const contents = document.querySelectorAll(".offer__content__text-container");
+  const image = document.querySelector(".offer__image") as HTMLImageElement;
   let isAnimating = false;
+
+  const categoryImages = JSON.parse(image.dataset.images || "[]");
 
   headings.forEach((heading, index) => {
     heading.addEventListener("click", () => {
@@ -144,6 +157,11 @@ import "./Offer.styles.scss";
       if (currentActive === contents[index]) return;
 
       isAnimating = true;
+
+      // Update image source
+      if (categoryImages[index]) {
+        image.src = categoryImages[index];
+      }
 
       // Hide current content by sliding overlay in
       if (currentActive) {

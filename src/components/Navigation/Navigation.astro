@@ -8,9 +8,79 @@ import { Icon } from "astro-icon/components";
     <Icon name="systemdruk_logo" width={100} height={50} id="navigation__img" />
     <ul id="navigation__list">
       <li class="navigation__item"><a href="/">blog</a></li>
-      <li class="navigation__item"><a href="/about">oferta</a></li>
+      <li class="navigation__item offer-btn">
+        <a>oferta</a>
+        <Icon name="mdi:keyboard-arrow-down" width={25} height={25} color="var(--blue-primary)" />
+      </li>
       <li class="navigation__item"><a href="/contact">kontakt</a></li>
     </ul>
+    <p id="navigation__lang">ENG</p>
+  </div>
+  <div id="navigation__offer-container">
+    <div id="navigation__offer-container__main-categories-container">
+      <h6 class="nav-offer-category active">Druk offsetowy i cyfrowy</h6>
+      <h6 class="nav-offer-category">Gadżety reklamowe</h6>
+      <h6 class="nav-offer-category">Reklama zewnętrzna</h6>
+      <h6 class="nav-offer-category">Pudełka i torby z logo</h6>
+    </div>
+    <div id="navigation__offer-container__sub-categories-container">
+      <ul class="sub-category-list active">
+        <li><a href="#">Wizytówki</a></li>
+        <li><a href="#">Notesy</a></li>
+        <li><a href="#">Katalogi szyte</a></li>
+        <li><a href="#">Katalogi klejone</a></li>
+        <li><a href="#">Katalogi z registrami</a></li>
+        <li><a href="#">Segregatory</a></li>
+        <li><a href="#">Plakaty</a></li>
+        <li><a href="#">Ulotki</a></li>
+        <li><a href="#">Teczki firmowe</a></li>
+        <li><a href="#">Kalendarze</a></li>
+        <li><a href="#">Biuwary</a></li>
+        <li><a href="#">Karty plastikowe</a></li>
+        <li><a href="#">Opakowania kartonowe</a></li>
+      </ul>
+
+      <ul class="sub-category-list">
+        <li><a href="#">Gadżety biurowe</a></li>
+        <li><a href="#">Ceramika z nadrukiem</a></li>
+        <li><a href="#">Smycze reklamowe</a></li>
+        <li><a href="#">Parasole z logo</a></li>
+        <li><a href="#">Koszulki z logo</a></li>
+        <li><a href="#">Breloki</a></li>
+        <li><a href="#">Pendrive</a></li>
+        <li><a href="#">Kalendarze firmowe</a></li>
+        <li><a href="#">Notesy biurkowe</a></li>
+        <li><a href="#">Elektronika z logo</a></li>
+      </ul>
+
+      <!-- Category 3: Reklama zewnętrzna -->
+      <ul class="sub-category-list">
+        <li><a href="#">Rollupy reklamowe</a></li>
+        <li><a href="#">Ścianki reklamowe</a></li>
+        <li><a href="#">Ścianki LED</a></li>
+        <li><a href="#">Standy</a></li>
+        <li><a href="#">Flagi reklamowe</a></li>
+        <li><a href="#">Trybunki i lady</a></li>
+        <li><a href="#">Obrusy firmowe</a></li>
+        <li><a href="#">Namioty reklamowe</a></li>
+        <li><a href="#">Kasetony i pylony</a></li>
+        <li><a href="#">Reklama świetlna</a></li>
+        <li><a href="#">Reklama 3D</a></li>
+      </ul>
+
+      <!-- Category 4: Pudełka i torby z logo -->
+      <ul class="sub-category-list">
+        <li><a href="#">Torby bawełniane</a></li>
+        <li><a href="#">Torby papierowe</a></li>
+        <li><a href="#">Torby firmowe</a></li>
+        <li><a href="#">Torby na wino</a></li>
+        <li><a href="#">Pudełka z magnesem</a></li>
+        <li><a href="#">Pudełka fasonowe</a></li>
+        <li><a href="#">Pudełka z nadrukiem</a></li>
+        <li><a href="#">Nadruk na pudełkach</a></li>
+        <li><a href="#">Projekty firmowe</a></li>
+      </ul>
+    </div>
   </div>
 </nav>
 
@@ -18,6 +88,39 @@ import { Icon } from "astro-icon/components";
   const navigation = document.getElementById("navigation") as HTMLElement;
   const navHeight = navigation.offsetHeight;
   const currentScroll = window.scrollY;
+
+  const offerBtn = document.querySelector(".offer-btn");
+  const offerContainer = document.getElementById("navigation__offer-container");
+
+  const mainCategoriesButtons = document.querySelectorAll(".nav-offer-category");
+  const subCategories = document.querySelectorAll(".sub-category-list");
+
+  offerBtn?.addEventListener("click", () => {
+    offerContainer?.classList.toggle("active");
+  });
+
+  mainCategoriesButtons.forEach((button, index) => {
+
+    button.addEventListener("click", () => {
+
+      mainCategoriesButtons.forEach((button, i) => {
+        if (i === index) {
+          button.classList.add("active");
+        } else {
+          button.classList.remove("active");
+        }
+      })
+
+      subCategories.forEach((subCategory, i) => {
+        if (i === index) {
+          subCategory.classList.add("active");
+        } else {
+          subCategory.classList.remove("active");
+        }
+      });
+    });
+  })
+
 
   window.addEventListener("scroll", () => {
     if (window.scrollY > currentScroll + navHeight) {

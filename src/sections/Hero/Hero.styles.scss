@@ -36,14 +36,15 @@
     & span {
       color: var(--blue-primary);
       display: inline-block;
+      --animate-duration: 300ms;
 
       &.animate-out {
-        animation: slide-out-to-top 0.3s ease-in;
+        animation: slide-out-to-top var(--animate-duration) ease-in;
         animation-fill-mode: forwards;
       }
 
       &.animate-in {
-        animation: slide-in-from-bottom 0.3s ease-out;
+        animation: slide-in-from-bottom var(--animate-duration) ease-out;
         animation-fill-mode: forwards;
       }
     }

@@ -16,25 +16,25 @@ import ImageSrc from "../../assets/images/contact-form-photo.jpg";
   <div class="contact-form__client-container">
     <div>
       <Form client:load />
-      <SecondaryButton title="Wyslij wiadomosc" icon="mdi:arrow-right-thin" />
+      <SecondaryButton title="Wyślij wiadomość" icon="mdi:arrow-right-thin" />
     </div>
     <div class="contact-form__contact-details-container">
       <div class="contact-form__contact-details-wrapper">
-        <h5>Skontaktuj sie bezposrednio</h5>
-        <figure>
+        <h5>Skontaktuj się bezpośrednio</h5>
+        <figure class="contact-form__contact-details-figure">
           <Image src={ImageSrc} alt="Contact form photo" />
-          <figcaption>
+          <figcaption class="contact-form__contact-details-figcaption">
             <h5>Katarzyna Łuczak</h5>
             <p>Założycielka System Druk</p>
           </figcaption>
         </figure>
         <ul>
-          <li>
-            <Icon name="mdi:email" />
-            <a href="mailto:kl@systemdruk.pl">kl@systemdruk.pl</a>
+          <li class="contact-form__contact-details-list-item">
+            <Icon name="mdi:email" color="var(--blue-primary)" />
+            <u><a href="mailto:kl@systemdruk.pl">biuro@systemdruk.pl</a></u>
           </li>
-          <li>
-            <Icon name="mdi:phone" />
+          <li class="contact-form__contact-details-list-item">
+            <Icon name="mdi:phone" color="var(--blue-primary)" />
             <a href="tel:+4796070776">+47 960 70 776</a>
           </li>
         </ul>

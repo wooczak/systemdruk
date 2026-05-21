@@ -1,7 +1,6 @@
 @use '../../styles/mixins' as *;
 
 .contact-form {
-  margin-top: 8rem;
 
   @include desktop {
     padding-inline: 1rem;
@@ -64,5 +63,30 @@
     align-items: flex-start;
     padding-left: 25%;
     padding-block: 2.5rem;
+  }
+
+  &__contact-details {
+    &-figure {
+      display: flex;
+      align-items: flex-end;
+      gap: 2rem;
+      margin-block: 2rem;
+    }
+
+    &-figcaption {
+      h5 {
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+    }
+
+
+    &-list-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-block: 0.5rem;
+      font-size: 1.1rem;
+    }
   }
 }

@@ -1,0 +1,146 @@
+.faq {
+  margin-top: 8rem;
+
+  &__title {
+   margin-bottom: 2rem;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  &__categories {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: sticky;
+    top: 2rem;
+    align-self: flex-start;
+  }
+
+  &__category {
+    padding: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: opacity 0.3s ease;
+
+    .subheading {
+      font-size: 1.25rem;
+      font-weight: 400;
+      transition: font-weight 0.3s ease;
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &--active {
+      opacity: 1;
+
+      .subheading {
+        font-weight: 600;
+      }
+
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+
+  &__content {
+    position: relative;
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    animation: fadeIn 0.3s ease;
+
+    &--hidden {
+      display: none;
+    }
+  }
+
+  &__item {
+    border: none;
+    border-bottom: 1px solid var(--color-border, #e0e0e0);
+    overflow: hidden;
+
+    &--open {
+      .faq__arrow {
+        transform: rotate(180deg);
+      }
+
+      .faq__answer {
+        max-height: 500px;
+        padding: 1.5rem;
+        opacity: 1;
+      }
+    }
+  }
+
+  &__question {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__question-text {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
+
+  &__arrow {
+    flex-shrink: 0;
+    margin-left: 1rem;
+    transition: transform 0.3s ease;
+  }
+
+  &__answer {
+    max-height: 0;
+    padding: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+    background: transparent;
+
+    p {
+      margin: 0;
+      padding-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
