@@ -3,7 +3,7 @@ import "./StatsBanner.styles.scss";
 ---
 
 <section id="stats-banner" class="stats-banner">
-  <div class="stats-banner__container">
+  <div class="stats-banner__container animate-on-scroll">
     <div class="stats-banner__content">
       <span class="stats-banner__number">+350</span>
       <p class="stats-banner__text">zrealizowanych projektów</p>
@@ -18,3 +18,24 @@ import "./StatsBanner.styles.scss";
     </div>
   </div>
 </section>
+
+<script>
+  const intersectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    },
+    {
+      threshold: 0.3,
+      rootMargin: "0px 0px -100px 0px",
+    },
+  );
+
+  const statsBannerContainer = document.querySelector(".stats-banner__container");
+  if (statsBannerContainer) {
+    intersectionObserver.observe(statsBannerContainer);
+  }
+</script>

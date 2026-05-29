@@ -17,14 +17,9 @@ import { Icon } from "astro-icon/components";
     <p id="navigation__lang">ENG</p>
   </div>
   <div id="navigation__offer-container">
-    <div id="navigation__offer-container__main-categories-container">
-      <h6 class="nav-offer-category active">Druk offsetowy i cyfrowy</h6>
-      <h6 class="nav-offer-category">Gadżety reklamowe</h6>
-      <h6 class="nav-offer-category">Reklama zewnętrzna</h6>
-      <h6 class="nav-offer-category">Pudełka i torby z logo</h6>
-    </div>
-    <div id="navigation__offer-container__sub-categories-container">
-      <ul class="sub-category-list active">
+    <div class="nav-offer-column">
+      <p class="nav-offer-category">Druk offsetowy i cyfrowy</p>
+      <ul class="sub-category-list">
         <li><a href="#">Wizytówki</a></li>
         <li><a href="#">Notesy</a></li>
         <li><a href="#">Katalogi szyte</a></li>
@@ -39,7 +34,10 @@ import { Icon } from "astro-icon/components";
         <li><a href="#">Karty plastikowe</a></li>
         <li><a href="#">Opakowania kartonowe</a></li>
       </ul>
+    </div>
 
+    <div class="nav-offer-column">
+      <p class="nav-offer-category">Gadżety reklamowe</p>
       <ul class="sub-category-list">
         <li><a href="#">Gadżety biurowe</a></li>
         <li><a href="#">Ceramika z nadrukiem</a></li>
@@ -52,8 +50,10 @@ import { Icon } from "astro-icon/components";
         <li><a href="#">Notesy biurkowe</a></li>
         <li><a href="#">Elektronika z logo</a></li>
       </ul>
+    </div>
 
-      <!-- Category 3: Reklama zewnętrzna -->
+    <div class="nav-offer-column">
+      <p class="nav-offer-category">Reklama zewnętrzna</p>
       <ul class="sub-category-list">
         <li><a href="#">Rollupy reklamowe</a></li>
         <li><a href="#">Ścianki reklamowe</a></li>
@@ -67,8 +67,10 @@ import { Icon } from "astro-icon/components";
         <li><a href="#">Reklama świetlna</a></li>
         <li><a href="#">Reklama 3D</a></li>
       </ul>
+    </div>
 
-      <!-- Category 4: Pudełka i torby z logo -->
+    <div class="nav-offer-column">
+      <p class="nav-offer-category">Pudełka i torby z logo</p>
       <ul class="sub-category-list">
         <li><a href="#">Torby bawełniane</a></li>
         <li><a href="#">Torby papierowe</a></li>
@@ -92,35 +94,9 @@ import { Icon } from "astro-icon/components";
   const offerBtn = document.querySelector(".offer-btn");
   const offerContainer = document.getElementById("navigation__offer-container");
 
-  const mainCategoriesButtons = document.querySelectorAll(".nav-offer-category");
-  const subCategories = document.querySelectorAll(".sub-category-list");
-
   offerBtn?.addEventListener("click", () => {
     offerContainer?.classList.toggle("active");
   });
-
-  mainCategoriesButtons.forEach((button, index) => {
-
-    button.addEventListener("click", () => {
-
-      mainCategoriesButtons.forEach((button, i) => {
-        if (i === index) {
-          button.classList.add("active");
-        } else {
-          button.classList.remove("active");
-        }
-      })
-
-      subCategories.forEach((subCategory, i) => {
-        if (i === index) {
-          subCategory.classList.add("active");
-        } else {
-          subCategory.classList.remove("active");
-        }
-      });
-    });
-  })
-
 
   window.addEventListener("scroll", () => {
     if (window.scrollY > currentScroll + navHeight) {

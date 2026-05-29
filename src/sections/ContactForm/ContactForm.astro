@@ -9,11 +9,13 @@ import ImageSrc from "../../assets/images/contact-form-photo.jpg";
 ---
 
 <section class="contact-form">
-  <h1 class="contact-form__title">Porozmawiajmy o Twoim projekcie</h1>
-  <Subheading
-    labels={["Bez zobowiązań", "Szybka odpowiedź", "Profesjonalne doradztwo"]}
-  />
-  <div class="contact-form__client-container">
+  <h1 class="contact-form__title animate-on-scroll">Porozmawiajmy o Twoim projekcie</h1>
+  <div class="animate-on-scroll">
+    <Subheading
+      labels={["Bez zobowiązań", "Szybka odpowiedź", "Profesjonalne doradztwo"]}
+    />
+  </div>
+  <div class="contact-form__client-container animate-on-scroll">
     <div>
       <Form client:load />
       <SecondaryButton title="Wyślij wiadomość" icon="mdi:arrow-right-thin" />
@@ -41,5 +43,25 @@ import ImageSrc from "../../assets/images/contact-form-photo.jpg";
         </ul>
       </div>
     </div>
-  </div> 
+  </div>
 </section>
+
+<script>
+  const intersectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    },
+    {
+      threshold: 0.2,
+      rootMargin: "0px 0px -100px 0px",
+    },
+  );
+
+  document.querySelectorAll(".contact-form .animate-on-scroll").forEach((element) => {
+    intersectionObserver.observe(element);
+  });
+</script>

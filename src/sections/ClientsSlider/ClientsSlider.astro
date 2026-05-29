@@ -12,8 +12,8 @@ import { Image } from "astro:assets";
 ---
 
 <section id="clients-slider-container" aria-labelledby="carousel-heading">
-  <h3 id="carousel-heading">Dołącz do firm, które nam zaufały</h3>
-  <div class="clients-slider-wrapper">
+  <h3 id="carousel-heading" class="animate-on-scroll">Dołącz do firm, które nam zaufały</h3>
+  <div class="clients-slider-wrapper animate-on-scroll">
     <div
       class="clients-slider"
       role="group"
@@ -70,3 +70,23 @@ import { Image } from "astro:assets";
     </div>
   </div>
 </section>
+
+<script>
+  const intersectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    },
+    {
+      threshold: 0.2,
+      rootMargin: "0px 0px -100px 0px",
+    },
+  );
+
+  document.querySelectorAll("#clients-slider-container .animate-on-scroll").forEach((element) => {
+    intersectionObserver.observe(element);
+  });
+</script>

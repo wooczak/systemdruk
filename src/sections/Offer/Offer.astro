@@ -10,12 +10,12 @@ import FourthCategorySrc from "../../assets/images/offer/pudelka-i-torby.webp";
 ---
 
 <section class="offer">
-  <h1>Poznaj naszą ofertę</h1>
+  <h1 class="offer__title animate-on-scroll">Poznaj naszą ofertę</h1>
 
   <Image
     src={FirstCategorySrc}
     alt="Oferta"
-    class="offer__image"
+    class="offer__image animate-on-scroll"
     width={400}
     height={400}
     data-images={JSON.stringify([
@@ -26,7 +26,7 @@ import FourthCategorySrc from "../../assets/images/offer/pudelka-i-torby.webp";
     ])}
   />
 
-  <section class="offer__content-grid">
+  <section class="offer__content-grid animate-on-scroll">
     <div class="offer__content-grid-left">
       <h2 class="offer__content-heading active">Druk offsetowy i cyfrowy</h2>
       <h2 class="offer__content-heading">Gadżety reklamowe</h2>
@@ -187,5 +187,24 @@ import FourthCategorySrc from "../../assets/images/offer/pudelka-i-torby.webp";
         isAnimating = false;
       }
     });
+  });
+
+  // Scroll animations
+  const intersectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    },
+    {
+      threshold: 0.2,
+      rootMargin: "0px 0px -100px 0px",
+    },
+  );
+
+  document.querySelectorAll(".animate-on-scroll").forEach((element) => {
+    intersectionObserver.observe(element);
   });
 </script>

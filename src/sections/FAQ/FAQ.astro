@@ -5,8 +5,8 @@ import { Icon } from 'astro-icon/components';
 ---
 
 <section id="faq" class="faq">
-  <h1 class="faq__title">Co warto wiedzieć</h1>
-  <div class="faq__grid">
+  <h1 class="faq__title animate-on-scroll">Co warto wiedzieć</h1>
+  <div class="faq__grid animate-on-scroll">
     <nav class="faq__categories">
       <button class="faq__category faq__category--active" data-category="delivery">
         <Subheading labels={['Formy dostawy']} />
@@ -172,5 +172,24 @@ import { Icon } from 'astro-icon/components';
         }
       });
     });
+  });
+
+  // Scroll animations
+  const intersectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    },
+    {
+      threshold: 0.2,
+      rootMargin: "0px 0px -100px 0px",
+    },
+  );
+
+  document.querySelectorAll(".faq .animate-on-scroll").forEach((element) => {
+    intersectionObserver.observe(element);
   });
 </script>

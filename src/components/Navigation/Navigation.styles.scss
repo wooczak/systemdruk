@@ -13,19 +13,18 @@
   }
 }
 
+.nav-offer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-inline: 1rem;
+}
+
 .sub-category-list {
-  display: none;
-
-  &.active {
-    display: grid;
-    grid-template-columns: repeat(3, 20ch);
-    column-gap: 1rem;
-    row-gap: 0.5rem;
-  }
-
-  &:hover {
-    cursor: pointer;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  list-style: none;
 
   li {
     text-align: left;
@@ -61,62 +60,50 @@
 
 
 .nav-offer-category {
-  font-size: 1.25rem;
-  font-weight: 400;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-bottom: 0.5rem;
 
-  &:hover {
-    cursor: pointer;
-  }
-
-  &.active {
-    font-weight: 600;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 75%;
+    height: 2px;
+    background-color: var(--blue-primary);
   }
 }
 
 #navigation {
   position: relative;
-  perspective: 1000px;
 
   @include desktop {
     padding-inline: 1rem;
   }
 
   &__offer-container {
-    display: grid;
-    grid-template-columns: auto 500px;
-    gap: 3rem;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%) translateZ(0) rotateX(-15deg);
-    transform-origin: top center;
+    width: 100%;
     background-color: var(--white-primary);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    padding: 2rem 1rem;
-    z-index: 99;
-    min-width: 800px;
+    padding: 0;
     opacity: 0;
+    max-height: 0;
+    overflow: hidden;
     pointer-events: none;
-    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: opacity, transform;
-    backface-visibility: hidden;
-
-    &__main-categories-container {
-      @include flex(column, flex-end, center);
-      gap: 0.75rem;
-      flex-shrink: 0;
-    }
-
-    &__sub-categories-container {
-      @include flex(column, center, center);
-      flex-shrink: 0;
-      width: 500px;
-    }
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity, max-height;
+    display: grid;
+    grid-template-columns: repeat(4, 250px);
+    gap: 1rem;
+    justify-content: center;
 
     &.active {
       opacity: 1;
+      max-height: 600px;
+      padding: 2rem 20rem;
       pointer-events: auto;
-      transform: translateX(-50%) translateZ(0) rotateX(0deg);
     }
   }
 

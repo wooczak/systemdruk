@@ -6,7 +6,7 @@ import Image1 from "../../assets/images/hero-slider/1.webp";
 import Image2 from "../../assets/images/hero-slider/2.webp";
 ---
 
-<section id="projects-slider">
+<section id="projects-slider" class="animate-on-scroll">
   <div class="project-container project-container--active">
     <figure class="project-container__image-container">
       <Image
@@ -108,4 +108,24 @@ import Image2 from "../../assets/images/hero-slider/2.webp";
     currentIndex = (currentIndex + 1) % projectContainers.length;
     showProject(currentIndex);
   });
+
+  // Scroll animations
+  const intersectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    },
+    {
+      threshold: 0.2,
+      rootMargin: "0px 0px -100px 0px",
+    },
+  );
+
+  const projectsSlider = document.getElementById("projects-slider");
+  if (projectsSlider) {
+    intersectionObserver.observe(projectsSlider);
+  }
 </script>
