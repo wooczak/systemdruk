@@ -23,6 +23,7 @@ const { title, class: className, icon } = Astro.props as Props;
   @use '../../styles/mixins' as *;
 
   .secondary-button {
+    position: relative;
     background-color: var(--white-primary);
     color: var(--black-primary);
     padding: 12px;
@@ -32,10 +33,27 @@ const { title, class: className, icon } = Astro.props as Props;
     animation-fill-mode: forwards;
     font-size: 1.25rem;
     margin-top: 1.25rem;
-    transition: all 0.2s ease-in-out;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    z-index: 1;
+    will-change: transform;
+    backface-visibility: hidden;
 
     @include desktop() {
       font-size: 1rem;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background-color: var(--blue-primary);
+      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: -1;
+      will-change: width;
     }
   }
 
@@ -45,8 +63,11 @@ const { title, class: className, icon } = Astro.props as Props;
   }
 
   .secondary-button:hover {
-    transform: translateY(-10px);
-    background-color: var(--blue-primary);
+    transform: translate3d(0, -10px, 0);
     color: var(--white-primary);
+
+    &::before {
+      width: 100%;
+    }
   }
 </style>

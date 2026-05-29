@@ -22,7 +22,8 @@
     gap: 1rem;
     position: sticky;
     top: 2rem;
-    align-self: flex-start;
+    align-self: center;
+
   }
 
   &__category {
@@ -73,7 +74,6 @@
 
   &__item {
     border: none;
-    border-bottom: 1px solid var(--color-border, #e0e0e0);
     overflow: hidden;
 
     &--open {
@@ -83,7 +83,6 @@
 
       .faq__answer {
         max-height: 500px;
-        padding: 1.5rem;
         opacity: 1;
       }
     }
@@ -94,7 +93,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 0;
+    padding: 0.5rem 0;
     background: transparent;
     border: none;
     cursor: pointer;
@@ -108,14 +107,14 @@
 
   &__question-text {
     margin: 0;
-    font-size: 1.125rem;
     font-weight: 600;
   }
 
   &__arrow {
     flex-shrink: 0;
     margin-left: 1rem;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
   }
 
   &__answer {
@@ -128,7 +127,7 @@
 
     p {
       margin: 0;
-      padding-bottom: 1.5rem;
+      padding-top: 1rem;
       line-height: 1.6;
     }
   }

@@ -15,7 +15,7 @@ import { Image } from "astro:assets";
   <h3 id="carousel-heading">Dołącz do firm, które nam zaufały</h3>
   <div class="clients-slider-wrapper">
     <div
-      class="clients-slider clients-slider--row-1"
+      class="clients-slider"
       role="group"
       aria-label="Splide Basic HTML Example"
     >
@@ -33,6 +33,15 @@ import { Image } from "astro:assets";
           <li class="clients-slider__slide">
             <Image src={Company4Logo} alt="Company 4 Logo" height="35" />
           </li>
+          <li class="clients-slider__slide">
+            <Image src={Company5Logo} alt="Company 5 Logo" height="35" />
+          </li>
+          <li class="clients-slider__slide">
+            <Image src={Company6Logo} alt="Company 6 Logo" height="35" />
+          </li>
+          <li class="clients-slider__slide">
+            <Image src={Company7Logo} alt="Company 7 Logo" height="35" />
+          </li>
         </ul>
         <ul class="clients-slider__list" aria-hidden="true">
           <li class="clients-slider__slide">
@@ -47,26 +56,6 @@ import { Image } from "astro:assets";
           <li class="clients-slider__slide">
             <Image src={Company4Logo} alt="Company 4 Logo" height="35" />
           </li>
-        </ul>
-      </div>
-    </div>
-    <div
-      class="clients-slider clients-slider--row-2"
-      role="group"
-    >
-      <div class="clients-slider__track">
-        <ul class="clients-slider__list">
-          <li class="clients-slider__slide">
-            <Image src={Company5Logo} alt="Company 5 Logo" height="35" />
-          </li>
-          <li class="clients-slider__slide">
-            <Image src={Company6Logo} alt="Company 6 Logo" height="35" />
-          </li>
-          <li class="clients-slider__slide">
-            <Image src={Company7Logo} alt="Company 7 Logo" height="35" />
-          </li>
-        </ul>
-        <ul class="clients-slider__list" aria-hidden="true">
           <li class="clients-slider__slide">
             <Image src={Company5Logo} alt="Company 5 Logo" height="35" />
           </li>

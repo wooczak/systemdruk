@@ -1,21 +1,23 @@
 import { z, ZodError } from "astro/zod";
-import { createEffect, createSignal } from "solid-js";
+import { createSignal } from "solid-js";
 
 const FormSchema = z.object({
-  name: z.string(),
-  email: z.email("Email is invalid."),
-  message: z.string(),
+  name: z.string().min(1, "Name is required."),
+  email: z.string().email("Email is invalid."),
+  message: z.string().min(1, "Message is required."),
 });
 
 type FormState = z.infer<typeof FormSchema>;
-type ErrorSchema = Record<keyof FormState, string>;
+type ErrorSchema = Partial<Record<keyof FormState, string>>;
+type TouchedFields = Record<keyof FormState, boolean>;
 
-function validateForm(state: FormState): ErrorSchema | undefined {
+function validateForm(state: FormState): ErrorSchema {
   try {
     FormSchema.parse(state);
+    return {};
   } catch (error) {
     if (error instanceof ZodError) {
-      const fieldErrors: ErrorSchema = {} as ErrorSchema;
+      const fieldErrors: ErrorSchema = {};
 
       error.issues.forEach((issue) => {
         const fieldName = issue.path[0] as keyof FormState;
@@ -24,6 +26,7 @@ function validateForm(state: FormState): ErrorSchema | undefined {
 
       return fieldErrors;
     }
+    return {};
   }
 }
 
@@ -34,11 +37,25 @@ export function ContactFormClientComponent() {
     message: "",
   });
 
-  const [errors, setErrors] = createSignal<ErrorSchema>();
-
-  createEffect(() => {
-    setErrors(validateForm(formState()));
+  const [touched, setTouched] = createSignal<TouchedFields>({
+    name: false,
+    email: false,
+    message: false,
   });
+
+  const [errors, setErrors] = createSignal<ErrorSchema>({});
+
+  const handleBlur = (field: keyof FormState) => {
+    setTouched({ ...touched(), [field]: true });
+    setErrors(validateForm(formState()));
+  };
+
+  const handleInput = (field: keyof FormState, value: string) => {
+    setFormState({ ...formState(), [field]: value });
+    if (touched()[field]) {
+      setErrors(validateForm(formState()));
+    }
+  };
 
   return (
     <form>
@@ -49,13 +66,12 @@ export function ContactFormClientComponent() {
         <input
           type="text"
           id="name"
-          class={`contact-form__input ${errors()?.name ? "contact-form__input--error" : ""}`}
+          class={`contact-form__input ${touched().name && errors()?.name ? "contact-form__input--error" : ""}`}
           value={formState().name}
-          onInput={(e) =>
-            setFormState({ ...formState(), name: e.currentTarget.value })
-          }
+          onInput={(e) => handleInput("name", e.currentTarget.value)}
+          onBlur={() => handleBlur("name")}
         />
-        {formState().name.length > 0 && errors()?.name && (
+        {touched().name && errors()?.name && (
           <span class="contact-form__error">{errors()?.name}</span>
         )}
       </div>
@@ -66,13 +82,12 @@ export function ContactFormClientComponent() {
         <input
           type="email"
           id="email"
-          class={`contact-form__input ${errors()?.email ? "contact-form__input--error" : ""}`}
+          class={`contact-form__input ${touched().email && errors()?.email ? "contact-form__input--error" : ""}`}
           value={formState().email}
-          onInput={(e) =>
-            setFormState({ ...formState(), email: e.currentTarget.value })
-          }
+          onInput={(e) => handleInput("email", e.currentTarget.value)}
+          onBlur={() => handleBlur("email")}
         />
-        {formState().email.length > 0 && errors()?.email && (
+        {touched().email && errors()?.email && (
           <span class="contact-form__error">{errors()?.email}</span>
         )}
       </div>
@@ -83,13 +98,12 @@ export function ContactFormClientComponent() {
         </label>
         <textarea
           id="message"
-          class={`contact-form__input ${errors()?.message ? "contact-form__input--error" : ""}`}
+          class={`contact-form__input ${touched().message && errors()?.message ? "contact-form__input--error" : ""}`}
           value={formState().message}
-          onInput={(e) =>
-            setFormState({ ...formState(), message: e.currentTarget.value })
-          }
+          onInput={(e) => handleInput("message", e.currentTarget.value)}
+          onBlur={() => handleBlur("message")}
         />
-        {formState().message.length > 0 && errors()?.message && (
+        {touched().message && errors()?.message && (
           <span class="contact-form__error">{errors()?.message}</span>
         )}
       </div>

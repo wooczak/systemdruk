@@ -5,8 +5,8 @@ import "./Proces.styles.scss";
 <section id="process">
     <div id="process__header-container">
         <h1 id="process__title">Jedno miejsce<span>,</span> wiele możliwości</h1>
-        <h5 id="process__subtitle">Od ponad 10 lat specjalizujemy się w usłudze Print Managementu, która skupia cały proces produkcji – od
-            projektu po transport – w jednym miejscu. To zdecydowana oszczędność Twojego czasu i pieniędzy.</h5>
+        <h4 id="process__subtitle">Od ponad 10 lat specjalizujemy się w usłudze Print Managementu, która skupia cały proces produkcji – od
+            projektu po transport – w jednym miejscu. To zdecydowana oszczędność Twojego czasu i pieniędzy.</h4>
     </div>
     <section class="process-container">
         <h3 class="process-container__title"><span>1.</span>Koncepcja</h3>
@@ -44,13 +44,11 @@ import "./Proces.styles.scss";
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add("visible");
-                } else {
-                    entry.target.classList.remove("visible");
                 }
             });
         },
         {
-            threshold: 0.1,
+            threshold: 0.3,
             rootMargin: "0px 0px -200px 0px",
         },
     );
