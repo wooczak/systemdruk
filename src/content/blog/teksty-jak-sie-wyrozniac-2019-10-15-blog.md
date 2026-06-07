@@ -1,7 +1,7 @@
 ---
 title: "Teksty – jak się wyróżniać?"
 categories: ["druk", "copywriting", "typografia"]
-slug: "teksty-jak-sie-wyroznic-blog"
+slug: "teksty-jak-sie-wyroznic-blog-2019-10-15-blog"
 author: "Ziemowit Kościelny"
 post_date: "2019-10-15"
 img_url: "/blog/teksty-jak-sie-wyrozniac-2019-10-15-blog-zdjecie-baner.webp"

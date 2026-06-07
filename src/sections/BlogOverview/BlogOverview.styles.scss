@@ -1,4 +1,4 @@
-@use '../../styles/mixins' as *;
+@use "../../styles/mixins" as *;
 
 $height: 500px;
 
@@ -10,7 +10,7 @@ $height: 500px;
   }
   &__container {
     display: grid;
-    grid-template-columns: 60% 1fr;
+    grid-template-columns: 50% 1fr;
     grid-template-rows: repeat(2, auto);
     column-gap: 2rem;
     grid-template-areas:
@@ -21,7 +21,7 @@ $height: 500px;
     @include desktop {
       grid-template-areas:
         "main-post main-post"
-        "sidebar-post-1 sidebar-post-2"
+        "sidebar-post-1 sidebar-post-2";
     }
 
     &__image {
@@ -37,6 +37,14 @@ $height: 500px;
   &__main-post {
     grid-area: main-post;
     height: $height;
+    transition: all 0.5s ease-in-out;
+
+    &:hover {
+      transform: translateY(-6px);
+      > * {
+        color: var(--blue-primary);
+      }
+    }
 
     img {
       flex-grow: 1;
@@ -59,12 +67,20 @@ $height: 500px;
     padding-top: 1rem;
   }
 
-  &__sidebar-post-1,
-  &__sidebar-post-2 {
+  &__sidebar-post-1 a,
+  &__sidebar-post-2 a {
     display: flex;
     align-items: flex-end;
     gap: 1rem;
-    height: calc(#{$height} / 2);
+    height: calc(#{$height} / 2 - 1rem);
+    transition: all 0.5s ease-in-out;
+
+    &:hover {
+      transform: translateY(-6px);
+      > * {
+        color: var(--blue-primary);
+      }
+    }
 
     img {
       width: 40%;
@@ -73,8 +89,7 @@ $height: 500px;
   }
 
   &__button {
-    position: absolute;
-    bottom: -8rem;
-    right: 3rem;
+    float: right;
+    margin-top: 8rem !important;
   }
 }

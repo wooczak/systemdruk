@@ -1,33 +1,34 @@
 ---
-import {Font} from "astro:assets";
 import Navigation from "../components/Navigation/Navigation.astro";
 ---
 
 <html lang="pl">
-<head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
-          rel="stylesheet">
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width"/>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
     <title>System Druk</title>
-</head>
-<body>
-<Navigation/>
-<slot/>
-</body>
+  </head>
+  <body>
+    <Navigation />
+    <slot />
+  </body>
 </html>
 
 <style is:global lang="scss">
-  @use '../styles/mixins' as *;
+  @use "../styles/mixins" as *;
 
   :root {
     --black-primary: #1b1b1b;
     --grey-primary: #6f6f6e;
     --blue-primary: #009ee2;
-    --bg-color: #FCFCFC;
-    --off-white-primary: #EFEFEF;
+    --bg-color: #fcfcfc;
+    --off-white-primary: #efefef;
     --white-primary: #fff;
     --max-width: 1240px;
     --h1-size: 3.813rem;
@@ -95,11 +96,6 @@ import Navigation from "../components/Navigation/Navigation.astro";
     font-family: "Source Sans 3", sans-serif;
     color: var(--black-primary);
     background-color: var(--bg-color);
-    overflow-x: hidden;
-  }
-
-  body {
-    overflow-x: hidden;
   }
 
   main,

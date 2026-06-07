@@ -1,6 +1,6 @@
 ---
 title: "C jak czerń"
-slug: "c-jak-czern"
+slug: "c-jak-czern-2019-06-11-blog"
 categories: ["druk", "poligrafia", "kolor"]
 author: "Ziemowit Kościelny"
 post_date: "2019-06-11"
