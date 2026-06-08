@@ -1,0 +1,23 @@
+---
+import Layout from "../../../layout/index.astro";
+import { render } from 'astro:content';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+    const offerPages = await getCollection("oferta");
+
+    return offerPages.map((offer) => ({
+        params: { page: offer.data.slug },
+        props: { offer }
+    }));
+}
+
+const { offer } = Astro.props;
+const { Content } = await render(offer);
+---
+
+<Layout>
+    <section class="offer-page">
+        <Content />
+    </section>
+</Layout>

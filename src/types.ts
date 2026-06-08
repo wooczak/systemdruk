@@ -8,3 +8,7 @@ export const BlogSchema = z.object({
     post_date: z.string(),
     img_url: z.string()
   });
+
+export const OfferPageSchema = z.object({
+  slug: z.string()
+});
