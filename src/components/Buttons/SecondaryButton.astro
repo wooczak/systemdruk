@@ -5,22 +5,46 @@ interface Props {
   title: string;
   icon?: string;
   class?: string;
+  href?: string;
 }
 
-const { title, class: className, icon } = Astro.props as Props;
+const { title, class: className, icon, href } = Astro.props as Props;
 ---
 
-<button
-  class={["secondary-button", icon && "secondary-button--with-icon", className]
-    .filter(Boolean)
-    .join(" ")}
->
-  {title}
-  {icon ? <Icon name={icon} /> : null}
-</button>
+{
+  href ? (
+    <a href={import.meta.env.BASE_URL + href}>
+      <button
+        class={[
+          "secondary-button",
+          icon && "secondary-button--with-icon",
+          className,
+        ]
+          .filter(Boolean)
+          .join(" ")}
+      >
+        {title}
+        {icon ? <Icon name={icon} /> : null}
+      </button>
+    </a>
+  ) : (
+    <button
+      class={[
+        "secondary-button",
+        icon && "secondary-button--with-icon",
+        className,
+      ]
+        .filter(Boolean)
+        .join(" ")}
+    >
+      {title}
+      {icon ? <Icon name={icon} /> : null}
+    </button>
+  )
+}
 
 <style lang="scss">
-  @use '../../styles/mixins' as *;
+  @use "../../styles/mixins" as *;
 
   .secondary-button {
     position: relative;
@@ -33,7 +57,9 @@ const { title, class: className, icon } = Astro.props as Props;
     animation-fill-mode: forwards;
     font-size: 1.25rem;
     margin-top: 1.25rem;
-    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition:
+      transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+      color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
     z-index: 1;
     will-change: transform;
@@ -44,7 +70,7 @@ const { title, class: className, icon } = Astro.props as Props;
     }
 
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       left: 0;

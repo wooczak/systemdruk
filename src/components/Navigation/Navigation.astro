@@ -5,14 +5,30 @@ import { Icon } from "astro-icon/components";
 
 <nav id="navigation">
   <div id="navigation__container">
-    <Icon name="systemdruk_logo" width={100} height={50} id="navigation__img" />
+    <a href={`${import.meta.env.BASE_URL}`}>
+      <Icon
+        name="systemdruk_logo"
+        width={100}
+        height={50}
+        id="navigation__img"
+      />
+    </a>
     <ul id="navigation__list">
-      <li class="navigation__item"><a href="/">blog</a></li>
+      <li class="navigation__item">
+        <a href={`${import.meta.env.BASE_URL}/blog`}>blog</a>
+      </li>
       <li class="navigation__item offer-btn">
         <a>oferta</a>
-        <Icon name="mdi:keyboard-arrow-down" width={25} height={25} color="var(--blue-primary)" />
+        <Icon
+          name="mdi:keyboard-arrow-down"
+          width={25}
+          height={25}
+          color="var(--blue-primary)"
+        />
       </li>
-      <li class="navigation__item"><a href="/contact">kontakt</a></li>
+      <li class="navigation__item" id="contact-link">
+        <a href="#contact-form">kontakt</a>
+      </li>
     </ul>
     <p id="navigation__lang">ENG</p>
   </div>
@@ -29,7 +45,11 @@ import { Icon } from "astro-icon/components";
         <li><a href="#">Plakaty</a></li>
         <li><a href="#">Ulotki</a></li>
         <li><a href="#">Teczki firmowe</a></li>
-        <li><a href="/systemdruk/oferta/papier-firmowy-system-druk-krakow">Papier firmowy</a></li>
+        <li>
+          <a href="/systemdruk/oferta/papier-firmowy-system-druk-krakow"
+            >Papier firmowy</a
+          >
+        </li>
         <li><a href="#">Kalendarze</a></li>
         <li><a href="#">Biuwary</a></li>
         <li><a href="#">Karty plastikowe</a></li>

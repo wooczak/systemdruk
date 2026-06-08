@@ -83,6 +83,14 @@
     padding-inline: 1rem;
   }
 
+  &__img {
+    z-index: 99;
+    
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
   &__offer-container {
     width: 100%;
     background-color: var(--white-primary);
