@@ -1,4 +1,4 @@
-@use '../../styles/mixins' as *;
+@use "../../styles/mixins" as *;
 
 #process {
   padding-top: 8rem;
@@ -18,7 +18,7 @@
   }
 
   &__subtitle {
-    font-size: 38px;
+    font-size: 31px;
     text-align: left;
     width: 70%;
     font-weight: 400;
@@ -55,12 +55,15 @@
 .process-container {
   border-bottom: 1px solid var(--grey-primary-with-opacity);
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 35% 1fr;
   align-items: center;
   padding-inline: 0;
   opacity: 0;
+  width: 80%;
   transform: translateY(-50px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
 
   @include desktop {
     width: 100%;
@@ -70,17 +73,31 @@
   &:last-of-type {
     border-bottom: none;
   }
+  transition: all 0.1s ease-in-out;
 
   &__title {
     font-weight: 400;
     font-size: 39px;
     color: var(--grey-primary);
     font-weight: 400;
+    transition: color 0.1s ease-in-out;
 
-    span { font-size: 0.5em; margin-right: 0.75rem; }
+    span {
+      font-size: 0.5em;
+      margin-right: 0.75rem;
+    }
   }
 
-  &.visible { 
+  &:hover {
+    background-color: var(--off-white-primary);
+
+    .process-container__title {
+      color: var(--blue-primary);
+    }
+
+  }
+
+  &.visible {
     opacity: 1;
     transform: translateY(0);
   }
