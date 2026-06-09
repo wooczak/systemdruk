@@ -38,7 +38,7 @@ const { title, class: className, icon, href } = Astro.props as Props;
         .join(" ")}
     >
       {title}
-      {icon ? <Icon name={icon} /> : null}
+      {icon ? <Icon style="left: 2rem" name={icon} /> : null}
     </button>
   )
 }

@@ -14,7 +14,6 @@ import Subheading from "../../components/Subheading/Subheading.astro";
     <Subheading
       labels={["Poligrafia od A do Z", "Fachowe doradztwo", "Oszczędność czasu"]}
     />
-    <SecondaryButton href="#contact-form" title="Skontaktuj się z nami" />
   </div>
 </section>
 
@@ -69,12 +68,8 @@ import Subheading from "../../components/Subheading/Subheading.astro";
     }, animateOutDuration);
   };
 
-  // Start with fast cycling
-  intervalId = setInterval(cycle, FAST_CYCLE_DURATION);
-
   // After 2 seconds, transition to normal speed
   setTimeout(() => {
-    clearInterval(intervalId);
     isFastMode = false;
     intervalId = setInterval(cycle, CYCLE_DURATION);
   }, FAST_DURATION);

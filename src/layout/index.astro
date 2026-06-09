@@ -26,6 +26,7 @@ import Navigation from "../components/Navigation/Navigation.astro";
   :root {
     --black-primary: #1b1b1b;
     --grey-primary: #6f6f6e;
+    --grey-primary-with-opacity: #6f6f6e3d;
     --blue-primary: #009ee2;
     --bg-color: #fcfcfc;
     --off-white-primary: #efefef;
@@ -101,13 +102,14 @@ import Navigation from "../components/Navigation/Navigation.astro";
 
   main,
   section {
-    max-width: var(--max-width);
+    padding-inline: 2rem;
+    padding-block: 4rem;
     margin-inline: auto;
   }
 
   h1 {
-    font-size: 3.813rem;
-    font-weight: 600;
+    font-size: 5rem;
+    font-weight: 400;
     line-height: 1.2em;
 
     @include desktop() {

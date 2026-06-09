@@ -78,6 +78,7 @@
 
 #navigation {
   position: relative;
+  padding-inline: 2rem;
 
   @include desktop {
     padding-inline: 1rem;
@@ -135,7 +136,6 @@
   }
 
   &__container {
-    max-width: var(--max-width);
     margin-inline: auto;
     padding-block: 24px;
     @include flex(row, center, space-between);

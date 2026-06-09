@@ -1,6 +1,8 @@
 @use '../../styles/mixins' as *;
 
 #process {
+  padding-top: 8rem;
+
   @include desktop {
     margin-top: 0;
     padding-inline: 1rem;
@@ -16,8 +18,10 @@
   }
 
   &__subtitle {
-    font-weight: 400;
+    font-size: 38px;
     text-align: left;
+    width: 70%;
+    font-weight: 400;
     margin-block: 1.25rem;
     align-self: flex-start;
 
@@ -49,10 +53,11 @@
 }
 
 .process-container {
-  border-bottom: 1px solid var(--blue-primary);
+  border-bottom: 1px solid var(--grey-primary-with-opacity);
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  padding-block: 2rem;
+  align-items: center;
+  padding-inline: 0;
   opacity: 0;
   transform: translateY(-50px);
   transition: opacity 0.5s ease, transform 0.5s ease;
@@ -67,6 +72,9 @@
   }
 
   &__title {
+    font-weight: 400;
+    font-size: 39px;
+    color: var(--grey-primary);
     font-weight: 400;
 
     span { font-size: 0.5em; margin-right: 0.75rem; }
