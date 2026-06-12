@@ -4,6 +4,7 @@ $height: 500px;
 
 .blog-overview {
   position: relative;
+  max-width: var(--max-width);
 
   &__title {
     margin-bottom: 2rem;

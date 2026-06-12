@@ -1,6 +1,7 @@
 @use '../../styles/mixins' as *;
 
 .contact-form {
+  max-width: var(--max-width);
 
   @include desktop {
     padding-inline: 1rem;

@@ -1,6 +1,8 @@
 @use '../../styles/mixins' as *;
 
 .offer {
+  max-width: var(--max-width);
+
   &__title, &__image, &__content-grid {
     opacity: 0;
     transform: translateY(30px);
