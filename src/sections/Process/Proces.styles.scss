@@ -1,8 +1,6 @@
 @use "../../styles/mixins" as *;
 
 #process {
-  padding-top: 8rem;
-
   @include desktop {
     margin-top: 0;
     padding-inline: 1rem;
@@ -21,10 +19,13 @@
     font-size: 31px;
     text-align: left;
     width: 70%;
-    margin-left: 2.5rem;
     font-weight: 400;
     margin-block: 1.25rem;
     align-self: flex-start;
+
+    span {
+      color: var(--blue-primary);
+    }
 
     @include desktop {
       width: 100%;

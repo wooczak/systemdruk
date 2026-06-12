@@ -3,53 +3,67 @@ import "./Proces.styles.scss";
 ---
 
 <section id="process">
-    <div id="process__header-container">
-        <h1 id="process__title">Jedno miejsce<span>,</span> wiele możliwości</h1>
-        <h4 id="process__subtitle">Od ponad 10 lat specjalizujemy się w usłudze Print Managementu, która skupia cały proces produkcji – od
-            projektu po transport – w jednym miejscu. To zdecydowana oszczędność Twojego czasu i pieniędzy.</h4>
-    </div>
-    <section class="process-container">
-        <h3 class="process-container__title"><span>1.</span>Koncepcja</h3>
-        <p>
-            Nasi wykwalifikowani specjaliści rozwiążą wszelkie wątpliwości i wskażą optymalne rozwiązania w zakresie doboru surowca, techniki druku i uszlachetnień – perfekcyjnie dopasowane do Państwa zlecenia.
-        </p>
-    </section>
-    <section class="process-container">
-        <h3 class="process-container__title"><span>2.</span>Projekt</h3>
-        <p>
-            Tworzymy projekt zgodny z Państwa identyfikacją wizualną. Dostosowujemy go do specyfikacji podwykonawcy i przewidzianych materiałów – tak, żeby uniknąć błędów i niepotrzebnych kosztów już na etapie przygotowania plików.
-        </p>
-    </section>
-    <section class="process-container">
-        <h3 class="process-container__title"><span>3.</span>Druk</h3>
-        <p>
-            Bierzemy pełną odpowiedzialność za realizację zlecenia od początku do końca, eliminując potrzebę koordynacji wielu podwykonawców. Realizujemy zlecenie z wykorzystaniem optymalnej techniki druku na podłożach o różnorodnej charakterystyce i formatach, kontrolując jakość na każdym etapie produkcji.
-        </p>
-    </section>
-    <section class="process-container">
-        <h3 class="process-container__title"><span>4.</span>Dystrybucja</h3>
-        <p>
-            Zajmujemy się konfekcjonowaniem, organizacją logistyki i dostawą gotowych materiałów – do Państwa biura czy magazynu, na wyznaczony termin i za ustaloną z góry cenę. Realizujemy również dostawy zagraniczne.
-        </p>
-    </section>
+  <div id="process__header-container">
+    <h1 id="process__title">Jedno miejsce<span>,</span> wiele możliwości</h1>
+    <h4 id="process__subtitle">
+      Od ponad 10 lat specjalizujemy się w usłudze Print Managementu, która
+      skupia<br/><span>cały proces produkcji</span> – od projektu po transport – w jednym
+      miejscu. To zdecydowana oszczędność Twojego czasu i pieniędzy.
+    </h4>
+  </div>
+  <section class="process-container">
+    <h3 class="process-container__title"><span>1.</span>Koncepcja</h3>
+    <p>
+      Nasi wykwalifikowani specjaliści rozwiążą wszelkie wątpliwości i wskażą
+      optymalne rozwiązania w zakresie doboru surowca, techniki druku i
+      uszlachetnień – perfekcyjnie dopasowane do Państwa zlecenia.
+    </p>
+  </section>
+  <section class="process-container">
+    <h3 class="process-container__title"><span>2.</span>Projekt</h3>
+    <p>
+      Tworzymy projekt zgodny z Państwa identyfikacją wizualną. Dostosowujemy go
+      do specyfikacji podwykonawcy i przewidzianych materiałów – tak, żeby
+      uniknąć błędów i niepotrzebnych kosztów już na etapie przygotowania
+      plików.
+    </p>
+  </section>
+  <section class="process-container">
+    <h3 class="process-container__title"><span>3.</span>Druk</h3>
+    <p>
+      Bierzemy pełną odpowiedzialność za realizację zlecenia od początku do
+      końca, eliminując potrzebę koordynacji wielu podwykonawców. Realizujemy
+      zlecenie z wykorzystaniem optymalnej techniki druku na podłożach o
+      różnorodnej charakterystyce i formatach, kontrolując jakość na każdym
+      etapie produkcji.
+    </p>
+  </section>
+  <section class="process-container">
+    <h3 class="process-container__title"><span>4.</span>Dystrybucja</h3>
+    <p>
+      Zajmujemy się konfekcjonowaniem, organizacją logistyki i dostawą gotowych
+      materiałów – do Państwa biura czy magazynu, na wyznaczony termin i za
+      ustaloną z góry cenę. Realizujemy również dostawy zagraniczne.
+    </p>
+  </section>
 </section>
 
 <script>
-    const intersectionObserver = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("visible");
-                }
-            });
-        },
-        {
-            threshold: 0.3,
-            rootMargin: "0px 0px -200px 0px",
-        },
-    );
+  const intersectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    },
+    {
+      threshold: 0.3,
+      rootMargin: "0px 0px -200px 0px",
+    },
+  );
 
-    document.querySelectorAll(".process-container").forEach((section) => {
-        intersectionObserver.observe(section);
-    });
+  document.querySelectorAll(".process-container").forEach((section) => {
+    intersectionObserver.observe(section);
+  });
 </script>

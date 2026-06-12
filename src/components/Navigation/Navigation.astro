@@ -16,19 +16,40 @@ import { Icon } from "astro-icon/components";
     </a>
     <ul id="navigation__list">
       <li class="navigation__item">
-        <a href={`${import.meta.env.BASE_URL}/blog`}>blog</a>
+        <a href={`${import.meta.env.BASE_URL}/blog`}>
+          <span class="nav-elevator">
+            <span class="nav-elevator__text">blog</span>
+            <span class="nav-elevator__text nav-elevator__text--copy">blog</span
+            >
+          </span>
+        </a>
       </li>
       <li class="navigation__item offer-btn">
-        <a>oferta</a>
+        <a>
+          <span class="nav-elevator">
+            <span class="nav-elevator__text">oferta</span>
+            <span class="nav-elevator__text nav-elevator__text--copy"
+              >oferta</span
+            >
+          </span>
+        </a>
         <Icon
           name="mdi:keyboard-arrow-down"
           width={25}
           height={25}
           color="var(--blue-primary)"
+          class="offer-icon"
         />
       </li>
       <li class="navigation__item" id="contact-link">
-        <a href="#contact-form">kontakt</a>
+        <a href="#contact-form">
+          <span class="nav-elevator">
+            <span class="nav-elevator__text">kontakt</span>
+            <span class="nav-elevator__text nav-elevator__text--copy"
+              >kontakt</span
+            >
+          </span>
+        </a>
       </li>
     </ul>
     <SecondaryButton title="Skontaktuj sie z nami" icon="mdi:arrow-right" />
@@ -116,15 +137,16 @@ import { Icon } from "astro-icon/components";
   const offerBtn = document.querySelector(".offer-btn");
   const offerContainer = document.getElementById("navigation__offer-container");
 
-  offerBtn?.addEventListener("click", () => {
-    offerContainer?.classList.toggle("active");
-  });
-
   window.addEventListener("scroll", () => {
     if (window.scrollY > currentScroll + navHeight) {
       navigation.classList.add("sticky");
     } else {
       navigation.classList.remove("sticky");
     }
+  });
+
+  offerBtn?.addEventListener("click", (e) => {
+    offerContainer?.classList.toggle("active");
+    offerBtn.classList.toggle("active");
   });
 </script>

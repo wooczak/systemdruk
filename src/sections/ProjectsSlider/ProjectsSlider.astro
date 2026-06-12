@@ -3,47 +3,199 @@ import { Image } from "astro:assets";
 import "./ProjectsSlider.styles.scss";
 import Image1 from "../../assets/images/hero-slider/1.webp";
 import Image2 from "../../assets/images/hero-slider/2.webp";
-import { Icon } from "astro-icon/components";
+import Image3 from "../../assets/images/hero-slider/3.webp";
 ---
 
-<section>
-
-<div id="projects-slider" class="animate-on-scroll">
-  <div class="project-container">
-    <figure class="project-container__image-container">
-      <Image
-        class="project-container__image"
-        src={Image1}
-        alt="Project Image"
-      />
-    </figure>
-    <div class="project-container__text-container">
-      <h4 class="project-container__heading">Black House</h4>
-      <p class="project-container__description">
-        projekt techniczny / druk / produkcja / montaż / projektowanie /
-        wizualizacje / konsultacje / nadzór autorski
-      </p>
+<section class="projects-slider">
+  <div id="projects-slider" class="animate-on-scroll">
+    <div class="project-container">
+      <figure class="project-container__image-container">
+        <Image
+          class="project-container__image"
+          src={Image1}
+          alt="Project Image"
+        />
+      </figure>
+      <div class="project-container__text-container">
+        <h4 class="project-container__heading">Black House</h4>
+        <p class="project-container__description">
+          projekt techniczny / druk / produkcja / montaż / projektowanie /
+          wizualizacje / konsultacje / nadzór autorski
+        </p>
+      </div>
+    </div>
+    <div class="project-container">
+      <figure class="project-container__image-container">
+        <Image
+          class="project-container__image"
+          src={Image2}
+          alt="Project Image"
+        />
+      </figure>
+      <div class="project-container__text-container">
+        <h4 class="project-container__heading">Kraków Congress Centre</h4>
+        <p class="project-container__description">
+          projekt techniczny / druk / produkcja / montaż / projektowanie /
+          wizualizacje / konsultacje / nadzór autorski
+        </p>
+      </div>
+    </div>
+    <div class="project-container">
+      <figure class="project-container__image-container">
+        <Image
+          class="project-container__image"
+          src={Image3}
+          alt="Project Image"
+        />
+      </figure>
+      <div class="project-container__text-container">
+        <h4 class="project-container__heading">Aluprof</h4>
+        <p class="project-container__description">
+          projekt techniczny / druk / produkcja / montaż / projektowanie /
+          wizualizacje / konsultacje / nadzór autorski
+        </p>
+      </div>
     </div>
   </div>
-  <div class="project-container">
-    <figure class="project-container__image-container">
-      <Image
-        class="project-container__image"
-        src={Image2}
-        alt="Project Image"
-      />
-    </figure>
-    <div class="project-container__text-container">
-      <h4 class="project-container__heading">White House</h4>
-      <p class="project-container__description">
-        Description of the White House project.
-      </p>
-    </div>
-  </div>
-</div>
-
-<div class="projects-slider__arrow-container">
-  <Icon name="custom-arrow-left" />
-  <Icon name="custom-arrow-right" />
-</div>
 </section>
+
+<script>
+  function initProjectsSlider() {
+    const section = document.querySelector(
+      ".projects-slider",
+    ) as HTMLElement | null;
+    const slider = document.getElementById(
+      "projects-slider",
+    ) as HTMLElement | null;
+
+    if (!section || !slider) return;
+
+    // Lerp factor: higher = snappier, lower = more inertia.
+    const LERP = 0.08;
+
+    let current = 0; // rendered position
+    let target = 0; // lerp destination
+    let scrollBase = 0; // scroll-driven position (recalculated on scroll)
+    let dragOffset = 0; // cumulative drag adjustment on top of scrollBase
+    let rafId: number;
+
+    // ── Drag state ────────────────────────────────────────────────────────────
+    let isDragging = false;
+    let dragStartX = 0;
+    let dragStartOffset = 0;
+    let lastDragX = 0;
+    let dragVelocity = 0; // for momentum on release
+
+    function getMaxShift(): number {
+      const firstCard = slider!.querySelector(
+        ".project-container",
+      ) as HTMLElement | null;
+      if (!firstCard) return 0;
+      const gap =
+        4 * parseFloat(getComputedStyle(document.documentElement).fontSize);
+      return firstCard.offsetWidth + gap;
+    }
+
+    function clamp(value: number, min: number, max: number) {
+      return Math.min(Math.max(value, min), max);
+    }
+
+    function calcScrollBase(): number {
+      const rect = section!.getBoundingClientRect();
+      const windowH = window.innerHeight;
+      const total = windowH + section!.offsetHeight;
+      const progress = clamp((windowH - rect.top) / total, 0, 1);
+      return -progress * getMaxShift() * 1.2;
+    }
+
+    function tick() {
+      const maxShift = getMaxShift();
+      const rawTarget = scrollBase + dragOffset;
+      target = clamp(rawTarget, -maxShift, 0);
+
+      current += (target - current) * LERP;
+
+      slider!.style.transform = `translateX(${current}px)`;
+
+      if (Math.abs(target - current) > 0.05 || isDragging) {
+        rafId = requestAnimationFrame(tick);
+      } else {
+        current = target;
+        slider!.style.transform = `translateX(${current}px)`;
+      }
+    }
+
+    function startLoop() {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(tick);
+    }
+
+    // ── Scroll handler ────────────────────────────────────────────────────────
+    window.addEventListener(
+      "scroll",
+      () => {
+        scrollBase = calcScrollBase();
+        startLoop();
+      },
+      { passive: true },
+    );
+
+    window.addEventListener("resize", () => {
+      scrollBase = calcScrollBase();
+      startLoop();
+    });
+
+    // ── Pointer / drag handlers ───────────────────────────────────────────────
+    section.addEventListener("pointerdown", (e: PointerEvent) => {
+      isDragging = true;
+      dragStartX = e.clientX;
+      dragStartOffset = dragOffset;
+      lastDragX = e.clientX;
+      dragVelocity = 0;
+      section!.setPointerCapture(e.pointerId);
+      section!.style.cursor = "grabbing";
+      startLoop();
+    });
+
+    section.addEventListener("pointermove", (e: PointerEvent) => {
+      if (!isDragging) return;
+      const dx = e.clientX - dragStartX;
+      dragVelocity = e.clientX - lastDragX;
+      lastDragX = e.clientX;
+      dragOffset = dragStartOffset + dx;
+    });
+
+    const endDrag = (e: PointerEvent) => {
+      if (!isDragging) return;
+      isDragging = false;
+      section!.style.cursor = "grab";
+
+      // Throw momentum: carry the drag velocity forward as extra offset
+      dragOffset += dragVelocity * 6;
+      startLoop();
+    };
+
+    section.addEventListener("pointerup", endDrag);
+    section.addEventListener("pointercancel", endDrag);
+
+    // Prevent click-through after a drag
+    section.addEventListener(
+      "click",
+      (e: MouseEvent) => {
+        if (Math.abs(dragOffset - dragStartOffset) > 5) e.stopPropagation();
+      },
+      true,
+    );
+
+    // ── Init ──────────────────────────────────────────────────────────────────
+    section.style.cursor = "grab";
+    scrollBase = calcScrollBase();
+    startLoop();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initProjectsSlider);
+  } else {
+    initProjectsSlider();
+  }
+</script>
