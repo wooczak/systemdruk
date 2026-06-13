@@ -6,5 +6,4 @@ export { default as ClientsSlider } from "./ClientsSlider/ClientsSlider.astro";
 export { default as StatsBanner } from "./StatsBanner/StatsBanner.astro";
 export { default as BlogOverview } from "./BlogOverview/BlogOverview.astro";
 export { default as ContactForm } from "./ContactForm/ContactForm.astro";
-export { default as Footer } from "./Footer/Footer.astro";
 export { default as FAQ } from "./FAQ/FAQ.astro";

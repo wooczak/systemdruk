@@ -67,6 +67,9 @@
   }
 
   &__contact-details {
+    &-heading {
+      font-weight: 600;
+    }
     &-figure {
       display: flex;
       align-items: flex-end;

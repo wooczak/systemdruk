@@ -1,5 +1,6 @@
 .blog-page {
   padding-block: 0;
+  padding-inline: 0;
   max-width: 100%;
 
   &__img {
@@ -14,8 +15,14 @@
     max-width: 100%;
     display: grid;
     grid-template-columns: 25% 50% 1fr;
+    grid-template-rows: 100px auto;
     column-gap: 2rem;
     align-items: start;
+
+    &__breadcrumbs {
+      grid-row: 1 / 2;
+      grid-column: 1 / 4;
+    }
   }
 
   &__author-box {
@@ -59,12 +66,12 @@
   }
 
   &__aside {
-    padding-left: 4rem;
     padding-top: 0.5rem;
     max-width: 300px;
     position: sticky;
     top: 2rem;
     align-self: start;
+    grid-row: 2 / 3;
   }
 
   &__content {

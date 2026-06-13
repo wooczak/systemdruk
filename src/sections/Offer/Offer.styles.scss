@@ -56,6 +56,7 @@
         flex-direction: column;
         gap: 1.5rem;
         justify-content: space-evenly;
+        padding-block: 5rem;
 
         @include desktop {
           gap: 0.5rem;

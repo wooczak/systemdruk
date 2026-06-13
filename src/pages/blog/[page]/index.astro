@@ -3,6 +3,7 @@ import { getCollection, render } from "astro:content";
 import Layout from "../../../layout/index.astro";
 import "./styles.scss";
 import SecondaryButton from "../../../components/Buttons/SecondaryButton.astro";
+import Breadcrumbs from "../../../components/Breadcrumbs/Breadcrumbs.astro";
 
 const allPosts = await getCollection("blog");
 
@@ -27,14 +28,19 @@ const { Content } = await render(post);
       src={import.meta.env.BASE_URL + "/" + post.data.img_url}
     />
     <section class="blog-page__content-container">
+      <div class="blog-page__content-container__breadcrumbs">
+        <Breadcrumbs currentText={post.data.title} />
+      </div>
       <aside class="blog-page__aside">
         <div class="blog-page__author-box">
-          <p class="blog-page__author-box__categories">[{post.data.categories.join(", ")}]</p>
+          <p class="blog-page__author-box__categories">
+            [{post.data.categories.join(", ")}]
+          </p>
           <p class="blog-page__author-box__author">Autor: {post.data.author}</p>
           <p class="blog-page__author-box__date">
             {
               new Intl.DateTimeFormat("en-GB").format(
-                new Date(post.data.post_date)
+                new Date(post.data.post_date),
               )
             }
           </p>
@@ -46,16 +52,23 @@ const { Content } = await render(post);
             .sort(
               (a, b) =>
                 new Date(b.data.post_date).getTime() -
-                new Date(a.data.post_date).getTime()
+                new Date(a.data.post_date).getTime(),
             )
             .map((post) => (
               <div class="blog-page__newest-posts__post-block">
-                <p class="blog-page__newest-posts__categories">[{post.data.categories.join(",")}]</p>
-                <h6 class="blog-page__newest-posts__post-title">{post.data.title}</h6>
+                <p class="blog-page__newest-posts__categories">
+                  [{post.data.categories.join(",")}]
+                </p>
+                <h6 class="blog-page__newest-posts__post-title">
+                  {post.data.title}
+                </h6>
               </div>
             ))
         }
-        <SecondaryButton title={`Więcej wiedzy (${allPosts.length})`}/>
+        <SecondaryButton
+          href="/blog"
+          title={`Więcej wiedzy (${allPosts.length})`}
+        />
       </aside>
       <article class="blog-page__content">
         <Content />

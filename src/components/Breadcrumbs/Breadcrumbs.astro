@@ -1,0 +1,36 @@
+---
+import { Breadcrumbs as AstroBreadcrumbs } from "astro-breadcrumbs";
+import { Icon } from "astro-icon/components";
+import "astro-breadcrumbs/breadcrumbs.scss";
+import "./Breadcrumbs.styles.scss";
+
+interface Props {
+  indexText?: string;
+  currentText?: string;
+  linkTextFormat?: "lowercase" | "uppercase" | "capitalized";
+  class?: string;
+}
+
+const {
+  indexText = "Strona glowna",
+  currentText,
+  linkTextFormat = "capitalized",
+  class: className,
+} = Astro.props as Props;
+
+const customizeLinks = currentText
+  ? [{ index: "last", text: currentText }]
+  : [];
+---
+
+<div class={['c-breadcrumbs', className].filter(Boolean).join(' ')}>
+  <AstroBreadcrumbs
+    indexText={indexText}
+    linkTextFormat={linkTextFormat}
+    customizeLinks={customizeLinks}
+  >
+    <Fragment slot="separator">
+      <Icon name="mdi:keyboard-arrow-right" height="18" width="18" />
+    </Fragment>
+  </AstroBreadcrumbs>
+</div>

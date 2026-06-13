@@ -3,32 +3,69 @@ import { getCollection } from "astro:content";
 import Layout from "../../layout/index.astro";
 import "./styles.scss";
 import { Image } from "astro:assets";
+import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs.astro";
 
 const allPosts = await getCollection("blog");
 
+function stripMarkdown(md: string | undefined, title: string): string {
+  if (!md) return "";
+
+  // remove title from the beginning
+  md = md.replace(title, "");
+  // remove code fences
+  md = md.replace(/```[\s\S]*?```/g, "");
+  // inline code
+  md = md.replace(/`([^`]*)`/g, "$1");
+  // images and links: ![alt](url) -> alt, [text](url) -> text
+  md = md.replace(/!\[([^\]]*)\]\([^\)]*\)/g, "$1");
+  md = md.replace(/\[([^\]]*)\]\([^\)]*\)/g, "$1");
+  // headings (#, ##, etc.)
+  md = md.replace(/^#+\s?/gm, "");
+  // blockquotes
+  md = md.replace(/^\s{0,3}>\s?/gm, "");
+  // bold/italic
+  md = md.replace(/(\*\*|__)(.*?)\1/g, "$2");
+  md = md.replace(/(\*|_)(.*?)\1/g, "$2");
+  // remaining markdown chars
+  md = md.replace(/[*_~]/g, "");
+  // strip HTML tags
+  md = md.replace(/<\/?[^>]+(>|$)/g, "");
+  // collapse whitespace
+  md = md.replace(/\s+/g, " ").trim();
+  return md;
+}
+
 const posts = allPosts.map((post) => ({
   ...post,
-  preview: post.body?.slice(0, 250) + "...",
+  preview: stripMarkdown(post.body, post.data.title).slice(0, 250) + "...",
 }));
 ---
 
 <Layout>
   <section class="all-blog-posts-page">
+    <div class="all-blog-posts-page__breadcrumbs">
+      <Breadcrumbs />
+    </div>
+    <h1 class="all-blog-posts-page__heading">
+      Ze świata <span>druku</span> - wszystkie wpisy
+    </h1>
     {
       posts.map((post) => (
         <a href={import.meta.env.BASE_URL + "/blog/" + post.data.slug}>
-        <div class="blog-post-container">
-          <Image
-            class="blog-post__image"
-            alt={post.data.slug}
-            width="100"
-            height="200"
-            src={import.meta.env.BASE_URL + post.data.img_url}
-          />
-          <h3 class="blog-post__title">{post.data.title}</h3>
-          <p class="blog-post__author">Autor: {post.data.author}</p>
-          <p class="blog-post__preview">{post.preview}</p>
-        </div>
+          <div class="blog-post-container">
+            <Image
+              class="blog-post__image"
+              alt={post.data.slug}
+              width="100"
+              height="200"
+              src={import.meta.env.BASE_URL + post.data.img_url}
+            />
+            <div>
+              <h3 class="blog-post__title">{post.data.title}</h3>
+              <p class="blog-post__author">Autor: {post.data.author}</p>
+            </div>
+            <p class="blog-post__preview">{post.preview}</p>
+          </div>
         </a>
       ))
     }
