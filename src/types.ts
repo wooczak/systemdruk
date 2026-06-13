@@ -1,4 +1,5 @@
 import { z } from "astro/zod";
+import offerColumns from "./components/Navigation/navigation.data";
 
 export const BlogSchema = z.object({
     title: z.string(),
@@ -10,5 +11,7 @@ export const BlogSchema = z.object({
   });
 
 export const OfferPageSchema = z.object({
-  slug: z.string()
+  slug: z.string(),
+  category: z.string(),
+  subcategory: z.string()
 });

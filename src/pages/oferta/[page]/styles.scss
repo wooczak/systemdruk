@@ -1,0 +1,11 @@
+.offer-page {
+    display: grid;
+    grid-template-columns: 75% 1fr;
+
+    &__aside {
+        &__heading {
+            color: var(--blue-primary);
+            font-weight: 600;
+        }
+    }
+}

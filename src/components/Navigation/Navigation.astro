@@ -2,6 +2,7 @@
 import SecondaryButton from "../Buttons/SecondaryButton.astro";
 import "./Navigation.styles.scss";
 import { Icon } from "astro-icon/components";
+import offerColumns from "./navigation.data";
 ---
 
 <nav id="navigation">
@@ -55,77 +56,18 @@ import { Icon } from "astro-icon/components";
     <SecondaryButton title="Skontaktuj sie z nami" icon="mdi:arrow-right" />
   </div>
   <div id="navigation__offer-container">
-    <div class="nav-offer-column">
-      <p class="nav-offer-category">Druk offsetowy i cyfrowy</p>
-      <ul class="sub-category-list">
-        <li><a href="#">Wizytówki</a></li>
-        <li><a href="#">Notesy</a></li>
-        <li><a href="#">Katalogi szyte</a></li>
-        <li><a href="#">Katalogi klejone</a></li>
-        <li><a href="#">Katalogi z registrami</a></li>
-        <li><a href="#">Segregatory</a></li>
-        <li><a href="#">Plakaty</a></li>
-        <li><a href="#">Ulotki</a></li>
-        <li><a href="#">Teczki firmowe</a></li>
-        <li>
-          <a href="/systemdruk/oferta/papier-firmowy-system-druk-krakow"
-            >Papier firmowy</a
-          >
-        </li>
-        <li><a href="#">Kalendarze</a></li>
-        <li><a href="#">Biuwary</a></li>
-        <li><a href="#">Karty plastikowe</a></li>
-        <li><a href="#">Opakowania kartonowe</a></li>
-      </ul>
-    </div>
-
-    <div class="nav-offer-column">
-      <p class="nav-offer-category">Gadżety reklamowe</p>
-      <ul class="sub-category-list">
-        <li><a href="#">Gadżety biurowe</a></li>
-        <li><a href="#">Ceramika z nadrukiem</a></li>
-        <li><a href="#">Smycze reklamowe</a></li>
-        <li><a href="#">Parasole z logo</a></li>
-        <li><a href="#">Koszulki z logo</a></li>
-        <li><a href="#">Breloki</a></li>
-        <li><a href="#">Pendrive</a></li>
-        <li><a href="#">Kalendarze firmowe</a></li>
-        <li><a href="#">Notesy biurkowe</a></li>
-        <li><a href="#">Elektronika z logo</a></li>
-      </ul>
-    </div>
-
-    <div class="nav-offer-column">
-      <p class="nav-offer-category">Reklama zewnętrzna</p>
-      <ul class="sub-category-list">
-        <li><a href="#">Rollupy reklamowe</a></li>
-        <li><a href="#">Ścianki reklamowe</a></li>
-        <li><a href="#">Ścianki LED</a></li>
-        <li><a href="#">Standy</a></li>
-        <li><a href="#">Flagi reklamowe</a></li>
-        <li><a href="#">Trybunki i lady</a></li>
-        <li><a href="#">Obrusy firmowe</a></li>
-        <li><a href="#">Namioty reklamowe</a></li>
-        <li><a href="#">Kasetony i pylony</a></li>
-        <li><a href="#">Reklama świetlna</a></li>
-        <li><a href="#">Reklama 3D</a></li>
-      </ul>
-    </div>
-
-    <div class="nav-offer-column">
-      <p class="nav-offer-category">Pudełka i torby z logo</p>
-      <ul class="sub-category-list">
-        <li><a href="#">Torby bawełniane</a></li>
-        <li><a href="#">Torby papierowe</a></li>
-        <li><a href="#">Torby firmowe</a></li>
-        <li><a href="#">Torby na wino</a></li>
-        <li><a href="#">Pudełka z magnesem</a></li>
-        <li><a href="#">Pudełka fasonowe</a></li>
-        <li><a href="#">Pudełka z nadrukiem</a></li>
-        <li><a href="#">Nadruk na pudełkach</a></li>
-        <li><a href="#">Projekty firmowe</a></li>
-      </ul>
-    </div>
+    {offerColumns.map((col) => (
+      <div class="nav-offer-column">
+        <p class="nav-offer-category">{col.category}</p>
+        <ul class="sub-category-list">
+          {col.links.map((link) => (
+            <li>
+              <a href={link.href && link.href.startsWith("/") ? `${import.meta.env.BASE_URL}${link.href}` : link.href}>{link.text}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
   </div>
 </nav>
 

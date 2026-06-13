@@ -1,15 +1,17 @@
 ---
 import Layout from "../../../layout/index.astro";
-import { render } from 'astro:content';
-import { getCollection } from 'astro:content';
+import { render } from "astro:content";
+import { getCollection } from "astro:content";
+import "./styles.scss";
+import OfferColumn from "../../../components/Navigation/navigation.data";
 
 export async function getStaticPaths() {
-    const offerPages = await getCollection("oferta");
+  const offerPages = await getCollection("oferta");
 
-    return offerPages.map((offer) => ({
-        params: { page: offer.data.slug },
-        props: { offer }
-    }));
+  return offerPages.map((offer) => ({
+    params: { page: offer.data.slug },
+    props: { offer },
+  }));
 }
 
 const { offer } = Astro.props;
@@ -17,7 +19,33 @@ const { Content } = await render(offer);
 ---
 
 <Layout>
-    <section class="offer-page">
-        <Content />
-    </section>
-</Layout>
+  <section class="offer-page">
+    <main class="offer-page__main">
+      <Content />
+    </main>
+    <aside class="offer-page__aside">
+      <h5 class="offer-page__aside__heading">Zobacz takze</h5>
+      <ul class="offer-page__aside__offer-list">
+        {
+          OfferColumn.filter((col) => col.category === offer.data.category)
+            .reduce((acc, col) => acc.concat(col.links), [])
+            .filter(
+              (link) =>
+                decodeURIComponent(link.href.replace(/^\/?oferta\/?/, "")) !==
+                offer.data.slug,
+            )
+            .map((link) => {
+              const slug = decodeURIComponent(link.href.replace(/^\/?oferta\/?/, ""));
+              return (
+                <li class="offer-page__aside__offer">
+                  <a href={`${import.meta.env.BASE_URL}/oferta/${slug}`}>
+                    {link.text}
+                  </a>
+                </li>
+              );
+            })
+        }
+      </ul>
+    </aside>
+  </section></Layout
+>
