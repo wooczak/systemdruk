@@ -1,11 +1,6 @@
 @use "../../styles/mixins" as *;
 
 #process {
-  @include desktop {
-    margin-top: 0;
-    padding-inline: 1rem;
-  }
-
   &__title {
     margin-bottom: 1.5rem;
     align-self: flex-start;
@@ -25,12 +20,6 @@
 
     span {
       color: var(--blue-primary);
-    }
-
-    @include desktop {
-      width: 100%;
-      margin-left: 0;
-      line-height: 2em;
     }
   }
 
@@ -67,11 +56,6 @@
     opacity 0.5s ease,
     transform 0.5s ease;
 
-  @include desktop {
-    width: 100%;
-    grid-template-columns: 1fr;
-  }
-
   &:last-of-type {
     border-bottom: none;
   }
@@ -94,7 +78,6 @@
     .process-container__title {
       color: var(--blue-primary);
     }
-
   }
 
   &.visible {

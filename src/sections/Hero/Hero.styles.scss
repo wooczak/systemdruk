@@ -12,28 +12,15 @@
     font-weight: 400;
   }
 
-  @include desktop {
-    padding-inline: 2rem;
-  }
-
   &__text-container {
     padding-block: 7.5vh;
     gap: 2rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-
-    @include desktop {
-      padding-block: 3.25vh;
-      gap: 1rem;
-    }
   }
 
   &__heading {
-
-    @include desktop {
-      font-size: var(--h1-size-mobile)
-    }
 
     & span {
       color: var(--blue-primary);

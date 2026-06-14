@@ -1,4 +1,4 @@
-@use '../../styles/mixins' as *;
+@use "../../styles/mixins" as *;
 
 .subheading {
   color: var(--grey-primary);
@@ -10,24 +10,9 @@
   gap: 1rem;
   align-items: center;
 
-  @include desktop {
-    font-size: 0.95rem;
-    flex-wrap: wrap;
-  }
-
   & > div {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-
-    @include desktop {
-      gap: 0;
-      width: 47%;
-
-      & > svg {
-        height: 25px;
-        width: 25px;
-      }
-    }
   }
 }

@@ -1,0 +1,40 @@
+@use "../../styles/mixins" as *;
+
+#navigation {
+  &__hamburger {
+    display: none;
+
+    @include tablet {
+      display: block;
+
+      &:hover {
+        cursor: pointer;
+        
+        & > svg {
+            color: var(--blue-primary);
+        }
+    }
+    }
+  }
+
+  &__mobile-container {
+    display: none;
+
+    @include tablet {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+  }
+
+  &__list,
+  &__cta,
+  &__offer-container
+  {
+    @include tablet {
+      display: none;
+    }
+  }
+}

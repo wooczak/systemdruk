@@ -78,10 +78,6 @@
 #navigation {
   position: relative;
 
-  @include desktop {
-    padding-inline: 1rem;
-  }
-
   &__img {
     z-index: 99;
 

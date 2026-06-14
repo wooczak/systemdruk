@@ -12,6 +12,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@iconify-json/arcticons": "^1.2.53",
     "@iconify-json/ep": "^1.2.3",
     "@iconify-json/mdi": "^1.2.3",
     "@supabase/supabase-js": "^2.108.1",

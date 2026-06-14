@@ -11,10 +11,6 @@
   overflow-x: hidden;
   padding-bottom: 0;
 
-  @include desktop {
-    padding-top: 14rem;
-  }
-
   #carousel-heading {
     opacity: 0;
     transform: translateY(30px);
@@ -49,11 +45,7 @@
   display: flex;
   overflow-x: hidden;
   margin-block: 3rem;
-
-  @include desktop {
-    margin-block: 0;
-  }
-
+  
   &__track {
     display: flex;
     width: max-content;

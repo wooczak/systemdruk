@@ -1,6 +1,7 @@
 ---
 import SecondaryButton from "../Buttons/SecondaryButton.astro";
 import "./Navigation.styles.scss";
+import "./Navigation.styles.responsive.scss";
 import { Icon } from "astro-icon/components";
 import offerColumns from "./navigation.data";
 ---
@@ -43,7 +44,7 @@ import offerColumns from "./navigation.data";
         />
       </li>
       <li class="navigation__item" id="contact-link">
-        <a href="#contact-form">
+        <a href={`${import.meta.env.BASE_URL}#contact-form`}>
           <span class="nav-elevator">
             <span class="nav-elevator__text">kontakt</span>
             <span class="nav-elevator__text nav-elevator__text--copy"
@@ -53,21 +54,45 @@ import offerColumns from "./navigation.data";
         </a>
       </li>
     </ul>
-    <SecondaryButton title="Skontaktuj sie z nami" icon="mdi:arrow-right" />
+    <SecondaryButton
+      id="navigation__cta"
+      href={`#contact-form`}
+      title="Skontaktuj sie z nami"
+      icon="mdi:arrow-right"
+    />
+    <Icon
+      name="arcticons:hamburger-menu"
+      height={40}
+      width={40}
+      id="navigation__hamburger"
+    />
   </div>
   <div id="navigation__offer-container">
-    {offerColumns.map((col) => (
-      <div class="nav-offer-column">
-        <p class="nav-offer-category">{col.category}</p>
-        <ul class="sub-category-list">
-          {col.links.map((link) => (
-            <li>
-              <a href={link.href && link.href.startsWith("/") ? `${import.meta.env.BASE_URL}${link.href}` : link.href}>{link.text}</a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    ))}
+    {
+      offerColumns.map((col) => (
+        <div class="nav-offer-column">
+          <p class="nav-offer-category">{col.category}</p>
+          <ul class="sub-category-list">
+            {col.links.map((link) => (
+              <li>
+                <a
+                  href={
+                    link.href && link.href.startsWith("/")
+                      ? `${import.meta.env.BASE_URL}${link.href}`
+                      : link.href
+                  }
+                >
+                  {link.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+  <div id="navigation__mobile-container">
+    
   </div>
 </nav>
 
