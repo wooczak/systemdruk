@@ -60,12 +60,11 @@ import offerColumns from "./navigation.data";
       title="Skontaktuj sie z nami"
       icon="mdi:arrow-right"
     />
-    <Icon
-      name="arcticons:hamburger-menu"
-      height={40}
-      width={40}
-      id="navigation__hamburger"
-    />
+    <div class="navigation__mobile__hamburger">
+      <span class="navigation__mobile__hamburger__span"></span>
+      <span class="navigation__mobile__hamburger__span"></span>
+      <span class="navigation__mobile__hamburger__span"></span>
+    </div>
   </div>
   <div id="navigation__offer-container">
     {
@@ -92,7 +91,77 @@ import offerColumns from "./navigation.data";
     }
   </div>
   <div id="navigation__mobile-container">
-    
+    <ul id="navigation__mobile-list">
+      <li class="navigation__mobile__main-item">
+        <div class="navigation__mobile__main-item__offer-btn">
+          <h2 class="navigation__mobile__main-item__title">
+            <a>oferta</a>
+          </h2>
+          <Icon
+            name="mdi:keyboard-arrow-down"
+            width={35}
+            height={35}
+            class="offer-icon"
+            color="var(--blue-primary)"
+          />
+        </div>
+        <ul class="navigation__mobile__offer-sublist">
+          {
+            offerColumns.map((col) => (
+              <li class="navigation__mobile__offer-sublist__item">
+                <h5 class="navigation__mobile__offer-sublist__item__category">
+                  {col.category}
+                  <Icon
+                    name="mdi:keyboard-arrow-down"
+                    width={16}
+                    height={16}
+                    class="offer-icon"
+                    color="var(--white-primary)"
+                  />
+                </h5>
+                <ul class="navigation__mobile__offer-sublist__item__links">
+                  {col.links.map((link) => (
+                    <li class="navigation__mobile__offer-sublist__item__links__item">
+                      <a
+                        href={
+                          link.href && link.href.startsWith("/")
+                            ? `${import.meta.env.BASE_URL}${link.href}`
+                            : link.href
+                        }
+                      >
+                        {link.text}
+                      </a>
+                      <Icon
+                        name="mdi:keyboard-arrow-right"
+                        width={16}
+                        height={16}
+                        class="offer-icon"
+                        color="var(--white-primary)"
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))
+          }
+        </ul>
+      </li>
+      <li class="navigation__mobile__main-item">
+        <h2 class="navigation__mobile__main-item__title">
+          <a href={`${import.meta.env.BASE_URL}#contact-form`}>kontakt</a>
+        </h2>
+      </li>
+      <li class="navigation__mobile__main-item">
+        <h2 class="navigation__mobile__main-item__title">
+          <a href={`${import.meta.env.BASE_URL}/blog`}>blog</a>
+        </h2>
+      </li>
+      <li class="navigation__mobile__main-item">
+        <h2 class="navigation__mobile__main-item__title">
+          <a href={`${import.meta.env.BASE_URL}/faq`}>faq</a>
+        </h2>
+      </li>
+    </ul>
   </div>
 </nav>
 
@@ -112,8 +181,41 @@ import offerColumns from "./navigation.data";
     }
   });
 
-  offerBtn?.addEventListener("click", (e) => {
+  offerBtn?.addEventListener("click", () => {
     offerContainer?.classList.toggle("active");
-    offerBtn.classList.toggle("active");
+    offerBtn?.classList.toggle("active");
+  });
+
+  // Mobile navigation
+  const mobileOfferBtn = document.querySelector(
+    ".navigation__mobile__main-item__offer-btn",
+  );
+  const mobileOfferCategoryTitles = document.querySelectorAll(
+    ".navigation__mobile__offer-sublist__item__category",
+  );
+  const hamburger = document.querySelector(".navigation__mobile__hamburger");
+  const mobileContainer = document.getElementById(
+    "navigation__mobile-container",
+  );
+
+  mobileOfferBtn?.addEventListener("click", () => {
+    const mobileOfferSublist = document.querySelector(
+      ".navigation__mobile__offer-sublist",
+    );
+    mobileOfferSublist?.classList.toggle("active");
+    mobileOfferBtn?.classList.toggle("active");
+  });
+
+  mobileOfferCategoryTitles.forEach((title) => {
+    title.addEventListener("click", () => {
+      title.classList.toggle("active");
+      const sublist = title.nextElementSibling as HTMLElement;
+      sublist.classList.toggle("active");
+    });
+  });
+
+  hamburger?.addEventListener("click", () => {
+    mobileContainer?.classList.toggle("active");
+    hamburger.classList.toggle("navigation__mobile__hamburger--active");
   });
 </script>
