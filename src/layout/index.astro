@@ -12,7 +12,7 @@ import Footer from "../components/Footer/Footer.astro";
       rel="stylesheet"
     />
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>System Druk</title>
   </head>
   <body>
@@ -100,11 +100,13 @@ import Footer from "../components/Footer/Footer.astro";
     color: var(--black-primary);
     background-color: var(--bg-color);
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
+
 
   main,
   section {
-    padding-inline: 80px;
+    padding-inline: clamp(16px, 5vw, 80px);
     padding-block: 0.5rem;
     margin-inline: auto;
   }
