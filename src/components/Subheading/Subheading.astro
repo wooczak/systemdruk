@@ -1,20 +1,20 @@
 ---
 interface Props {
-    labels: string[];
+  labels: string[];
 }
 
-import {Icon} from "astro-icon/components";
-const {labels} = Astro.props;
+import { Icon } from "astro-icon/components";
+const { labels } = Astro.props;
 import "./Subheading.styles.scss";
 ---
 
 <h5 class="subheading">
-    {
-        labels.map((label) => (
-                <div>
-                    <Icon name="fistaszek" size="30"/>
-                    {label}
-                </div>
-        ))
-    }
+  {
+    labels.map((label) => (
+      <div>
+        <Icon name="fistaszek" size="30" />
+        {label}
+      </div>
+    ))
+  }
 </h5>

@@ -1,0 +1,28 @@
+@use '../../styles/mixins' as *;
+
+#hero {
+    h1 {
+        @include tablet {
+            font-size: 6rem;
+        }
+
+        @include mobile {
+            font-size: 3.5rem;
+        }
+    }
+
+    .subheading {
+        @include mobile {
+            display: flex;
+            flex-wrap: wrap;
+        }
+    }
+
+    &__secondary-mobile-btn {
+        display: none;
+
+        @include tablet {
+            display: block;
+        }
+    }
+}

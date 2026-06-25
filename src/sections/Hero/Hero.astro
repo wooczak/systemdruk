@@ -1,6 +1,8 @@
 ---
 import "./Hero.styles.scss";
+import "./Hero.responsive.scss";
 import Subheading from "../../components/Subheading/Subheading.astro";
+import SecondaryButton from "../../components/Buttons/SecondaryButton.astro";
 ---
 
 <section id="hero">
@@ -10,49 +12,60 @@ import Subheading from "../../components/Subheading/Subheading.astro";
       <div>które wspierają Twój biznes</div>
     </h1>
     <Subheading
-      labels={["Poligrafia od A do Z", "Fachowe doradztwo", "Oszczędność czasu"]}
+      labels={[
+        "Poligrafia od A do Z",
+        "Fachowe doradztwo",
+        "Oszczędność czasu",
+      ]}
+    />
+    <SecondaryButton
+      id="hero__secondary-mobile-btn"
+      href="/kontakt"
+      title="Zamów bezplatna wycene"
     />
   </div>
 </section>
 
-<script>
-  const spanText = document.querySelector(
-    "#hero__heading span",
-  ) as HTMLSpanElement;
+<script is:inline>
+  (() => {
+    const spanText = document.querySelector("#hero__heading span");
+    if (!spanText) {
+      return;
+    }
 
-  let textsToShowcase = [
-    "ulotki,",
-    "plakaty,",
-    "katalogi,",
-    "naklejki,",
-    "teczki,",
-    "gadżety,",
-  ];
+    const textsToShowcase = [
+      "ulotki,",
+      "plakaty,",
+      "katalogi,",
+      "naklejki,",
+      "teczki,",
+      "gadżety,",
+    ];
 
-  const ANIMATE_OUT_DURATION = 300;
-  const ANIMATE_IN_DURATION = 300;
+    const ANIMATE_OUT_DURATION = 300;
+    const ANIMATE_IN_DURATION = 300;
+    const DISPLAY_DURATION = 2500;
 
-  const FAST_ANIMATE_DURATION = 100; // Faster animations during fast cycling
+    let currentIndex = 0;
 
-  let currentIndex = 0;
-  let isFastMode = true;
-
-    const animateOutDuration = isFastMode ? FAST_ANIMATE_DURATION : ANIMATE_OUT_DURATION;
-    const animateInDuration = isFastMode ? FAST_ANIMATE_DURATION : ANIMATE_IN_DURATION;
-
-    // Set animation duration via CSS custom property
-    spanText.style.setProperty('--animate-duration', `${animateOutDuration}ms`);
-
-    spanText.classList.add("animate-out");
-
-    setTimeout(() => {
-      spanText.classList.remove("animate-out");
-      currentIndex = (currentIndex + 1) % textsToShowcase.length;
-      spanText.textContent = textsToShowcase[currentIndex];
-      spanText.classList.add("animate-in");
+    function cycleHeroText() {
+      spanText.classList.add("animate-out");
+      spanText.style.setProperty("--animate-duration", `${ANIMATE_OUT_DURATION}ms`);
 
       setTimeout(() => {
-        spanText.classList.remove("animate-in");
-      }, animateInDuration);
-    }, animateOutDuration);
+        spanText.classList.remove("animate-out");
+        currentIndex = (currentIndex + 1) % textsToShowcase.length;
+        spanText.textContent = textsToShowcase[currentIndex];
+        spanText.classList.add("animate-in");
+        spanText.style.setProperty("--animate-duration", `${ANIMATE_IN_DURATION}ms`);
+
+        setTimeout(() => {
+          spanText.classList.remove("animate-in");
+          setTimeout(cycleHeroText, DISPLAY_DURATION);
+        }, ANIMATE_IN_DURATION);
+      }, ANIMATE_OUT_DURATION);
+    }
+
+    setTimeout(cycleHeroText, DISPLAY_DURATION);
+  })();
 </script>

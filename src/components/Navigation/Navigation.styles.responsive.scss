@@ -45,6 +45,7 @@
         align-items: flex-end;
         justify-content: flex-start;
         top: 0;
+        z-index: 999;
         left: 0;
         width: 100%;
         min-height: 100vh;
@@ -169,8 +170,8 @@
     @include tablet {
       display: flex;
       flex-direction: column;
-      width: 35px;
-      height: 25px;
+      width: 30px;
+      height: 20px;
       justify-content: space-between;
       gap: 0.1rem;
       z-index: 9999;
