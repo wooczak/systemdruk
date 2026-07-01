@@ -3,8 +3,9 @@
 #process {
     &__subtitle {
         @include tablet {
-            font-size: 25px;
+            font-size: 18px;
             width: 100%;
+            margin-block: 0;
         }
     }
 }

@@ -1,0 +1,64 @@
+@use "../../styles/mixins" as *;
+
+.blog-overview {
+    @include tablet {
+        margin-top: -4rem;
+
+        &__button {
+            margin-top: 0;
+        }
+
+        &__container {
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(3, auto);
+            grid-template-areas: none;
+            row-gap: 2rem;
+        }
+
+        &__main-post,
+        &__sidebar-post-1,
+        &__sidebar-post-2 {
+            grid-area: auto;
+
+            &__content {
+                position: relative;
+            }
+
+            & img {
+                height: auto;
+            }
+        }
+
+        &__main-post {
+            height: auto;
+
+            & img {
+                width: 50%;
+                aspect-ratio: 1 / 1;
+            }
+
+            & > a {
+                display: flex;
+                flex-direction: row-reverse;
+                align-items: flex-end;
+                justify-content: space-between;
+            }
+        }
+
+        &__sidebar-post-1 {
+            & > a {
+                flex-direction: row-reverse;
+                justify-content: space-between;
+
+                & > img {
+                    width: 50%;
+                    aspect-ratio: 1 / 1;
+                }
+            }
+        }
+
+        &__sidebar-post-2 {
+            display: none;
+        }
+    }
+}

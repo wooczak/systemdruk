@@ -1,0 +1,83 @@
+@use "../../styles/mixins" as *;
+
+.offer {
+    &__mobile-heading {
+        display: block;
+        visibility: visible;
+        opacity: 1;
+        z-index: 150;
+        font-size: 25px;
+        font-weight: 500;
+        color: var(--grey-primary);
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+
+        &.active {
+            color: var(--black-primary);
+        }
+    }
+
+    /* mobile-first: hide desktop slide overlay so it doesn't cover headings */
+    &__content__slide-overlay {
+        display: none;
+    }
+
+    @include tablet {
+        &__content-grid {
+            grid-template-columns: 1fr;
+            padding-block: 1rem;
+            height: auto;
+        }
+        
+        &__content-grid-left {
+            display: none;
+        }
+
+        &__content-text {
+            grid-template-columns: repeat(2, 1fr);
+        
+            a {
+                font-size: 1rem;
+            }
+        }
+
+        &__content__text-container {
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            position: relative;
+            top: unset;
+            left: unset;
+            width: auto;
+            transition: max-height .45s cubic-bezier(.2,.8,.2,1), opacity .3s ease, margin .3s ease;
+            will-change: max-height, opacity;
+
+            &.active {
+                opacity: 1;
+                max-height: fit-content;
+                margin-bottom: 1.5rem;
+
+                .offer__content-subheading {
+                    display: block;
+                }
+
+                .offer__content-text {
+                    display: grid;
+                }
+            }
+
+            .offer__content-subheading,
+            .offer__content-text {
+                display: block;
+            }
+        }
+
+        &__image {
+            display: none;
+        }
+
+        &__content__slide-overlay {
+            display: block;
+        }
+    }
+}

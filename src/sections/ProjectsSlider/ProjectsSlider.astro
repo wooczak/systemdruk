@@ -80,12 +80,21 @@ import Image3 from "../../assets/images/hero-slider/3.webp";
     let dragOffset = 0; // cumulative drag adjustment on top of scrollBase
     let rafId: number;
 
+    let manualHorizontalScroll = false;
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let lastScrollY = window.scrollY;
+
     // ── Drag state ────────────────────────────────────────────────────────────
     let isDragging = false;
     let dragStartX = 0;
     let dragStartOffset = 0;
     let lastDragX = 0;
     let dragVelocity = 0; // for momentum on release
+
+    function isMobileBreakpoint() {
+      return window.matchMedia("(max-width: 1024px)").matches;
+    }
 
     function getMaxShift(): number {
       const firstCard = slider!.querySelector(
@@ -109,7 +118,19 @@ import Image3 from "../../assets/images/hero-slider/3.webp";
       return -progress * getMaxShift() * 1.2;
     }
 
+    function resetTransformForManualScroll() {
+      manualHorizontalScroll = true;
+      cancelAnimationFrame(rafId);
+      current = 0;
+      target = 0;
+      dragOffset = 0;
+      scrollBase = 0;
+      slider!.style.transform = "";
+    }
+
     function tick() {
+      if (manualHorizontalScroll) return;
+
       const maxShift = getMaxShift();
       const rawTarget = scrollBase + dragOffset;
       target = clamp(rawTarget, -maxShift, 0);
@@ -135,19 +156,42 @@ import Image3 from "../../assets/images/hero-slider/3.webp";
     window.addEventListener(
       "scroll",
       () => {
-        scrollBase = calcScrollBase();
-        startLoop();
+        const verticalDistance = Math.abs(window.scrollY - lastScrollY);
+
+        if (manualHorizontalScroll && verticalDistance > 10) {
+          manualHorizontalScroll = false;
+          dragOffset = 0;
+          current = 0;
+          target = 0;
+          section!.scrollLeft = 0;
+          scrollBase = calcScrollBase();
+          startLoop();
+        } else if (!manualHorizontalScroll) {
+          scrollBase = calcScrollBase();
+          startLoop();
+        }
+
+        lastScrollY = window.scrollY;
       },
       { passive: true },
     );
 
     window.addEventListener("resize", () => {
-      scrollBase = calcScrollBase();
-      startLoop();
+      if (!manualHorizontalScroll) {
+        scrollBase = calcScrollBase();
+        startLoop();
+      }
     });
 
     // ── Pointer / drag handlers ───────────────────────────────────────────────
     section.addEventListener("pointerdown", (e: PointerEvent) => {
+      if (e.pointerType === "touch" || isMobileBreakpoint()) {
+        touchStartX = e.clientX;
+        touchStartY = e.clientY;
+        manualHorizontalScroll = false;
+        return;
+      }
+
       isDragging = true;
       dragStartX = e.clientX;
       dragStartOffset = dragOffset;
@@ -159,6 +203,17 @@ import Image3 from "../../assets/images/hero-slider/3.webp";
     });
 
     section.addEventListener("pointermove", (e: PointerEvent) => {
+      if (e.pointerType === "touch" || isMobileBreakpoint()) {
+        const dx = e.clientX - touchStartX;
+        const dy = e.clientY - touchStartY;
+
+        if (!manualHorizontalScroll && Math.abs(dx) > 10 && Math.abs(dx) > Math.abs(dy)) {
+          resetTransformForManualScroll();
+        }
+
+        return;
+      }
+
       if (!isDragging) return;
       const dx = e.clientX - dragStartX;
       dragVelocity = e.clientX - lastDragX;
@@ -167,6 +222,7 @@ import Image3 from "../../assets/images/hero-slider/3.webp";
     });
 
     const endDrag = (e: PointerEvent) => {
+      if (e.pointerType === "touch" || isMobileBreakpoint()) return;
       if (!isDragging) return;
       isDragging = false;
       section!.style.cursor = "grab";

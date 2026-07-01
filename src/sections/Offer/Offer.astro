@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import "./Offer.styles.scss";
+import "./Offer.responsive.styles.scss";
 import FirstCategorySrc from "../../assets/images/offer/druk-cyfrowy.webp";
 import SecondCategorySrc from "../../assets/images/offer/gadzety.webp";
 import ThirdCategorySrc from "../../assets/images/offer/reklama-zewnetrzna.webp";
@@ -36,6 +37,7 @@ import FourthCategorySrc from "../../assets/images/offer/pudelka-i-torby.webp";
           ])}
         />
         <!-- 1 -->
+        <h5 class="offer__mobile-heading active">Druk offsetowy i cyfrowy</h5>
         <div class="offer__content__text-container active">
           <p class="offer__content-subheading">
             Specjalizujemy się w produkcji zleceń średnio- i niskonakładowych
@@ -80,6 +82,7 @@ import FourthCategorySrc from "../../assets/images/offer/pudelka-i-torby.webp";
         </div>
 
         <!-- 2 -->
+        <h5 class="offer__mobile-heading">Gadzety reklamowe</h5>
         <div class="offer__content__text-container">
           <p class="offer__content-subheading">
             Oferujemy szeroki wybór gadżetów reklamowych — od prostych produktów
@@ -122,6 +125,7 @@ import FourthCategorySrc from "../../assets/images/offer/pudelka-i-torby.webp";
         </div>
 
         <!-- 3 -->
+        <h5 class="offer__mobile-heading">Reklama zewnetrzna</h5>
         <div class="offer__content__text-container">
           <p class="offer__content-subheading">
             Wspieramy klientów w działaniach outdoorowych, targach i
@@ -162,6 +166,7 @@ import FourthCategorySrc from "../../assets/images/offer/pudelka-i-torby.webp";
         </div>
 
         <!-- 4 -->
+        <h5 class="offer__mobile-heading">Pudelka i torby z logo</h5>
         <div class="offer__content__text-container">
           <p class="offer__content-subheading">
             Projektujemy i produkujemy opakowania oraz torby firmowe, które są
@@ -209,20 +214,17 @@ import FourthCategorySrc from "../../assets/images/offer/pudelka-i-torby.webp";
 </section>
 
 <script>
-  const headings = document.querySelectorAll(".offer__content-heading");
-  const contents = document.querySelectorAll(".offer__content__text-container");
-  const image = document.querySelector(".offer__image");
-  const overlay = document.querySelector(".offer__content__slide-overlay");
-  const rightContent = document.querySelector(
-    ".offer__content-grid-right-content",
-  );
+  const headings = document.querySelectorAll<HTMLHeadingElement>(".offer__content-heading");
+  const contents = document.querySelectorAll<HTMLDivElement>(".offer__content__text-container");
+  const image = document.querySelector<HTMLImageElement>(".offer__image");
+  const overlay = document.querySelector<HTMLDivElement>(".offer__content__slide-overlay");
   let isAnimating = false;
 
-  const categoryImages = image ? JSON.parse(image.dataset.images || "[]") : [];
+  const categoryImages: string[] = image ? JSON.parse(image.dataset.images || "[]") : [];
 
   // Set initial overlay state (out if there's an active content)
   if (overlay) {
-    overlay.style.transform = document.querySelector(
+    overlay.style.transform = document.querySelector<HTMLDivElement>(
       ".offer__content__text-container.active",
     )
       ? "translateX(100%)"
@@ -242,7 +244,7 @@ import FourthCategorySrc from "../../assets/images/offer/pudelka-i-torby.webp";
 
       // Begin: slide overlay in to fully cover
       if (overlay) {
-        const onCovered = (e) => {
+const onCovered = (e: TransitionEvent) => {
           if (e.propertyName !== "transform") return;
           overlay.removeEventListener("transitionend", onCovered);
 
@@ -262,7 +264,7 @@ import FourthCategorySrc from "../../assets/images/offer/pudelka-i-torby.webp";
             overlay.style.transform = "translateX(100%)";
           });
 
-          const onRevealed = (ev) => {
+          const onRevealed = (ev: TransitionEvent) => {
             if (ev.propertyName !== "transform") return;
             overlay.removeEventListener("transitionend", onRevealed);
             isAnimating = false;
@@ -284,6 +286,26 @@ import FourthCategorySrc from "../../assets/images/offer/pudelka-i-torby.webp";
         contents[index].classList.add("active");
         if (image && categoryImages[index]) image.src = categoryImages[index];
         isAnimating = false;
+      }
+    });
+  });
+
+  // Mobile: toggle content when tapping mobile headings (h5)
+  const mobileHeadings = document.querySelectorAll('.offer__mobile-heading');
+  mobileHeadings.forEach((mHeading) => {
+    mHeading.addEventListener('click', () => {
+      if (mHeading.classList.contains('active')) return;
+
+      const currentHeading = document.querySelector('.offer__mobile-heading.active');
+      const currentContent = document.querySelector('.offer__content__text-container.active');
+
+      if (currentHeading) currentHeading.classList.remove('active');
+      if (currentContent) currentContent.classList.remove('active');
+
+      mHeading.classList.add('active');
+      const related = mHeading.nextElementSibling;
+      if (related && related.classList.contains('offer__content__text-container')) {
+        related.classList.add('active');
       }
     });
   });
