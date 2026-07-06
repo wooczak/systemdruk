@@ -1,0 +1,25 @@
+@use "../../styles/mixins" as *;
+
+.footer {
+    @include tablet {
+        padding-inline: 2rem;
+        padding-block: 2rem;
+        grid-template-columns: 100%;
+        grid-template-rows: repeat(2, auto);
+
+        &__right-col {
+            order: 1;
+            border-top: none;
+            row-gap: 2rem;
+
+            @include mobile {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        &__copyright {
+            grid-column: unset;
+            order: 2;
+        }
+    }
+}

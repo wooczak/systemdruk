@@ -1,117 +1,170 @@
 ---
-import './FAQ.styles.scss';
-import Subheading from '../../components/Subheading/Subheading.astro';
-import { Icon } from 'astro-icon/components';
+import "./FAQ.styles.scss";
+import "./FAQ.responsive.styles.scss";
+import Subheading from "../../components/Subheading/Subheading.astro";
+import { Icon } from "astro-icon/components";
 ---
 
 <section id="faq" class="faq">
   <h1 class="faq__title animate-on-scroll">Co warto wiedzieć</h1>
   <div class="faq__grid animate-on-scroll">
     <nav class="faq__categories">
-      <button class="faq__category faq__category--active" data-category="delivery">
-        <Subheading labels={['Formy dostawy']} />
+      <button
+        class="faq__category faq__category--active"
+        data-category="delivery"
+      >
+        <Subheading labels={["Formy dostawy"]} />
       </button>
       <button class="faq__category" data-category="orders">
-        <Subheading labels={['Realizacja zamówień']} />
+        <Subheading labels={["Realizacja zamówień"]} />
       </button>
       <button class="faq__category" data-category="files">
-        <Subheading labels={['Praca z plikami graficznymi']} />
+        <Subheading labels={["Praca z plikami graficznymi"]} />
       </button>
     </nav>
 
     <div class="faq__content">
+      <button class="faq__category faq__category--inline" data-category="delivery">
+        <Subheading labels={["Formy dostawy"]} />
+      </button>
       <div class="faq__items" data-category="delivery">
         <div class="faq__item">
           <button class="faq__question">
             <h5 class="faq__question-text">Jakie formy dostawy oferujecie?</h5>
-            <Icon name="ep:arrow-down" size="24" class="faq__arrow"/>
+            <Icon name="ep:arrow-down" size="24" class="faq__arrow" />
           </button>
           <div class="faq__answer">
-            <p>Oferujemy dostawę kurierem, odbiór osobisty w naszym punkcie oraz przesyłkę pocztową. Czas dostawy zależy od wybranej opcji i lokalizacji.</p>
+            <p>
+              Oferujemy dostawę kurierem, odbiór osobisty w naszym punkcie oraz
+              przesyłkę pocztową. Czas dostawy zależy od wybranej opcji i
+              lokalizacji.
+            </p>
           </div>
         </div>
 
         <div class="faq__item">
           <button class="faq__question">
             <h5 class="faq__question-text">Czy dostawa jest płatna?</h5>
-            <Icon name="ep:arrow-down" size="24" class="faq__arrow"/>
+            <Icon name="ep:arrow-down" size="24" class="faq__arrow" />
           </button>
           <div class="faq__answer">
-            <p>Koszt dostawy zależy od wartości zamówienia. Przy zamówieniach powyżej 500 zł dostawa kurierem jest bezpłatna.</p>
+            <p>
+              Koszt dostawy zależy od wartości zamówienia. Przy zamówieniach
+              powyżej 500 zł dostawa kurierem jest bezpłatna.
+            </p>
           </div>
         </div>
 
         <div class="faq__item">
           <button class="faq__question">
             <h5 class="faq__question-text">Jak długo trwa dostawa?</h5>
-            <Icon name="ep:arrow-down" size="24" class="faq__arrow"/>
+            <Icon name="ep:arrow-down" size="24" class="faq__arrow" />
           </button>
           <div class="faq__answer">
-            <p>Standardowa dostawa kurierem trwa 1-2 dni robocze, poczta 3-5 dni roboczych. Odbiór osobisty możliwy jest w dniu gotowości zamówienia.</p>
+            <p>
+              Standardowa dostawa kurierem trwa 1-2 dni robocze, poczta 3-5 dni
+              roboczych. Odbiór osobisty możliwy jest w dniu gotowości
+              zamówienia.
+            </p>
           </div>
         </div>
       </div>
-
+      <button class="faq__category faq__category--inline" data-category="orders">
+        <Subheading labels={["Realizacja zamówień"]} />
+      </button>
       <div class="faq__items faq__items--hidden" data-category="orders">
         <div class="faq__item">
           <button class="faq__question">
             <h5 class="faq__question-text">Jaki jest minimalny nakład?</h5>
-            <Icon name="ep:arrow-down" size="24" class="faq__arrow"/>
+            <Icon name="ep:arrow-down" size="24" class="faq__arrow" />
           </button>
           <div class="faq__answer">
-            <p>Minimalny nakład zależy od rodzaju produktu. Dla większości produktów offsetowych to 100 sztuk, dla cyfrowych - nawet 1 egzemplarz.</p>
+            <p>
+              Minimalny nakład zależy od rodzaju produktu. Dla większości
+              produktów offsetowych to 100 sztuk, dla cyfrowych - nawet 1
+              egzemplarz.
+            </p>
           </div>
         </div>
 
         <div class="faq__item">
           <button class="faq__question">
-            <h5 class="faq__question-text">Jak długo trwa realizacja zamówienia?</h5>
-            <Icon name="ep:arrow-down" size="24" class="faq__arrow"/>
+            <h5 class="faq__question-text">
+              Jak długo trwa realizacja zamówienia?
+            </h5>
+            <Icon name="ep:arrow-down" size="24" class="faq__arrow" />
           </button>
           <div class="faq__answer">
-            <p>Standardowy czas realizacji to 3-5 dni roboczych od akceptacji projektu. Oferujemy również usługę ekspresową (24h) za dodatkową opłatą.</p>
+            <p>
+              Standardowy czas realizacji to 3-5 dni roboczych od akceptacji
+              projektu. Oferujemy również usługę ekspresową (24h) za dodatkową
+              opłatą.
+            </p>
           </div>
         </div>
 
         <div class="faq__item">
           <button class="faq__question">
             <h5 class="faq__question-text">Czy mogę anulować zamówienie?</h5>
-            <Icon name="ep:arrow-down" size="24" class="faq__arrow"/>
+            <Icon name="ep:arrow-down" size="24" class="faq__arrow" />
           </button>
           <div class="faq__answer">
-            <p>Zamówienie można anulować bez dodatkowych kosztów przed rozpoczęciem produkcji. Po rozpoczęciu druku pobieramy opłatę za wykonane już prace.</p>
+            <p>
+              Zamówienie można anulować bez dodatkowych kosztów przed
+              rozpoczęciem produkcji. Po rozpoczęciu druku pobieramy opłatę za
+              wykonane już prace.
+            </p>
           </div>
         </div>
       </div>
 
+      <button class="faq__category faq__category--inline" data-category="files">
+        <Subheading labels={["Praca z plikami graficznymi"]} />
+      </button>
       <div class="faq__items faq__items--hidden" data-category="files">
         <div class="faq__item">
           <button class="faq__question">
-            <h5 class="faq__question-text">W jakich formatach mogę przesłać pliki?</h5>
-            <Icon name="ep:arrow-down" size="24" class="faq__arrow"/>
+            <h5 class="faq__question-text">
+              W jakich formatach mogę przesłać pliki?
+            </h5>
+            <Icon name="ep:arrow-down" size="24" class="faq__arrow" />
           </button>
           <div class="faq__answer">
-            <p>Akceptujemy pliki PDF, AI, CDR, INDD, PSD. Najlepiej przesyłać pliki PDF z wykrwawieniem 3mm i znakami drukarskimi.</p>
+            <p>
+              Akceptujemy pliki PDF, AI, CDR, INDD, PSD. Najlepiej przesyłać
+              pliki PDF z wykrwawieniem 3mm i znakami drukarskimi.
+            </p>
           </div>
         </div>
 
         <div class="faq__item">
           <button class="faq__question">
-            <h5 class="faq__question-text">Jakie muszą być parametry plików do druku?</h5>
-            <Icon name="ep:arrow-down" size="24" class="faq__arrow"/>
+            <h5 class="faq__question-text">
+              Jakie muszą być parametry plików do druku?
+            </h5>
+            <Icon name="ep:arrow-down" size="24" class="faq__arrow" />
           </button>
           <div class="faq__answer">
-            <p>Rozdzielczość minimum 300 dpi, profil kolorów CMYK, wykrwawienie 3mm, czcionki przekonwertowane na krzywe lub osadzone.</p>
+            <p>
+              Rozdzielczość minimum 300 dpi, profil kolorów CMYK, wykrwawienie
+              3mm, czcionki przekonwertowane na krzywe lub osadzone.
+            </p>
           </div>
         </div>
 
         <div class="faq__item">
           <button class="faq__question">
-            <h5 class="faq__question-text">Czy sprawdzacie pliki przed drukiem?</h5>
-            <Icon name="ep:arrow-down" size="24" class="faq__arrow"/>
+            <h5 class="faq__question-text">
+              Czy sprawdzacie pliki przed drukiem?
+            </h5>
+            <Icon name="ep:arrow-down" size="24" class="faq__arrow" />
           </button>
           <div class="faq__answer">
-            <p>Tak, każdy plik jest weryfikowany przez nasz dział przygotowalni. W razie problemów kontaktujemy się z klientem i wysyłamy korektę do akceptacji.</p>
+            <p>
+              Tak, każdy plik jest weryfikowany przez nasz dział przygotowalni.
+              W razie problemów kontaktujemy się z klientem i wysyłamy korektę
+              do akceptacji.
+            </p>
           </div>
         </div>
       </div>
@@ -120,55 +173,57 @@ import { Icon } from 'astro-icon/components';
 </section>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const categoryButtons = document.querySelectorAll('.faq__category');
-    const contentSections = document.querySelectorAll('.faq__items');
-    const questionButtons = document.querySelectorAll('.faq__question');
+  document.addEventListener("DOMContentLoaded", () => {
+    const categoryButtons = document.querySelectorAll(".faq__category");
+    const contentSections = document.querySelectorAll(".faq__items");
+    const questionButtons = document.querySelectorAll(".faq__question");
 
     // Category switching
-    categoryButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const category = button.getAttribute('data-category');
+    categoryButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const category = button.getAttribute("data-category");
 
         // Update active category button
-        categoryButtons.forEach(btn => btn.classList.remove('faq__category--active'));
-        button.classList.add('faq__category--active');
+        categoryButtons.forEach((btn) =>
+          btn.classList.remove("faq__category--active"),
+        );
+        button.classList.add("faq__category--active");
 
         // Show corresponding content, hide others
-        contentSections.forEach(section => {
-          if (section.getAttribute('data-category') === category) {
-            section.classList.remove('faq__items--hidden');
+        contentSections.forEach((section) => {
+          if (section.getAttribute("data-category") === category) {
+            section.classList.remove("faq__items--hidden");
           } else {
-            section.classList.add('faq__items--hidden');
+            section.classList.add("faq__items--hidden");
           }
         });
 
         // Close all open answers when switching categories
-        document.querySelectorAll('.faq__item--open').forEach(item => {
-          item.classList.remove('faq__item--open');
+        document.querySelectorAll(".faq__item--open").forEach((item) => {
+          item.classList.remove("faq__item--open");
         });
       });
     });
 
     // Question toggling
-    questionButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const item = button.closest('.faq__item');
-        const isOpen = item.classList.contains('faq__item--open');
+    questionButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const item = button.closest(".faq__item");
+        const isOpen = item.classList.contains("faq__item--open");
 
         // Close all other items in the same category
-        const category = item.closest('.faq__items');
-        category.querySelectorAll('.faq__item--open').forEach(openItem => {
+        const category = item.closest(".faq__items");
+        category.querySelectorAll(".faq__item--open").forEach((openItem) => {
           if (openItem !== item) {
-            openItem.classList.remove('faq__item--open');
+            openItem.classList.remove("faq__item--open");
           }
         });
 
         // Toggle current item
         if (isOpen) {
-          item.classList.remove('faq__item--open');
+          item.classList.remove("faq__item--open");
         } else {
-          item.classList.add('faq__item--open');
+          item.classList.add("faq__item--open");
         }
       });
     });
