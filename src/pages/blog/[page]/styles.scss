@@ -1,3 +1,5 @@
+@use '../../../styles/mixins' as *;
+
 .blog-page {
   padding-block: 0;
   padding-inline: 0;
@@ -23,6 +25,10 @@
       grid-row: 1 / 2;
       grid-column: 1 / 4;
     }
+
+    @include tablet {
+      grid-template-columns: 100%;
+    }
   }
 
   &__author-box {
@@ -30,6 +36,10 @@
 
     &__categories {
       color: var(--blue-primary);
+    }
+
+    @include tablet {
+      margin-bottom: 3rem;
     }
   }
 
@@ -72,20 +82,38 @@
     top: 2rem;
     align-self: start;
     grid-row: 2 / 3;
+
+    @include tablet {
+      position: relative;
+      grid-row: 3 / 3;
+      max-width: unset;
+      top: unset;
+      padding-bottom: 3rem;
+    }
   }
 
   &__content {
     margin: 0 auto;
     line-height: 1.7;
 
+    @include tablet {
+      margin-top: -2.5rem;
+    }
+
     h1 {
-      font-size: 2.5rem;
+      font-size: 4rem;
+      font-weight: 600;
       margin-bottom: 1rem;
     }
 
     h2 {
+      font-size: 2.5rem;
       margin-top: 2.5rem;
       margin-bottom: 1rem;
+    }
+
+    h3 {
+      font-size: 1.5rem;
     }
 
     p {
