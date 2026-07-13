@@ -2,9 +2,9 @@ import { z, ZodError } from "astro/zod";
 import { createSignal } from "solid-js";
 
 const FormSchema = z.object({
-  name: z.string().min(1, "Name is required."),
-  email: z.string().email("Email is invalid."),
-  message: z.string().min(1, "Message is required."),
+  name: z.string().min(1, "Imię lub nazwa firmy są wymagane"),
+  email: z.string().email("E-mail jest wymagany"),
+  message: z.string().min(1, "Wiadomość jest wymagana (co najmniej 1 litera)"),
 });
 
 type FormState = z.infer<typeof FormSchema>;
@@ -61,7 +61,7 @@ export function ContactFormClientComponent() {
     <form>
       <div class="contact-form__field">
         <label for="name">
-          Imię i nazwisko <span class="contact-form__field-asterisk">*</span>
+          Imię i nazwisko / Nazwa firmy<span class="contact-form__field-asterisk">*</span>
         </label>
         <input
           type="text"
