@@ -7,9 +7,11 @@ interface Props {
   icon?: string;
   class?: string;
   href?: string;
+  active?: boolean;
+  dataCategory?: string;
 }
 
-const { title, class: className, icon, href, id } = Astro.props as Props;
+const { title, class: className, icon, href, id, active, dataCategory } = Astro.props as Props;
 ---
 
 {
@@ -17,9 +19,11 @@ const { title, class: className, icon, href, id } = Astro.props as Props;
     <a href={import.meta.env.BASE_URL + href}>
       <button
         id={id}
+        data-category={dataCategory}
         class={[
           "secondary-button",
           icon && "secondary-button--with-icon",
+          active && "secondary-button--active",
           className,
         ]
           .filter(Boolean)
@@ -31,13 +35,15 @@ const { title, class: className, icon, href, id } = Astro.props as Props;
     </a>
   ) : (
     <button
-      class={[
-        "secondary-button",
-        icon && "secondary-button--with-icon",
-        className,
-      ]
-        .filter(Boolean)
-        .join(" ")}
+    data-category={dataCategory}
+    class={[
+          "secondary-button",
+          icon && "secondary-button--with-icon",
+          active && "secondary-button--active",
+          className,
+        ]
+          .filter(Boolean)
+          .join(" ")}
     >
       {title}
       {icon ? <Icon style="left: 2rem" name={icon} /> : null}
@@ -67,6 +73,8 @@ const { title, class: className, icon, href, id } = Astro.props as Props;
     will-change: transform;
     backface-visibility: hidden;
 
+
+
     &::before {
       content: "";
       position: absolute;
@@ -94,5 +102,10 @@ const { title, class: className, icon, href, id } = Astro.props as Props;
     &::before {
       width: 100%;
     }
+  }
+
+  .secondary-button--active {
+      background-color: var(--blue-primary);
+      color: var(--white-primary);
   }
 </style>

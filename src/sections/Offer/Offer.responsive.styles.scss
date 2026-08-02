@@ -2,19 +2,24 @@
 
 .offer {
     &__mobile-heading {
-        display: block;
-        visibility: visible;
-        opacity: 1;
-        z-index: 150;
-        font-size: 25px;
-        font-weight: 500;
-        color: var(--grey-primary);
-        margin-top: 1rem;
-        margin-bottom: 0.5rem;
-
-        &.active {
-            color: var(--black-primary);
+        display: none;
+        
+        @include tablet {
+            display: block;
+            visibility: visible;
+            opacity: 1;
+            z-index: 150;
+            font-size: 25px;
+            font-weight: 500;
+            color: var(--grey-primary);
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+    
+            &.active {
+                color: var(--black-primary);
+            }
         }
+        
     }
 
     /* mobile-first: hide desktop slide overlay so it doesn't cover headings */

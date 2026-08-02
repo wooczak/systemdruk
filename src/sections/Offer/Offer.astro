@@ -244,7 +244,7 @@ import FourthCategorySrc from "../../assets/images/offer/pudelka-i-torby.webp";
 
       // Begin: slide overlay in to fully cover
       if (overlay) {
-const onCovered = (e: TransitionEvent) => {
+      const onCovered = (e: TransitionEvent) => {
           if (e.propertyName !== "transform") return;
           overlay.removeEventListener("transitionend", onCovered);
 
