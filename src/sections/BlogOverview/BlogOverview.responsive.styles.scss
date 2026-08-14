@@ -1,64 +1,58 @@
 @use "../../styles/mixins" as *;
 
 .blog-overview {
-    @include tablet {
-        margin-top: -4rem;
+  @include tablet {
+    margin-top: -4rem;
 
-        &__button {
-            margin-top: 0 !important;
-        }
-
-        &__container {
-            grid-template-columns: 1fr;
-            grid-template-rows: repeat(3, auto);
-            grid-template-areas: none;
-            row-gap: 2rem;
-        }
-
-        &__main-post,
-        &__sidebar-post-1,
-        &__sidebar-post-2 {
-            grid-area: auto;
-
-            &__content {
-                position: relative;
-            }
-
-            & img {
-                height: auto;
-            }
-        }
-
-        &__main-post {
-            height: auto;
-
-            & img {
-                width: 50%;
-                aspect-ratio: 1 / 1;
-            }
-
-            & > a {
-                display: flex;
-                flex-direction: row-reverse;
-                align-items: flex-end;
-                justify-content: space-between;
-            }
-        }
-
-        &__sidebar-post-1 {
-            & > a {
-                flex-direction: row-reverse;
-                justify-content: space-between;
-
-                & > img {
-                    width: 50%;
-                    aspect-ratio: 1 / 1;
-                }
-            }
-        }
-
-        &__sidebar-post-2 {
-            display: none;
-        }
+    &__button {
+      margin-top: 0 !important;
     }
+
+    &__container {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(3, auto);
+      grid-template-areas: none;
+      row-gap: 2rem;
+
+      &__categories {
+        font-size: 0.75rem;
+      }
+    }
+
+    &__main-post,
+    &__sidebar-post-1,
+    &__sidebar-post-2 {
+      grid-area: auto;
+      height: 150px;
+
+      & > a {
+        height: 100%;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 2rem;
+
+        & > img {
+            width: 40%;
+        }
+      }
+
+      &__content {
+        position: relative;
+
+        & > h4 {
+          font-size: 1.5rem;
+        }
+      }
+
+      & img {
+        height: 100%;
+      }
+    }
+
+    &__sidebar-post-2 {
+      display: none;
+    }
+  }
 }

@@ -214,118 +214,119 @@ import FourthCategorySrc from "../../assets/images/offer/pudelka-i-torby.webp";
 </section>
 
 <script>
-  const headings = document.querySelectorAll<HTMLHeadingElement>(".offer__content-heading");
-  const contents = document.querySelectorAll<HTMLDivElement>(".offer__content__text-container");
-  const image = document.querySelector<HTMLImageElement>(".offer__image");
-  const overlay = document.querySelector<HTMLDivElement>(".offer__content__slide-overlay");
-  let isAnimating = false;
+  document.addEventListener('DOMContentLoaded', () => {
+    const headings = document.querySelectorAll('.offer__content-heading');
+    const contents = document.querySelectorAll('.offer__content__text-container');
+    const image = document.querySelector('.offer__image');
+    const overlay = document.querySelector('.offer__content__slide-overlay');
+    let isAnimating = false;
 
-  const categoryImages: string[] = image ? JSON.parse(image.dataset.images || "[]") : [];
+    const categoryImages = image ? JSON.parse(image.dataset.images || '[]') : [];
 
-  // Set initial overlay state (out if there's an active content)
-  if (overlay) {
-    overlay.style.transform = document.querySelector<HTMLDivElement>(
-      ".offer__content__text-container.active",
-    )
-      ? "translateX(100%)"
-      : "translateX(0)";
-  }
+    console.log('Offer init', { headings: headings.length, contents: contents.length, overlay: !!overlay });
 
-  headings.forEach((heading, index) => {
-    heading.addEventListener("click", () => {
-      if (isAnimating) return;
+    // Debug: capture all clicks to verify events reach the page
+    document.addEventListener('click', (ev) => {
+      console.log('document click', ev.type, ev.target && (ev.target as HTMLElement).className);
+    }, true);
 
-      const currentActive = document.querySelector(
-        ".offer__content__text-container.active",
-      );
-      if (currentActive === contents[index]) return;
+    // Debug: log geometry and pointer-events of first heading and overlay
+    if (headings[0]) {
+      const h = headings[0];
+      console.log('heading[0] rect', h.getBoundingClientRect(), 'pointerEvents', window.getComputedStyle(h).pointerEvents);
+    }
+    if (overlay) {
+      console.log('overlay rect', overlay.getBoundingClientRect(), 'pointerEvents', window.getComputedStyle(overlay).pointerEvents, 'z', overlay.style.zIndex);
+    }
 
-      isAnimating = true;
+    // Set initial overlay state (out if there's an active content)
+    if (overlay) {
+      overlay.style.transform = document.querySelector('.offer__content__text-container.active') ? 'translateX(100%)' : 'translateX(0)';
+    }
 
-      // Begin: slide overlay in to fully cover
-      if (overlay) {
-const onCovered = (e: TransitionEvent) => {
-          if (e.propertyName !== "transform") return;
-          overlay.removeEventListener("transitionend", onCovered);
+    headings.forEach((heading, index) => {
+      console.log('Offer: attach handler', index);
+      heading.addEventListener('click', () => {
+        console.log('offer heading click', index);
+        if (isAnimating) return;
 
-          // Swap visible content while covered
-          headings.forEach((h) => h.classList.remove("active"));
-          contents.forEach((c) => c.classList.remove("active"));
-          heading.classList.add("active");
-          contents[index].classList.add("active");
+        if (!contents[index]) {
+          console.warn('Offer: no matching content for heading index', index);
+          return;
+        }
 
-          // Update image while still covered
-          if (image && categoryImages[index]) {
-            image.src = categoryImages[index];
-          }
+        const currentActive = document.querySelector('.offer__content__text-container.active');
+        if (currentActive === contents[index]) return;
 
-          // Now reveal: slide overlay out
-          requestAnimationFrame(() => {
-            overlay.style.transform = "translateX(100%)";
-          });
+        isAnimating = true;
 
-          const onRevealed = (ev: TransitionEvent) => {
-            if (ev.propertyName !== "transform") return;
-            overlay.removeEventListener("transitionend", onRevealed);
-            isAnimating = false;
-          };
-
-          overlay.addEventListener("transitionend", onRevealed);
-        };
-
-        overlay.addEventListener("transitionend", onCovered);
-        // trigger cover
-        requestAnimationFrame(() => {
-          overlay.style.transform = "translateX(0)";
-        });
-      } else {
-        // Fallback: immediate swap
-        headings.forEach((h) => h.classList.remove("active"));
-        contents.forEach((c) => c.classList.remove("active"));
-        heading.classList.add("active");
-        contents[index].classList.add("active");
+        // Immediate swap so UI updates reliably even if overlay transition misfires
+        headings.forEach((h) => h.classList.remove('active'));
+        contents.forEach((c) => c.classList.remove('active'));
+        heading.classList.add('active');
+        contents[index].classList.add('active');
         if (image && categoryImages[index]) image.src = categoryImages[index];
-        isAnimating = false;
-      }
-    });
-  });
+        console.log('offer immediate swap to index', index);
 
-  // Mobile: toggle content when tapping mobile headings (h5)
-  const mobileHeadings = document.querySelectorAll('.offer__mobile-heading');
-  mobileHeadings.forEach((mHeading) => {
-    mHeading.addEventListener('click', () => {
-      if (mHeading.classList.contains('active')) return;
-
-      const currentHeading = document.querySelector('.offer__mobile-heading.active');
-      const currentContent = document.querySelector('.offer__content__text-container.active');
-
-      if (currentHeading) currentHeading.classList.remove('active');
-      if (currentContent) currentContent.classList.remove('active');
-
-      mHeading.classList.add('active');
-      const related = mHeading.nextElementSibling;
-      if (related && related.classList.contains('offer__content__text-container')) {
-        related.classList.add('active');
-      }
-    });
-  });
-
-  // Scroll animations
-  const intersectionObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
+        // Try a short overlay animation for polish but don't rely on transitionend
+        if (overlay) {
+          // ensure we block clicks briefly while animation runs
+          isAnimating = true;
+          requestAnimationFrame(() => {
+            overlay.style.transform = 'translateX(0)';
+            // reveal after a short delay to keep visual flow
+            setTimeout(() => {
+              overlay.style.transform = 'translateX(100%)';
+            }, 120);
+          });
+          // Clear the animation lock after a short timeout so clicks become active again
+          setTimeout(() => {
+            isAnimating = false;
+          }, 380);
+        } else {
+          // No overlay — allow immediate next interactions
+          isAnimating = false;
         }
       });
-    },
-    {
-      threshold: 0.2,
-      rootMargin: "0px 0px -100px 0px",
-    },
-  );
+    });
 
-  document.querySelectorAll(".animate-on-scroll").forEach((element) => {
-    intersectionObserver.observe(element);
+    // Mobile: toggle content when tapping mobile headings (h5)
+    const mobileHeadings = document.querySelectorAll('.offer__mobile-heading');
+    mobileHeadings.forEach((mHeading) => {
+      mHeading.addEventListener('click', () => {
+        if (mHeading.classList.contains('active')) return;
+
+        const currentHeading = document.querySelector('.offer__mobile-heading.active');
+        const currentContent = document.querySelector('.offer__content__text-container.active');
+
+        if (currentHeading) currentHeading.classList.remove('active');
+        if (currentContent) currentContent.classList.remove('active');
+
+        mHeading.classList.add('active');
+        const related = mHeading.nextElementSibling;
+        if (related && related.classList.contains('offer__content__text-container')) {
+          related.classList.add('active');
+        }
+      });
+    });
+
+    // Scroll animations
+    const intersectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+        rootMargin: '0px 0px -100px 0px',
+      },
+    );
+
+    document.querySelectorAll('.animate-on-scroll').forEach((element) => {
+      intersectionObserver.observe(element);
+    });
   });
 </script>
