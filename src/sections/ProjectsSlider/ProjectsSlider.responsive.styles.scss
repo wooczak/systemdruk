@@ -3,16 +3,19 @@
 .projects-slider {
     @include tablet {
         padding-inline: 0;
-        overflow-x: auto;
-        overflow-y: hidden;
-        -webkit-overflow-scrolling: touch;
-        scroll-snap-type: x mandatory;
+        /* make sure the section itself does not scroll so the indicator stays visible */
+        overflow: visible;
+        position: relative;
     }
 }
 
 #projects-slider {
     @include tablet {
         gap: 0;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
     }
 }
 
@@ -35,5 +38,41 @@
         @include tablet {
             font-size: 16px;
         }
+    }
+}
+
+/* Mobile / tablet indicator */
+.projects-slider__mobile-indicator {
+    @include tablet {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 0.75rem;
+        width: 90%;
+        height: 8śpx;
+        display: block;
+        background: rgba(0, 0, 0, 0.06);
+        border-radius: 6px;
+        padding: 2px;
+        z-index: 10;
+    }
+
+    &__bar {
+        @include tablet {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: var(--blue-primary, #0b66ff);
+            border-radius: 6px;
+            transition: left 120ms linear, width 120ms linear;
+        }
+    }
+}
+
+/* ensure slider has bottom padding so indicator doesn't overlap content */
+.projects-slider {
+    @include tablet {
+        padding-bottom: 3rem;
     }
 }

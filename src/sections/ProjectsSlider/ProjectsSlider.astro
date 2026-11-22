@@ -58,6 +58,9 @@ import Image3 from "../../assets/images/hero-slider/3.webp";
       </div>
     </div>
   </div>
+  <div class="projects-slider__mobile-indicator" aria-hidden="true">
+    <div class="projects-slider__mobile-indicator__bar"></div>
+  </div>
 </section>
 
 <script>
@@ -70,6 +73,43 @@ import Image3 from "../../assets/images/hero-slider/3.webp";
     ) as HTMLElement | null;
 
     if (!section || !slider) return;
+
+    // If on tablet or smaller, disable JS-driven slider and rely on native
+    // scroll-snap behavior. Still add a small indicator that reflects
+    // native scroll position.
+    if (isMobileBreakpoint()) {
+      // Ensure any transforms are cleared so native scrolling works
+      slider.style.transform = "";
+
+      const track = section.querySelector(
+        ".projects-slider__mobile-indicator",
+      ) as HTMLElement | null;
+      const indicator = section.querySelector(
+        ".projects-slider__mobile-indicator__bar",
+      ) as HTMLElement | null;
+
+      function updateIndicator() {
+        if (!indicator || !track) return;
+        const max = slider.scrollWidth - slider.clientWidth;
+        const progress = max > 0 ? slider.scrollLeft / max : 0;
+
+        const trackW = track.clientWidth;
+        // Calculate bar width proportional to visible area; clamp to reasonable min
+        const ratio = slider.clientWidth / slider.scrollWidth || 1;
+        const barW = Math.max(24, Math.round(ratio * trackW));
+        const maxLeft = Math.max(0, trackW - barW);
+
+        indicator.style.width = `${barW}px`;
+        indicator.style.left = `${Math.round(progress * maxLeft)}px`;
+      }
+
+      // Update on load and scroll
+      updateIndicator();
+      slider.addEventListener("scroll", updateIndicator, { passive: true });
+
+      // Do not attach the heavy JS loop for desktop interactions
+      return;
+    }
 
     // Lerp factor: higher = snappier, lower = more inertia.
     const LERP = 0.08;

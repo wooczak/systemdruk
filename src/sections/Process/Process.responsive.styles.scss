@@ -1,6 +1,12 @@
 @use "../../styles/mixins" as *;
 
 #process {
+    &__header-container {
+        @include tablet {
+            width: 100%;
+            margin-bottom: 0;
+        }
+    }
     &__subtitle {
         @include tablet {
             font-size: 18px;
