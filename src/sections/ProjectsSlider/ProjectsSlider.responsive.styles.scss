@@ -14,8 +14,13 @@
         gap: 0;
         overflow-x: auto;
         overflow-y: hidden;
+        scrollbar-width: none;
         -webkit-overflow-scrolling: touch;
         scroll-snap-type: x mandatory;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
     }
 }
 
@@ -49,7 +54,7 @@
         transform: translateX(-50%);
         bottom: 0.75rem;
         width: 90%;
-        height: 8śpx;
+        height: 8px;
         display: block;
         background: rgba(0, 0, 0, 0.06);
         border-radius: 6px;

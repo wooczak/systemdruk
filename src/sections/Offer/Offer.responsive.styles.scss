@@ -5,16 +5,16 @@
     &__mobile-heading {
         display: block;
         visibility: visible;
-        opacity: 0;
+        opacity: 1;
         z-index: 150;
         font-size: 25px;
         font-weight: 500;
         color: var(--grey-primary);
         margin-top: 1rem;
         margin-bottom: 0.5rem;
+        cursor: pointer;
 
         &.active {
-            opacity: 1;
             color: var(--black-primary);
         }
         
