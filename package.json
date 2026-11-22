@@ -16,14 +16,14 @@
     "@iconify-json/ep": "^1.2.3",
     "@iconify-json/mdi": "^1.2.3",
     "@supabase/supabase-js": "^2.108.1",
-    "astro": "^6.4.6",
+    "astro": "^7.4.13",
     "astro-breadcrumbs": "^3.4.0",
     "astro-icon": "^1.1.5",
     "motion": "^12.38.0",
     "solid-js": "^1.9.12"
   },
   "devDependencies": {
-    "@astrojs/solid-js": "^4.1.0",
+    "@astrojs/solid-js": "^7.1.6",
     "sass-embedded": "^1.98.0",
     "solid-devtools": "^0.34.5"
   }
