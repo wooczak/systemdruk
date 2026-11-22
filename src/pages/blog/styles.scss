@@ -69,7 +69,8 @@
   &__title {
     display: block;
     grid-area: title;
-    font-size: 3.5rem;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.15;
     margin-bottom: -0.5rem;
     padding-top: 1.5rem;
     transition: color 0.2s ease-in-out;
