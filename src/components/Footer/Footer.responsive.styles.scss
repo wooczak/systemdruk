@@ -11,6 +11,8 @@
             order: 1;
             border-top: none;
             row-gap: 2rem;
+            margin-right: 0;
+            padding-right: 0;
 
             @include mobile {
                 grid-template-columns: repeat(2, 1fr);

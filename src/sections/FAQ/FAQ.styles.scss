@@ -115,6 +115,10 @@
     padding: 0.5rem 0;
     background: transparent;
     border: none;
+    color: var(--black-primary);
+    -webkit-appearance: none;
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
     cursor: pointer;
     text-align: left;
     transition: opacity 0.3s ease;
