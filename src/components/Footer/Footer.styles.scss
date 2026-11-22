@@ -61,7 +61,11 @@ $inline-spacing: 7rem;
 
     & li {
       margin-block: 0.5em;
-      transition: all 0.3s ease;
+    }
+
+    & a {
+      transition: color 0.3s ease;
+
       &:hover {
         cursor: pointer;
         color: var(--blue-primary);
